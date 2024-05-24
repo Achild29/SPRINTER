@@ -45,7 +45,10 @@
 				<div class="content">
 					<p><br><br><br><br><br><br><br></p>
 					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Tambah Jadwal</a></li>
+						<li><a href="#one" class="button scrolly">PRODI</a></li>
+						<li><a href="#one" class="button scrolly">MKP</a></li>
+						<li><a href="#one" class="button scrolly">WAKTU</a></li>
+						<li><a href="#one" class="button scrolly">JADWAL</a></li>
 					</ul>
 				</div>
 			</section>
