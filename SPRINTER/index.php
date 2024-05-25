@@ -76,7 +76,7 @@
 							</div>
 							<div class="mb-3">
 								<label for="password" class="form-label">Password</label>
-								<input type="password" class="form-control" id="password" name="nama_prodi" placeholder="Password">
+								<input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
 							</div>
 							<div class="d-grid gap-2">
 								<button type="submit" class="btn btn-primary">Submit</button>
@@ -99,24 +99,29 @@
 							<form method="post" action="Controller/Mkp.php">
 								<div class="mb-3">
 									<label for="kode_mkp" class="form-label">Kode MKP</label>
-									<input type="text" class="form-control" id="kode_mkp" placeholder="Kode MKP">
+									<input type="text" class="form-control" id="kode_mkp" name="kode_mkp" placeholder="Kode MKP">
 								</div>
 								<div class="mb-3">
 									<label for="kode_prodi" class="form-label">KODE PRODI</label>
 									<select class="form-select" aria-label="Kode PRODI">
-										<option selected>Pilih Prodi</option>
-										<option value="1">Querry ke table prodi</option>
-										<option value="2">Querry ke table prodi</option>
-										<option value="3">Querry ke table prodi</option>
+										<option value="">Pilih Kode Prodi</option>
+									<?php include 'koneksi.php';
+									$query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+									$field = $connect->prepare($query);
+									$field->execute();
+									$res1 = $field->get_result();
+									while ($row = $res1->fetch_assoc()) {
+										echo "<option value='" . $row['kode_prodi'] . "'>" . $row['kode_prodi'] . "</option>";
+										} ?>
 									</select>
 								</div>
 								<div class="mb-3">
 									<label for="nama_mkp" class="form-label">Nama MKP</label>
-									<input type="text" class="form-control" id="nama_mkp" placeholder="Nama MKP">
+									<input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  placeholder="Nama MKP">
 								</div>
 								<div class="mb-3">
 									<label for="sks" class="form-label">SKS</label>
-									<input type="text" class="form-control" id="sks" placeholder="SKS">
+									<input type="text" class="form-control" id="sks" name="sks" placeholder="SKS">
 								</div>
 								<button type="submit" class="btn btn-primary">Submit</button>
 						</div>
