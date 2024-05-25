@@ -8,7 +8,7 @@ $password = $_POST['password'];
 
 
 
-$sql = "INSERT INTO prodi (kode_prodi, nama_prodi, password,) VALUES ('$kode_prodi','$nama_prodi','$passwrod')";
+$sql = "INSERT INTO prodi (kode_prodi, nama_prodi, password) VALUES ('$kode_prodi','$nama_prodi','$passwrod')";
 $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
 header("location: index.php")
 ?>
