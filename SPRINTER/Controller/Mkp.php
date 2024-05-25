@@ -1,6 +1,6 @@
 <?php
 
-include 'koneksi.php';
+include '../koneksi.php';
 
 $kode_mkp = $_POST['kode_mkp'];
 $kode_prodi = $_POST['kode_prodi'];
