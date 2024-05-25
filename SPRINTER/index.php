@@ -17,6 +17,35 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!-- CSS bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<script>
+        function updateJamOptions() {
+            var reg = document.getElementById("reg").value;
+            var jam = document.getElementById("jam");
+            jam.innerHTML = ""; // Clear previous options
+
+            if (reg === "A") {
+                addOption(jam, "1", "Jam ke-1 (07.10)");
+                addOption(jam, "2", "Jam ke-2 (08.50)");
+                addOption(jam, "3", "Jam ke-3 (10.30)");
+                addOption(jam, "4", "Jam ke-4 (13.00)");
+                addOption(jam, "5", "Jam ke-5 (14.40)");
+            } else if (reg === "B") {
+                addOption(jam, "1", "Jam ke-1");
+                addOption(jam, "2", "Jam ke-2");
+            } else if (reg === "C") {
+                addOption(jam, "1", "Jam ke-1");
+                addOption(jam, "2", "Jam ke-2");
+                addOption(jam, "3", "Jam ke-3");
+            }
+        }
+
+        function addOption(selectbox, value, text) {
+            var option = document.createElement("option");
+            option.value = value;
+            option.text = text;
+            selectbox.appendChild(option);
+        }
+    </script>
 	</head>
 	<body>
 
@@ -103,7 +132,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="kode_prodi" class="form-label">KODE PRODI</label>
-									<select class="form-select" aria-label="Kode PRODI">
+									<select class="form-select" aria-label="Kode PRODI" name="kode_prodi1" require>
 										<option value="">Pilih Kode Prodi</option>
 									<?php include 'koneksi.php';
 									$query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
@@ -145,12 +174,12 @@
 									<input type="text" class="form-control" id="kode_waktu" placeholder="Kode Waktu">
 								</div>
 								<div class="mb-3">
-									<label for="kode_prodi" class="form-label">Reguler</label>
-									<select class="form-select" aria-label="Kode REGULER">
+									<label for="reg" class="form-label">Reguler</label>
+									<select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
 										<option selected>Pilih Reguler</option>
-										<option value="1">Reguler A</option>
-										<option value="2">Reguler B</option>
-										<option value="3">Reguler C</option>
+										<option value="A">Reguler A</option>
+										<option value="B">Reguler B</option>
+										<option value="C">Reguler C</option>
 									</select>
 								</div>
 								<div class="mb-3">
@@ -166,16 +195,10 @@
 									</select>
 								</div>
 								<div class="mb-3">
-									<label for="jam_mulai" class="form-label">Jam Mulai</label>
-									<select class="form-select" aria-label="Jam MULAI">
+									<label for="jam" class="form-label">Jam Mulai</label>
+									<select id="jam" name="jam" class="form-select" aria-label="Jam MULAI">
 										<option selected>Pilih Jam</option>
-										<option value="1">Pagi jam ke-1</option>
-										<option value="2">Pagi jam ke-2</option>
-										<option value="3">Pagi jam ke-3</option>
-										<option value="4">Pagi jam ke-4</option>
-										<option value="5">Pagi jam ke-5</option>
-										<option value="6">Malem jam ke-1</option>
-										<option value="7">Malem jam ke-2</option>
+										<option value=""></option>
 									</select>
 								</div>
 								<div class="mb-3">
