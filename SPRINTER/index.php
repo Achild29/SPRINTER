@@ -21,22 +21,57 @@
         function updateJamOptions() {
             var reg = document.getElementById("reg").value;
             var jam = document.getElementById("jam");
-            jam.innerHTML = ""; // Clear previous options
+			var hari = document.getElementById("hari")
+			// Clear previous options
+            jam.innerHTML = ""; 
+			hari.innerHTML = "";
 
-            if (reg === "A") {
-                addOption(jam, "1", "Jam ke-1 (07.10)");
-                addOption(jam, "2", "Jam ke-2 (08.50)");
-                addOption(jam, "3", "Jam ke-3 (10.30)");
-                addOption(jam, "4", "Jam ke-4 (13.00)");
-                addOption(jam, "5", "Jam ke-5 (14.40)");
-            } else if (reg === "B") {
-                addOption(jam, "1", "Jam ke-1");
-                addOption(jam, "2", "Jam ke-2");
-            } else if (reg === "C") {
-                addOption(jam, "1", "Jam ke-1");
-                addOption(jam, "2", "Jam ke-2");
-                addOption(jam, "3", "Jam ke-3");
-            }
+		// Achild's Code
+			if (reg == "A" || reg == "B") {
+				addOption(hari, "1", "Senin");
+				addOption(hari, "2", "Selasa");
+				addOption(hari, "3", "Rabu");
+				addOption(hari, "4", "Kamis");
+				addOption(hari, "5", "Jum'at");
+				if (reg == "A") {
+					addOption(jam, "1", "Jam ke-1 (07.10)");
+					addOption(jam, "2", "Jam ke-2 (08.50)");
+					addOption(jam, "3", "Jam ke-3 (10.30)");
+					addOption(jam, "4", "Jam ke-4 (13.00)");
+					addOption(jam, "5", "Jam ke-5 (14.40)");
+				} else if (reg == "B") {
+					addOption(jam, "1", "Jam ke-1 (18.20)");
+					addOption(jam, "2", "Jam ke-2 (20.00)");
+				}
+			} else if (reg == "C") {
+				addOption(jam, "1", "Jam ke-1 (07.40)");
+				addOption(jam, "2", "Jam ke-2 (09.20)");
+				addOption(jam, "3", "Jam ke-3 (11.00)");
+				addOption(jam, "4", "Jam ke-4 (12.40)");
+				addOption(jam, "5", "Jam ke-5 (14.20)");
+				addOption(hari, "1", "Kamis K-1");
+				addOption(hari, "2", "Kamis K-2");
+				addOption(hari, "3", "Sabtu K-1");
+				addOption(hari, "4", "Sabtu K-2");
+			} 
+		// end of Achild's Code
+
+		// Lerry's Code
+            // if (reg === "A") {
+            //     addOption(jam, "1", "Jam ke-1 (07.10)");
+            //     addOption(jam, "2", "Jam ke-2 (08.50)");
+            //     addOption(jam, "3", "Jam ke-3 (10.30)");
+            //     addOption(jam, "4", "Jam ke-4 (13.00)");
+            //     addOption(jam, "5", "Jam ke-5 (14.40)");
+            // } else if (reg === "B") {
+            //     addOption(jam, "1", "Jam ke-1");
+            //     addOption(jam, "2", "Jam ke-2");
+            // } else if (reg === "C") {
+            //     addOption(jam, "1", "Jam ke-1");
+            //     addOption(jam, "2", "Jam ke-2");
+            //     addOption(jam, "3", "Jam ke-3");
+            // }
+		// end of Lerry's Code
         }
 
         function addOption(selectbox, value, text) {
@@ -184,21 +219,16 @@
 								</div>
 								<div class="mb-3">
 									<label for="hari" class="form-label">Hari</label>
-									<select class="form-select" aria-label="Kode HARI">
+									<select id="hari" name="hari" class="form-select" aria-label="Kode HARI">
 										<option selected>Pilih Hari</option>
-										<option value="1">Senin</option>
-										<option value="2">Selasa</option>
-										<option value="3">Rabu</option>
-										<option value="4">Kamis</option>
-										<option value="5">Jum'at</option>
-										<option value="6">Sabtu</option>
+										
 									</select>
 								</div>
 								<div class="mb-3">
 									<label for="jam" class="form-label">Jam Mulai</label>
 									<select id="jam" name="jam" class="form-select" aria-label="Jam MULAI">
 										<option selected>Pilih Jam</option>
-										<option value=""></option>
+										<!-- <option value=""></option> -->
 									</select>
 								</div>
 								<div class="mb-3">
