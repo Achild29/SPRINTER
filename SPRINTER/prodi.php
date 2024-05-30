@@ -54,7 +54,7 @@
             <div class="content">
                 <p><br><br><br><br><br><br><br></p>
                 <ul class="actions">
-                    <li><a href="#PRODI" class="btn btn-success btn-lg">PRODI</a></li>
+                    <li><a href="prodi.php#PRODI" class="btn btn-success btn-lg">PRODI</a></li>
                     <li><a href="mkp.php#MKP" class="btn btn-success btn-lg">MKP</a></li>
                     <li><a href="waktu.php#WAKTU" class="btn btn-success btn-lg">WAKTU</a></li>
                     <li><a href="index.php" class="btn btn-success btn-lg">JADWAL</a></li>
