@@ -22,98 +22,134 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- end of bootstrap -->
     <!-- native css -->
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
 <!-- end of CSS -->
     </head>
     <body>
-    <!-- Header -->
-        <header id="header">
-            <nav class="left">
-                <a href="#menu"><span>Menu</span></a>
-            </nav>
-            <a href="index.php" class="logo"><font color="white">Sistem Penjadwalan Praktikum Lab Komputer</font></a>
-        </header>
-    <!-- end of Header -->
-
-    <!-- Menu -->
-        <nav id="menu">
-            <ul class="links">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Master Prodi</a></li>
-                <li><a href="mkp.php">Master Mata Kuliah</a></li>
-                <li><a href="waktu.php">Master Waktu</a></li>
-                <li><a href="index.php">Input Jadwal</a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </nav>
-    <!-- end of Menu -->
-
-    <!-- Banner -->
-        <section id="banner">
-            <div class="content">
-                <p><br><br><br><br><br><br><br></p>
-                <ul class="actions">
-                    <li><a href="prodi.php#PRODI" class="btn btn-success btn-lg">PRODI</a></li>
-                    <li><a href="mkp.php#MKP" class="btn btn-success btn-lg">MKP</a></li>
-                    <li><a href="waktu.php#WAKTU" class="btn btn-success btn-lg">WAKTU</a></li>
-                    <li><a href="index.php" class="btn btn-success btn-lg">JADWAL</a></li>
-                </ul>
-            </div>
-        </section>
-    <!-- end of Banner -->
-
-    <!-- MKP -->
-        <section id="MKP" class="wrapper">
-            <div class="inner">
-                <p class="d-inline-flex gap-1">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#tambahMKP" aria-expanded="false" aria-controls="collapseExample">
-                        TAMBAH MKP
-                    </button>
-                </p>
-                <div class="collapse" id="tambahMKP">
-                    <div class="card card-body">
-                        <form method="post" action="Controller/Mkp.php">
-                            <div class="mb-3">
-                                <label for="kode_mkp" class="form-label">Kode MKP</label>
-                                <input type="text" class="form-control" id="kode_mkp" name="kode_mkp" placeholder="Kode MKP">
-                            </div>
-                            <div class="mb-3">
-                                <label for="kode_prodi" class="form-label">KODE PRODI</label>
-                                <select class="form-select" aria-label="Kode PRODI" name="kode_prodi1" require>
-                                    <option selected>Pilih Kode Prodi</option>
-                                        <?php include 'koneksi.php';
-                                            $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-                                            $field = $connect->prepare($query);
-                                            $field->execute();
-                                            $res1 = $field->get_result();
-                                            while ($row = $res1->fetch_assoc()) {
-                                                echo "<option value='" . $row['kode_prodi'] . "'>" . $row['kode_prodi'] . "</option>";
-                                            }
-                                        ?>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama_mkp" class="form-label">Nama MKP</label>
-                                <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  placeholder="Nama MKP">
-                            </div>
-                            <div class="mb-3">
-                                <label for="sks" class="form-label">SKS</label>
-                                <input type="text" class="form-control" id="sks" name="sks" placeholder="SKS">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- navbar -->
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="btn btn-dark btn-lg mx-auto" href="index.php" role="button">SPRINTER</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item actvie">
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="jadwal.php#JADWAL">Jadwal</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Master
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark active">
+                                    <li><a class="dropdown-item" href="prodi.php">Master PRODI</a></li>
+                                    <li><a class="dropdown-item" href="mkp.php">Master MKP</a></li>
+                                    <li><a class="dropdown-item" href="waktu.php">Master WAKTU</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout.php">logout</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-		<!-- end of MKP -->
+        </nav>
+        <div class="continer-fluid text-center">
+            <div class="card text-bg-dark">
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title"> </h4>
+                    <p class="card-text"> </p>
+                    <p class="card-text"> </p>
+                    <p class="card-text p-3">Sistem Penjadwalan Praktikum Lab Komputer</p>
+                </div>
+            </div>
+        </div> 
+    <!-- end of navbar  -->
+
+    <!-- Banner -->
+        <div id="carouselExampleIndicators" class="carousel">
+            <div class="carousel-indicators gap-5 p-5">
+                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
+                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
+                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+    <!-- end of Banner -->
+
+    <!-- Master MKP -->
+        <div class="container-fluid w-75 p-5">
+            <div id="MKP" class="card">
+                <h5 class="card-header">Master MKP</h5>
+                <div class="card-body">
+                    <form method="post" action="Controller/Mkp.php">
+                        <div class="mb-3">
+                            <label for="kode_mkp" class="form-label">Kode MKP</label>
+                            <input type="text" class="form-control" id="kode_mkp" name="kode_mkp" placeholder="Kode MKP">
+                        </div>
+                        <div class="mb-3">
+                            <label for="kode_prodi" class="form-label">KODE PRODI</label>
+                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi1" require>
+                                <option selected>Pilih Kode Prodi</option>
+                                    <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['kode_prodi'] . "</option>";
+                                        }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama_mkp" class="form-label">Nama MKP</label>
+                            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  placeholder="Nama MKP">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sks" class="form-label">SKS</label>
+                            <input type="text" class="form-control" id="sks" name="sks" placeholder="SKS">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- end of Master MKP -->
 
     <!-- Footer -->
-        <footer id="footer">
-            <div class="copyright">
-                &copy; 2024. Designed by Anak SI</a>.
+        <div class="card text-bg-secondary text-center ">
+            <div class="card-header">
+                SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
             </div>
-        </footer>
+            <div class="card-body">
+                <h5 class="card-title">&copy; 2024. Designed by Anak SI</h5>
+                <p class="card-text">Thanks to Bootstrap, AdminLTE | code with php</p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+        </div>
     <!-- end of Footer -->
 
     <!-- Scripts -->

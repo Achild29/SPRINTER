@@ -12,11 +12,11 @@
 <!-- end of pengecekaan untuk session -->
 
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Master Prodi | Sistem Penjadwalan Praktikum Lab Komputer</title>
+        <title>Master Waktu | Sistem Penjadwalan Praktikum Lab Komputer</title>
 <!-- CSS -->
     <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -25,6 +25,51 @@
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
 <!-- end of CSS -->
+    <!-- scripts -->
+        <script>
+            function updateJamOptions() {
+                var reg = document.getElementById("reg").value;
+                var jam = document.getElementById("jam");
+                var hari = document.getElementById("hari")
+                // Clear previous options
+                jam.innerHTML = ""; 
+                hari.innerHTML = "";
+                if (reg == "A" || reg == "B") {
+                    addOption(hari, "1", "Senin");
+                    addOption(hari, "2", "Selasa");
+                    addOption(hari, "3", "Rabu");
+                    addOption(hari, "4", "Kamis");
+                    addOption(hari, "5", "Jum'at");
+                    if (reg == "A") {
+                        addOption(jam, "1", "Jam ke-1 (07.10)");
+                        addOption(jam, "2", "Jam ke-2 (08.50)");
+                        addOption(jam, "3", "Jam ke-3 (10.30)");
+                        addOption(jam, "4", "Jam ke-4 (13.00)");
+                        addOption(jam, "5", "Jam ke-5 (14.40)");
+                    } else if (reg == "B") {
+                        addOption(jam, "1", "Jam ke-1 (18.20)");
+                        addOption(jam, "2", "Jam ke-2 (20.00)");
+                    }
+                } else if (reg == "C") {
+                    addOption(jam, "1", "Jam ke-1 (07.40)");
+                    addOption(jam, "2", "Jam ke-2 (09.20)");
+                    addOption(jam, "3", "Jam ke-3 (11.00)");
+                    addOption(jam, "4", "Jam ke-4 (12.40)");
+                    addOption(jam, "5", "Jam ke-5 (14.20)");
+                    addOption(hari, "1", "Kamis K-1");
+                    addOption(hari, "2", "Kamis K-2");
+                    addOption(hari, "3", "Sabtu K-1");
+                    addOption(hari, "4", "Sabtu K-2");
+                } 
+            }
+            function addOption(selectbox, value, text) {
+                var option = document.createElement("option");
+                option.value = value;
+                option.text = text;
+                selectbox.appendChild(option);
+            }
+        </script>
+    <!-- end of scripts -->
     </head>
     <body>
     <!-- navbar -->
@@ -41,7 +86,7 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
+                            <li class="nav-item actvie">
                                 <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
@@ -51,7 +96,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Master
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
+                                <ul class="dropdown-menu dropdown-menu-dark active">
                                     <li><a class="dropdown-item" href="prodi.php">Master PRODI</a></li>
                                     <li><a class="dropdown-item" href="mkp.php">Master MKP</a></li>
                                     <li><a class="dropdown-item" href="waktu.php">Master WAKTU</a></li>
@@ -83,7 +128,7 @@
             </div>
         </div> 
     <!-- end of navbar  -->
-    
+
     <!-- Banner -->
         <div id="carouselExampleIndicators" class="carousel">
             <div class="carousel-indicators gap-5 p-5">
@@ -99,30 +144,41 @@
         </div>
     <!-- end of Banner -->
 
-    <!-- Master Prodi -->
+    <!-- WAKTU -->
         <div class="container-fluid w-75 p-5">
-            <div id="PRODI" class="card">
-                <h5 class="card-header">Master PRODI</h5>
+            <div id="WAKTU" class="card">
+                <h5 class="card-header">Master Waktu</h5>
                 <div class="card-body">
-                    <form method="post" action="Controller/Prodi.php">
+                    <form method="post" action="Controller/Waktu.php">
                         <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" placeholder="Kode Prodi">
+                            <label for="reg" class="form-label">Reguler</label>
+                            <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
+                                <option selected>Pilih Reguler</option>
+                                <option value="A">Reguler A</option>
+                                <option value="B">Reguler B</option>
+                                <option value="C">Reguler C</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="nama_prodi" class="form-label">Nama Prodi</label>
-                            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" placeholder="Nama Prodi">
+                            <label for="hari" class="form-label">Hari</label>
+                            <select id="hari" name="hari" class="form-select" aria-label="Kode HARI">
+                                <option selected>Pilih Hari</option>
+                                
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                            <label for="jam" class="form-label">Jam Mulai</label>
+                            <select id="jam" name="jam" class="form-select" aria-label="Jam MULAI">
+                                <option selected>Pilih Jam</option>
+                                <!-- <option value=""></option> -->
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
-    <!-- end of Master Prodi -->
+    <!-- end of WAKTU -->
 
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">

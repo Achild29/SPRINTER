@@ -1,5 +1,5 @@
 <!-- pengecekaan untuk session -->
-    <?php
+<?php
         error_reporting(0);
         session_start();
         if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Master Prodi | Sistem Penjadwalan Praktikum Lab Komputer</title>
+        <title>Input Jadwal | Sistem Penjadwalan Praktikum Lab Komputer</title>
 <!-- CSS -->
     <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -45,7 +45,7 @@
                                 <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="jadwal.php#JADWAL">Jadwal</a>
+                                <a class="nav-link active" href="jadwal.php#JADWAL">Jadwal</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -99,30 +99,112 @@
         </div>
     <!-- end of Banner -->
 
-    <!-- Master Prodi -->
+    <!-- input Jadwal -->
         <div class="container-fluid w-75 p-5">
-            <div id="PRODI" class="card">
-                <h5 class="card-header">Master PRODI</h5>
+            <div id="JADWAL" class="card">
+                <h5 class="card-header">Input Jadwal Praktikum</h5>
                 <div class="card-body">
-                    <form method="post" action="Controller/Prodi.php">
-                        <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" placeholder="Kode Prodi">
+                    <form method="post" action="Controller/Jadwal.php">
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="kode_prodi" class="form-label">Kode ...</label>
+                                    <select class="form-select" aria-label="Kode PRODI">
+                                        <option selected>Pilih ...</option>
+                                        <option value="1">Querry ke table ...</option>
+                                        <option value="2">Querry ke table ...</option>
+                                        <option value="3">Querry ke table ...</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="jam" class="form-label">Jam Mulai</label>
+                                    <select class="form-select" aria-label="Jam MULAI">
+                                        <option selected>Pilih Jam</option>
+                                        <option value="1">Pagi jam ke-1</option>
+                                        <option value="2">Pagi jam ke-2</option>
+                                        <option value="3">Pagi jam ke-3</option>
+                                        <option value="4">Pagi jam ke-4</option>
+                                        <option value="5">Pagi jam ke-5</option>
+                                        <option value="6">Malem jam ke-1</option>
+                                        <option value="7">Malem jam ke-2</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="nama_prodi" class="form-label">Nama Prodi</label>
-                            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" placeholder="Nama Prodi">
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="kode_prodi" class="form-label">KODE PRODI</label>
+                                    <select class="form-select" aria-label="Kode PRODI">
+                                        <option selected>Pilih Prodi</option>
+                                        <option value="1">Querry ke table prodi</option>
+                                        <option value="2">Querry ke table prodi</option>
+                                        <option value="3">Querry ke table prodi</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="kelas" class="form-label">Kelas</label>
+                                    <select class="form-select" aria-label="Kode KELAS">
+                                        <option selected>Pilih Kelas</option>
+                                        <option value="1">Querry ke table ...</option>
+                                        <option value="2">Querry ke table ...</option>
+                                        <option value="3">Querry ke table ...</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="kode_mkp" class="form-label">Mata Kuliah Praktikum</label>
+                                    <select class="form-select" aria-label="Kode MKP">
+                                        <option selected>Pilih Mata Kuliah Praktikum</option>
+                                        <option value="1">Querry ke table MKP</option>
+                                        <option value="2">Querry ke table MKP</option>
+                                        <option value="3">Querry ke table MKP</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="pekan" class="form-label">Pekan</label>
+                                    <select class="form-select" aria-label="Kode PRODI">
+                                        <option selected>Pilih Pekan</option>
+                                        <option value="1">Pekan ke-1</option>
+                                        <option value="2">Pekan ke-2</option>
+                                        <option value="3">Pekan ke-3</option>
+                                        <option value="4">Pekan ke-4</option>
+                                        <option value="5">Pekan ke-4</option>
+                                        <option value="6">Pekan ke-5</option>
+                                        <option value="7">Pekan ke-6</option>
+                                        <option value="8">Pekan ke-7</option>
+                                        <option value="9">Pekan ke-8</option>
+                                        <option value="10">Pekan ke-10</option>
+                                        <option value="11">Pekan ke-11</option>
+                                        <option value="12">Pekan ke-12</option>
+                                        <option value="13">Pekan ke-13</option>
+                                        <option value="14">Pekan ke-14</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label"></label>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    <!-- end of Master Prodi -->
+    <!-- end of Jadwal -->
 
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">
