@@ -87,9 +87,7 @@
     <!-- Banner -->
         <div id="carouselExampleIndicators" class="carousel">
             <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
+                
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
