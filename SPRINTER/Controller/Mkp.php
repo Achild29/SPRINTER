@@ -2,10 +2,10 @@
 
 include '../koneksi.php';
 
-$kode_mkp = $_POST['kode_mkp'];
 $kode_prodi = $_POST['kode_prodi'];
 $nama_mkp = $_POST['nama_mkp'];
 $sks = $_POST['sks'];
+$kode_mkp = ""+$kode_prodi+$nama_mkp+$sks;
 
 
 
