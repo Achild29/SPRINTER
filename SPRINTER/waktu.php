@@ -148,7 +148,7 @@
             </div>
         <div class="container-fluid w-75 p-5">
             
-            <div id="WAKTU" class="card">
+            <div id="WAKTU" class="">
                 <h5 class="card-header">Master Waktu</h5>
                 <div class="card-body">
                     <form method="post" action="Controller/Waktu.php">
