@@ -102,32 +102,32 @@
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
             </div>
         <div class="container-fluid w-75 p-5">
-            <div id="MKP" class="card">
+            <div id="MKP" class="">
                 <h5 class="card-header">Master MKP</h5>
                 <div class="card-body">
                     <form method="post" action="Controller/Mkp.php">
                         <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">KODE PRODI</label>
-                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi1" require>
-                                <option selected>Pilih Kode Prodi</option>
+                            <label for="kode_prodi" class="form-label">PRODI</label>
+                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                <option selected>Pilih Prodi</option>
                                     <?php include 'koneksi.php';
                                         $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
                                         $field = $connect->prepare($query);
                                         $field->execute();
                                         $res1 = $field->get_result();
                                         while ($row = $res1->fetch_assoc()) {
-                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['kode_prodi'] . "</option>";
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
                                         }
                                     ?>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="nama_mkp" class="form-label">Nama MKP</label>
-                            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  placeholder="Nama MKP">
+                            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  >
                         </div>
                         <div class="mb-3">
                             <label for="sks" class="form-label">SKS</label>
-                            <input type="text" class="form-control" id="sks" name="sks" placeholder="SKS">
+                            <input type="text" class="form-control" id="sks" name="sks" >
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
