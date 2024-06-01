@@ -86,20 +86,21 @@
     
     <!-- Banner -->
         <div id="carouselExampleIndicators" class="carousel">
-            <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div>
+           
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
+                <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
                 </div>
             </div>
         </div>
     <!-- end of Banner -->
 
     <!-- Master Prodi -->
+            <div class="carousel-indicators gap-5 p-5">
+                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
+                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
+                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
+            </div>
         <div class="container-fluid w-75 p-5">
             <div id="PRODI" class="card">
                 <h5 class="card-header">Master PRODI</h5>
@@ -123,7 +124,7 @@
             </div>
         </div>
     <!-- end of Master Prodi -->
-
+    <br><br><br>
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">
             <div class="card-header">
@@ -135,6 +136,7 @@
                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
             </div>
         </div>
+        
     <!-- end of Footer -->
 
     <!-- Scripts -->
