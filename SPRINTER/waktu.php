@@ -170,10 +170,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="jam" class="form-label">Jam Mulai</label>
-                            <select id="jam" name="jam" class="form-select" aria-label="Jam MULAI">
-                                <option selected>Pilih Jam</option>
-                                <!-- <option value=""></option> -->
-                            </select>
+                            <input type="time" id="jam" name="jam" min="07:10" max="21.40" class="form-select" aria-label="Jam MULAI">
+                                
+                            </input>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
