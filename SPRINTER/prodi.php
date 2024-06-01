@@ -101,28 +101,32 @@
                 <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
             </div>
+            
         <div class="container-fluid w-75 p-5">
-            <div id="PRODI" class="card">
+            
+            <div id="PRODI" class="">
                 <h5 class="card-header">Master PRODI</h5>
                 <div class="card-body">
-                    <form method="post" action="Controller/Prodi.php">
+                <form action="Controller/prodi.php" method="post">
                         <div class="mb-3">
                             <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" placeholder="Kode Prodi">
+                            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
                         </div>
                         <div class="mb-3">
                             <label for="nama_prodi" class="form-label">Nama Prodi</label>
-                            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" placeholder="Nama Prodi">
+                            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                            <input type="password" class="form-control" id="pass" name="pass" >
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
                 </div>
+                
             </div>
         </div>
+        
     <!-- end of Master Prodi -->
     <br><br><br>
     <!-- Footer -->
