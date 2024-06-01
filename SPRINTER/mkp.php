@@ -86,29 +86,26 @@
 
     <!-- Banner -->
         <div id="carouselExampleIndicators" class="carousel">
-            <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div>
+            
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
+               <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
                 </div>
             </div>
         </div>
     <!-- end of Banner -->
 
     <!-- Master MKP -->
+            <div class="carousel-indicators gap-5 p-5">
+                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
+                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
+                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
+            </div>
         <div class="container-fluid w-75 p-5">
             <div id="MKP" class="card">
                 <h5 class="card-header">Master MKP</h5>
                 <div class="card-body">
                     <form method="post" action="Controller/Mkp.php">
-                        <div class="mb-3">
-                            <label for="kode_mkp" class="form-label">Kode MKP</label>
-                            <input type="text" class="form-control" id="kode_mkp" name="kode_mkp" placeholder="Kode MKP">
-                        </div>
                         <div class="mb-3">
                             <label for="kode_prodi" class="form-label">KODE PRODI</label>
                             <select class="form-select" aria-label="Kode PRODI" name="kode_prodi1" require>
@@ -138,7 +135,7 @@
             </div>
         </div>
     <!-- end of Master MKP -->
-
+    <br><br><br>
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">
             <div class="card-header">
