@@ -85,22 +85,21 @@
     <!-- end of navbar  -->
 
     <!-- Banner -->
-        <div id="carouselExampleIndicators" class="carousel">
-            
+        <!-- <div id="carouselExampleIndicators" class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-               <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
+                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
                 </div>
             </div>
-        </div>
+        </div> -->
     <!-- end of Banner -->
 
     <!-- Master MKP -->
-            <div class="carousel-indicators gap-5 p-5">
+            <!-- <div class="carousel-indicators gap-5 p-5">
                 <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
                 <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div>
+            </div> -->
         <div class="container-fluid w-75 p-5">
             <div id="MKP" class="">
                 <h5 class="card-header">Master MKP</h5>
@@ -135,9 +134,26 @@
             </div>
         </div>
     <!-- end of Master MKP -->
-    <br><br><br>
+    <!-- <br><br><br> -->
+
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master MKP</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktup=.php">Master Waktu</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
+
     <!-- Footer -->
-        <div class="card text-bg-secondary text-center ">
+        <div class="card text-bg-secondary text-center fixed-bottom">
             <div class="card-header">
                 SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
             </div>
