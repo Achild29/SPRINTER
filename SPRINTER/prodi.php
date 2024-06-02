@@ -85,52 +85,68 @@
     <!-- end of navbar  -->
     
     <!-- Banner -->
-        <div id="carouselExampleIndicators" class="carousel">
-           
+        <!-- <div id="carouselExampleIndicators" class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
+                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
                 </div>
             </div>
-        </div>
+        </div> -->
     <!-- end of Banner -->
 
     <!-- Master Prodi -->
-            <div class="carousel-indicators gap-5 p-5">
+            <!-- <div class="carousel-indicators gap-5 p-5">
                 <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
                 <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div>
-            
+            </div> -->
         <div class="container-fluid w-75 p-5">
-            
             <div id="PRODI" class="">
                 <h5 class="card-header">Master PRODI</h5>
                 <div class="card-body">
-                <form action="Controller/prodi.php" method="post">
-                        <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_prodi" class="form-label">Nama Prodi</label>
-                            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="pass" name="pass" >
-                        </div>
-                        <input type="submit" value="Submit" class="btn btn-primary">
-        </form>
+                <form action="Controller/Prodi.php" method="post">
+                    <div class="mb-3">
+                        <label for="kode_prodi" class="form-label">Kode Prodi</label>
+                        <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama_prodi" class="form-label">Nama Prodi</label>
+                        <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="pass" name="pass" >
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <div class="mb-3">
+                        
+                    </div>
+                </form>
                 </div>
                 
             </div>
         </div>
-        
     <!-- end of Master Prodi -->
-    <br><br><br>
+    <!-- <br><br><br> -->
+    
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Prodi</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktup=.php">Master Waktu</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
+
     <!-- Footer -->
-        <div class="card text-bg-secondary text-center ">
+        <div class="card text-bg-secondary text-center fixed-bottom">
             <div class="card-header">
                 SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
             </div>
