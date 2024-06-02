@@ -25,6 +25,49 @@
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
 <!-- end of CSS -->
+<script>
+            function updateJamOptions() {
+                var reg = document.getElementById("reg").value;
+                var jam = document.getElementById("jam");
+                var hari = document.getElementById("hari")
+                // Clear previous options
+                jam.innerHTML = ""; 
+                hari.innerHTML = "";
+                if (reg == "A" || reg == "B") {
+                    addOption(hari, "1", "Senin");
+                    addOption(hari, "2", "Selasa");
+                    addOption(hari, "3", "Rabu");
+                    addOption(hari, "4", "Kamis");
+                    addOption(hari, "5", "Jum'at");
+                    if (reg == "A") {
+                        addOption(jam, "07:10:00", "Jam ke-1 (07.10)");
+                        addOption(jam, "08:50:00", "Jam ke-2 (08.50)");
+                        addOption(jam, "10:30:00", "Jam ke-3 (10.30)");
+                        addOption(jam, "13:00:00", "Jam ke-4 (13.00)");
+                        addOption(jam, "14:40:00", "Jam ke-5 (14.40)");
+                    } else if (reg == "B") {
+                        addOption(jam, "18:20:00", "Jam ke-1 (18.20)");
+                        addOption(jam, "20:00:00", "Jam ke-2 (20.00)");
+                    }
+                } else if (reg == "C") {
+                    addOption(jam, "1", "Jam ke-1 (07.40)");
+                    addOption(jam, "2", "Jam ke-2 (09.20)");
+                    addOption(jam, "3", "Jam ke-3 (11.00)");
+                    addOption(jam, "4", "Jam ke-4 (12.40)");
+                    addOption(jam, "5", "Jam ke-5 (14.20)");
+                    addOption(hari, "1", "Kamis K-1");
+                    addOption(hari, "2", "Kamis K-2");
+                    addOption(hari, "3", "Sabtu K-1");
+                    addOption(hari, "4", "Sabtu K-2");
+                } 
+            }
+            function addOption(selectbox, value, text) {
+                var option = document.createElement("option");
+                option.value = value;
+                option.text = text;
+                selectbox.appendChild(option);
+            }
+        </script>
     </head>
     <body>
     <!-- navbar -->
@@ -106,69 +149,66 @@
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
-                                    <label for="kode_prodi" class="form-label">Kode ...</label>
-                                    <select class="form-select" aria-label="Kode PRODI">
-                                        <option selected>Pilih ...</option>
-                                        <option value="1">Querry ke table ...</option>
-                                        <option value="2">Querry ke table ...</option>
-                                        <option value="3">Querry ke table ...</option>
-                                    </select>
+                                    <label for="kode_prodi" class="form-label">Prodi</label>
+                                    <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                    <option selected>Pilih Prodi</option>
+                                    <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                                        }
+                                    ?>
+                            </select>
                                 </div>
                                 <div class="col">
-                                    <label for="jam" class="form-label">Jam Mulai</label>
-                                    <select class="form-select" aria-label="Jam MULAI">
-                                        <option selected>Pilih Jam</option>
-                                        <option value="1">Pagi jam ke-1</option>
-                                        <option value="2">Pagi jam ke-2</option>
-                                        <option value="3">Pagi jam ke-3</option>
-                                        <option value="4">Pagi jam ke-4</option>
-                                        <option value="5">Pagi jam ke-5</option>
-                                        <option value="6">Malem jam ke-1</option>
-                                        <option value="7">Malem jam ke-2</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md-3">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="kode_prodi" class="form-label">KODE PRODI</label>
-                                    <select class="form-select" aria-label="Kode PRODI">
-                                        <option selected>Pilih Prodi</option>
-                                        <option value="1">Querry ke table prodi</option>
-                                        <option value="2">Querry ke table prodi</option>
-                                        <option value="3">Querry ke table prodi</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="kelas" class="form-label">Kelas</label>
-                                    <select class="form-select" aria-label="Kode KELAS">
-                                        <option selected>Pilih Kelas</option>
-                                        <option value="1">Querry ke table ...</option>
-                                        <option value="2">Querry ke table ...</option>
-                                        <option value="3">Querry ke table ...</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md-3">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="kode_mkp" class="form-label">Mata Kuliah Praktikum</label>
-                                    <select class="form-select" aria-label="Kode MKP">
+                                <label for="kode_mkp" class="form-label">Mata Kuliah Praktikum</label>
+                                    <select class="form-select" name="kode_mkp" aria-label="Kode MKP">
                                         <option selected>Pilih Mata Kuliah Praktikum</option>
-                                        <option value="1">Querry ke table MKP</option>
-                                        <option value="2">Querry ke table MKP</option>
-                                        <option value="3">Querry ke table MKP</option>
+                                        <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM mkp ORDER BY nama_mkp ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                                        }
+                                    ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="md-3">
                             <div class="row">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                    <select id="kode_waktu" name="kode_waktu" class="form-select" aria-label="Kode Waktu">
+                                        <option selected>Pilih Waktu</option>
+                                        <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM waktu ORDER BY reguler ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " ".$row['hari']. " ".$row['jam_mulai']."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                            </div>
+                        </div>
+                        
+                        <div class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                <label for="kelas" class="form-label">Kelas</label>
+                            <input type="text" id="kelas" name="kelas" class="form-control" aria-label="Kelas">
+                                
+                            </input>
+                                </div>
                                 <div class="col">
                                     <label for="pekan" class="form-label">Pekan</label>
-                                    <select class="form-select" aria-label="Kode PRODI">
+                                    <select id="pekan" name="pekan" class="form-select" aria-label="Kode PRODI">
                                         <option selected>Pilih Pekan</option>
                                         <option value="1">Pekan ke-1</option>
                                         <option value="2">Pekan ke-2</option>
@@ -188,6 +228,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
