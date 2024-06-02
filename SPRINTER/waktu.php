@@ -35,11 +35,11 @@
                 jam.innerHTML = ""; 
                 hari.innerHTML = "";
                 if (reg == "A" || reg == "B") {
-                    addOption(hari, "1", "Senin");
-                    addOption(hari, "2", "Selasa");
-                    addOption(hari, "3", "Rabu");
-                    addOption(hari, "4", "Kamis");
-                    addOption(hari, "5", "Jum'at");
+                    addOption(hari, "Senin", "Senin");
+                    addOption(hari, "Selasa", "Selasa");
+                    addOption(hari, "Rabu", "Rabu");
+                    addOption(hari, "Kamis", "Kamis");
+                    addOption(hari, "Jumat", "Jum'at");
                     if (reg == "A") {
                         addOption(jam, "1", "Jam ke-1 (07.10)");
                         addOption(jam, "2", "Jam ke-2 (08.50)");
@@ -56,10 +56,10 @@
                     addOption(jam, "3", "Jam ke-3 (11.00)");
                     addOption(jam, "4", "Jam ke-4 (12.40)");
                     addOption(jam, "5", "Jam ke-5 (14.20)");
-                    addOption(hari, "1", "Kamis K-1");
-                    addOption(hari, "2", "Kamis K-2");
-                    addOption(hari, "3", "Sabtu K-1");
-                    addOption(hari, "4", "Sabtu K-2");
+                    addOption(hari, "Kamis K-1", "Kamis K-1");
+                    addOption(hari, "Kamis K-2", "Kamis K-2");
+                    addOption(hari, "Sabtu K-1", "Sabtu K-1");
+                    addOption(hari, "Sabtu K-2", "Sabtu K-2");
                 } 
             }
             function addOption(selectbox, value, text) {
