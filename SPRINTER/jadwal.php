@@ -7,38 +7,7 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-        
-            include 'koneksi.php';
 
-            $kode_prodi = isset($_POST['kode_prodi']) ? $_POST['kode_prodi'] : '';
-            
-            function getProdiOptions($conn, $selectedKodeProdi) {
-                $sql = "SELECT kode_prodi, nama_prodi FROM Prodi";
-                $result = $conn->query($sql);
-                $options = "<option value=''>Pilih Kode Prodi</option>";
-                while($row = $result->fetch_assoc()) {
-                    $selected = ($row['kode_prodi'] == $selectedKodeProdi) ? 'selected' : '';
-                    $options .= "<option value='{$row['kode_prodi']}' {$selected}>{$row['nama_prodi']}</option>";
-                }
-                return $options;
-            }
-            
-            function getMKPOptions($conn, $kode_prodi) {
-                if ($kode_prodi) {
-                    $sql = "SELECT kode_mkp, nama_mkp FROM MKP WHERE kode_prodi='$kode_prodi'";
-                    $result = $conn->query($sql);
-                    $options = "<option value=''>Pilih Mata Kuliah</option>";
-                    while($row = $result->fetch_assoc()) {
-                        $options .= "<option value='{$row['kode_mkp']}'>{$row['nama_mkp']}</option>";
-                    }
-                    return $options;
-                } else {
-                    return "<option value=''>Pilih Mata Kuliah</option>";
-                }
-            }
-
-
-        
     ?>
 <!-- end of pengecekaan untuk session -->
 
@@ -56,7 +25,36 @@
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
 <!-- end of CSS -->
-<script>
+        <script>
+            <?php
+                include 'koneksi.php';
+
+                $kode_prodi = isset($_POST['kode_prodi']) ? $_POST['kode_prodi'] : '';
+
+                function getProdiOptions($conn, $selectedKodeProdi) {
+                    $sql = "SELECT kode_prodi, nama_prodi FROM Prodi";
+                    $result = $conn->query($sql);
+                    $options = "<option value=''>Pilih Kode Prodi</option>";
+                    while($row = $result->fetch_assoc()) {
+                        $selected = ($row['kode_prodi'] == $selectedKodeProdi) ? 'selected' : '';
+                        $options .= "<option value='{$row['kode_prodi']}' {$selected}>{$row['nama_prodi']}</option>";
+                    }
+                    return $options;
+                }
+                function getMKPOptions($conn, $kode_prodi) {
+                    if ($kode_prodi) {
+                        $sql = "SELECT kode_mkp, nama_mkp FROM MKP WHERE kode_prodi='$kode_prodi'";
+                        $result = $conn->query($sql);
+                        $options = "<option value=''>Pilih Mata Kuliah</option>";
+                        while($row = $result->fetch_assoc()) {
+                            $options .= "<option value='{$row['kode_mkp']}'>{$row['nama_mkp']}</option>";
+                        }
+                        return $options;
+                    } else {
+                        return "<option value=''>Pilih Mata Kuliah</option>";
+                    }
+                }
+            ?>
             function updateJamOptions() {
                 var reg = document.getElementById("reg").value;
                 var jam = document.getElementById("jam");
@@ -282,6 +280,109 @@
             
         </div>
     <!-- end of Jadwal -->
+
+    <!-- lihat Jadwal -->
+        <div class="container-fluid w-75 p-5">
+            <div id="lihatJadwal"class="card">
+                <h5 class="card-header">Jadwal Praktikum</h5>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <form method="GET" action="">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="pekan" class="form-label"></label>
+                                    <select class="form-select" id="pekan" name="pekan">
+                                        <option value="">Semua Pekan</option>
+                                        <?php
+                                        include 'koneksi.php';
+                                        
+                                        // Query untuk mengambil daftar pekan dari tabel jadwal
+                                        $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
+                                        $resultPekan = $connect->query($queryPekan);
+                                        
+                                        if ($resultPekan->num_rows > 0) {
+                                            while ($rowPekan = $resultPekan->fetch_assoc()) {
+                                                $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
+                                                echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mb-3">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Hari</th>
+                                    <th>Jam Mulai</th>
+                                    <th>Jam Selesai</th>
+                                    <th>Prodi</th>
+                                    <th>Mata Kuliah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // Ambil nilai pekan dari query string
+                                    $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
+
+                                // Buat query SQL dengan filter pekan
+                                    $query = "
+                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp
+                                        FROM jadwal j
+                                        JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                                        JOIN mkp m ON j.kode_mkp = m.kode_mkp
+                                        JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                                    ";
+
+                                // Tambahkan kondisi WHERE jika pekan dipilih
+                                    if ($pekan !== '') {
+                                        $query .= " WHERE j.pekan = ?";
+                                    }
+
+                                    $query .= " ORDER BY w.hari, w.jam_mulai";
+
+                                // Prepare dan execute query
+                                    $stmt = $connect->prepare($query);
+
+                                // Bind parameter jika pekan dipilih
+                                    if ($pekan !== '') {
+                                        $stmt->bind_param("i", $pekan);
+                                    }
+
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+
+                                // Tampilkan hasil query
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row['hari'] . "</td>";
+                                            echo "<td>" . $row['jam_mulai'] . "</td>";
+                                            echo "<td>" . $row['jam_selesai'] . "</td>";
+                                            echo "<td>" . $row['nama_prodi'] . "</td>";
+                                            echo "<td>" . $row['nama_mkp'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
+                                    }
+
+                                    $stmt->close();
+                                    $connect->close();
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- end of lihat Jadwal -->
 
 
     <!-- Footer -->

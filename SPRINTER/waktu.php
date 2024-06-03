@@ -183,21 +183,21 @@
     <!-- page navigation -->
     <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">Master Prodi</span>
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="mkp.php">Master MKP</a>
                 </li>
-                <li class="page-item">
-                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Waktu</span>
                 </li>
             </ul>
         </nav>
     <!-- end of page navigation -->
 
     <!-- Footer -->
-        <div class="card text-bg-secondary text-center ">
+        <div class="card text-bg-secondary text-center fixed-bottom">
             <div class="card-header">
                 SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
             </div>
