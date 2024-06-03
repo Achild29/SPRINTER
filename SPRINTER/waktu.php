@@ -141,11 +141,6 @@
     <!-- end of Banner -->
 
     <!-- WAKTU -->
-            <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div>
         <div class="container-fluid w-75 p-5">
             
             <div id="WAKTU" class="">
@@ -181,6 +176,26 @@
         </div>
     <!-- end of WAKTU -->
     <br><br><br>
+    
+
+    <!-- <br><br><br> -->
+    
+    <!-- page navigation -->
+    <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Prodi</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
+
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">
             <div class="card-header">

@@ -127,8 +127,6 @@
             </div>
         </div>
     <!-- end of Master Prodi -->
-    <!-- <br><br><br> -->
-    
     <!-- page navigation -->
         <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
@@ -139,7 +137,7 @@
                     <a class="page-link" href="mkp.php">Master MKP</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="waktup=.php">Master Waktu</a>
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
                 </li>
             </ul>
         </nav>

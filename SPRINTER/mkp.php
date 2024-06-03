@@ -146,7 +146,7 @@
                     <span class="page-link">Master MKP</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="waktup=.php">Master Waktu</a>
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
                 </li>
             </ul>
         </nav>
