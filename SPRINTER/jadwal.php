@@ -7,7 +7,38 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
+        
+            include 'koneksi.php';
+
+            $kode_prodi = isset($_POST['kode_prodi']) ? $_POST['kode_prodi'] : '';
             
+            function getProdiOptions($conn, $selectedKodeProdi) {
+                $sql = "SELECT kode_prodi, nama_prodi FROM Prodi";
+                $result = $conn->query($sql);
+                $options = "<option value=''>Pilih Kode Prodi</option>";
+                while($row = $result->fetch_assoc()) {
+                    $selected = ($row['kode_prodi'] == $selectedKodeProdi) ? 'selected' : '';
+                    $options .= "<option value='{$row['kode_prodi']}' {$selected}>{$row['nama_prodi']}</option>";
+                }
+                return $options;
+            }
+            
+            function getMKPOptions($conn, $kode_prodi) {
+                if ($kode_prodi) {
+                    $sql = "SELECT kode_mkp, nama_mkp FROM MKP WHERE kode_prodi='$kode_prodi'";
+                    $result = $conn->query($sql);
+                    $options = "<option value=''>Pilih Mata Kuliah</option>";
+                    while($row = $result->fetch_assoc()) {
+                        $options .= "<option value='{$row['kode_mkp']}'>{$row['nama_mkp']}</option>";
+                    }
+                    return $options;
+                } else {
+                    return "<option value=''>Pilih Mata Kuliah</option>";
+                }
+            }
+
+
+        
     ?>
 <!-- end of pengecekaan untuk session -->
 
@@ -145,39 +176,44 @@
             <div id="JADWAL" class="card">
                 <h5 class="card-header">Input Jadwal Praktikum</h5>
                 <div class="card-body">
-                    <form method="post" action="Controller/Jadwal.php">
+                    <form method="post" action="">
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
                                     <label for="kode_prodi" class="form-label">Prodi</label>
-                                    <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                    <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" required onchange="this.form.submit()">
                                     <option selected>Pilih Prodi</option>
                                     <?php include 'koneksi.php';
-                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-                                        $field = $connect->prepare($query);
-                                        $field->execute();
-                                        $res1 = $field->get_result();
-                                        while ($row = $res1->fetch_assoc()) {
-                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
-                                        }
-                                    ?>
-                            </select>
-                                </div>
-                                <div class="col">
-                                <label for="kode_mkp" class="form-label">Mata Kuliah Praktikum</label>
-                                    <select class="form-select" name="kode_mkp" aria-label="Kode MKP">
-                                        <option selected>Pilih Mata Kuliah Praktikum</option>
-                                        <?php include 'koneksi.php';
-                                        $query = "SELECT * FROM mkp ORDER BY nama_mkp ASC";
-                                        $field = $connect->prepare($query);
-                                        $field->execute();
-                                        $res1 = $field->get_result();
-                                        while ($row = $res1->fetch_assoc()) {
-                                            echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
-                                        }
+                                    $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                    $field = $connect->prepare($query);
+                                    $field->execute();
+                                    $res1 = $field->get_result();
+                                    while ($row = $res1->fetch_assoc()) {
+                                        $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
+                                        echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
+                                    }
                                     ?>
                                     </select>
                                 </div>
+                    <div class="col">
+                    <label for="kode_mkp" class="form-label">Mata Kuliah Program</label>
+                    <select class="form-select" aria-label="Kode MKP" name="kode_mkp" required>
+                        <option selected>Pilih Mata Kuliah</option>
+                        <?php
+                            if (isset($_POST['kode_prodi'])) {
+                                $kode_prodi = $_POST['kode_prodi'];
+                                $query = "SELECT * FROM mkp WHERE kode_prodi = ? ORDER BY kode_mkp ASC";
+                                $field = $connect->prepare($query);
+                                $field->bind_param("s", $kode_prodi);
+                                $field->execute();
+                                $res2 = $field->get_result();
+                                while ($row = $res2->fetch_assoc()) {
+                                    echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                                }
+                            }
+                        ?>
+                    </select>
+                </div>
                             </div>
                         </div>
                         <div class="md-3">
@@ -241,9 +277,12 @@
                         </div>
                     </form>
                 </div>
+                
             </div>
+            
         </div>
     <!-- end of Jadwal -->
+
 
     <!-- Footer -->
         <div class="card text-bg-secondary text-center ">
