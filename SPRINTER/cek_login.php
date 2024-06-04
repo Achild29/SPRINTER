@@ -15,9 +15,9 @@ if (empty($user) || empty($pass)){
 	echo "<script language='javascript'> alert('Username dan Password tidak boleh kosong!');
 	window.location = 'javascript:history.go(-1)'</script>";
 }else if ($countUser == 0 && $countProdi == 0){
-	echo "$countProdi";
-	/*echo "<script language='javascript'> alert('Username dan password salah!');
-	window.location = 'javascript:history.go(-1)'</script>";*/
+	// echo "$countProdi";
+	echo "<script language='javascript'> alert('Username dan password salah!');
+	window.location = 'javascript:history.go(-1)'</script>";
 }else{
 	if ($countUser > 0){
 		if(!isset($_SESSION)){
@@ -36,7 +36,7 @@ if (empty($user) || empty($pass)){
 			$_SESSION['nama']=$rsProdi['username'];
 			$_SESSION['level']='Prodi';
 	
-			header('location: mkp.php');
+			header('location: lihatJadwal.php#lihatJadwal');
 	}
 }
 ?>
