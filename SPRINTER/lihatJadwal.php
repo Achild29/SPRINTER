@@ -112,7 +112,7 @@
                                     <button type="submit" class="btn btn-primary">Filter</button>
                                 </div>
                                 <div class="col-md-3 ms-auto">
-                                    <a href="" class="btn btn-success">export to Excel</a>
+                                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to Excel</a>
                                 </div>
                             </div>
                         </form>
@@ -126,6 +126,7 @@
                                     <th>Jam Selesai</th>
                                     <th>Prodi</th>
                                     <th>Mata Kuliah</th>
+                                    <th>Kelas</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -135,7 +136,7 @@
 
                                 // Buat query SQL dengan filter pekan
                                     $query = "
-                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp
+                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, kelas
                                         FROM jadwal j
                                         JOIN waktu w ON j.kode_waktu = w.kode_waktu
                                         JOIN mkp m ON j.kode_mkp = m.kode_mkp
@@ -169,6 +170,7 @@
                                             echo "<td>" . $row['jam_selesai'] . "</td>";
                                             echo "<td>" . $row['nama_prodi'] . "</td>";
                                             echo "<td>" . $row['nama_mkp'] . "</td>";
+                                            echo "<td>" . $row['kelas'] . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
