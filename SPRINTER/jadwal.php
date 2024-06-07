@@ -324,6 +324,7 @@
                                     <th>Jam Selesai</th>
                                     <th>Prodi</th>
                                     <th>Mata Kuliah</th>
+                                    <th>Kelas</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -333,7 +334,7 @@
 
                                 // Buat query SQL dengan filter pekan
                                     $query = "
-                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp
+                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, kelas
                                         FROM jadwal j
                                         JOIN waktu w ON j.kode_waktu = w.kode_waktu
                                         JOIN mkp m ON j.kode_mkp = m.kode_mkp
@@ -367,6 +368,7 @@
                                             echo "<td>" . $row['jam_selesai'] . "</td>";
                                             echo "<td>" . $row['nama_prodi'] . "</td>";
                                             echo "<td>" . $row['nama_mkp'] . "</td>";
+                                            echo "<td>" . $row['kelas'] . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
