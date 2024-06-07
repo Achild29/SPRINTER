@@ -317,6 +317,7 @@
                                 </div>
                                 <div class="col-md-3 ms-auto">
                                     <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to excel</a>
+                                    <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">export to pdf</a>
                                 </div>
                             </div>
                         </form>
