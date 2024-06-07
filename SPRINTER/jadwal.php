@@ -17,14 +17,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Input Jadwal | Sistem Penjadwalan Praktikum Lab Komputer</title>
-<!-- CSS -->
+    <!-- CSS -->
     <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- end of bootstrap -->
     <!-- native css -->
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
-<!-- end of CSS -->
+    <!-- end of CSS -->
         <script>
             <?php
                 include 'koneksi.php';
@@ -174,7 +174,7 @@
             <div id="JADWAL" class="card">
                 <h5 class="card-header">Input Jadwal Praktikum</h5>
                 <div class="card-body">
-                    <form method="post" action="">
+                    <form method="get" action="">
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
@@ -182,24 +182,27 @@
                                     <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" required onchange="this.form.submit()">
                                     <option selected>Pilih Prodi</option>
                                     <?php include 'koneksi.php';
-                                    $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-                                    $field = $connect->prepare($query);
-                                    $field->execute();
-                                    $res1 = $field->get_result();
-                                    while ($row = $res1->fetch_assoc()) {
-                                        $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
-                                        echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
-                                    }
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
+                                            echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
+                                        }
                                     ?>
                                     </select>
                                 </div>
+                    </form>
+                    <form action="Controller/Jadwal.php" method="post">
+                    
                     <div class="col">
                     <label for="kode_mkp" class="form-label">Mata Kuliah Program</label>
                     <select class="form-select" aria-label="Kode MKP" name="kode_mkp" required>
                         <option selected>Pilih Mata Kuliah</option>
                         <?php
-                            if (isset($_POST['kode_prodi'])) {
-                                $kode_prodi = $_POST['kode_prodi'];
+                            if (isset($_GET['kode_prodi'])) {
+                                $kode_prodi = $_GET['kode_prodi'];
                                 $query = "SELECT * FROM mkp WHERE kode_prodi = ? ORDER BY kode_mkp ASC";
                                 $field = $connect->prepare($query);
                                 $field->bind_param("s", $kode_prodi);
@@ -311,6 +314,9 @@
                                 </div>
                                 <div class="col-md-3 d-flex align-items-end">
                                     <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
+                                <div class="col-md-3 ms-auto">
+                                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to excel</a>
                                 </div>
                             </div>
                         </form>
