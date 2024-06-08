@@ -9,7 +9,7 @@
     } else {
         $title = "Jadwal Praktikum keseluruhan";
     }
-
+    // $pdf->Image('images/logo.jpg', 20, 8, -1200); 
     $pdf->SetFont('Times', 'B', 25);
     $pdf->Cell(280,10,$title,0,0,'C');
     
