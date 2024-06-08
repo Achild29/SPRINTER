@@ -11,6 +11,9 @@
     }
     // $pdf->Image('images/logo.jpg', 20, 8, -1200); 
     $pdf->SetFont('Times', 'B', 25);
+    $pdf->SetTitle($title);
+    $pdf->SetSubject($title);
+    $pdf->SetKeywords($title);
     $pdf->Cell(280,10,$title,0,0,'C');
     
     $pdf->Cell(10,25,'',0,1);
@@ -68,7 +71,7 @@
     } else {
         echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
     }
-    $pdf->Output();
+    $pdf->Output('D',$title.".pdf");
 
     $stmt->close();
     $connect->close();
