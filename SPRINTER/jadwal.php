@@ -292,7 +292,7 @@
                     <div class="mb-3">
                         <form method="GET" action="">
                             <div class="row mb-3">
-                                <div class="col-md-3">
+                                <div class="col-md-3 d-flex align-items-end">
                                     <label for="pekan" class="form-label"></label>
                                     <select class="form-select" id="pekan" name="pekan">
                                         <option value="">Semua Pekan</option>
@@ -312,11 +312,13 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-3 d-flex align-items-end">
+                                <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary">Filter</button>
                                 </div>
                                 <div class="col-md-3 ms-auto">
-                                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to excel</a>
+                                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to Excel</a>
+                                </div>
+                                <div class="col-md-3 ms-auto">
                                     <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">export to pdf</a>
                                 </div>
                             </div>
