@@ -251,16 +251,18 @@
                                         <option value="2">Pekan ke-2</option>
                                         <option value="3">Pekan ke-3</option>
                                         <option value="4">Pekan ke-4</option>
-                                        <option value="5">Pekan ke-4</option>
-                                        <option value="6">Pekan ke-5</option>
-                                        <option value="7">Pekan ke-6</option>
-                                        <option value="8">Pekan ke-7</option>
-                                        <option value="9">Pekan ke-8</option>
+                                        <option value="5">Pekan ke-5</option>
+                                        <option value="6">Pekan ke-6</option>
+                                        <option value="7">Pekan ke-7</option>
+                                        <option value="8">Pekan ke-8 (UTS)</option>
+                                        <option value="9">Pekan ke-9</option>
                                         <option value="10">Pekan ke-10</option>
                                         <option value="11">Pekan ke-11</option>
                                         <option value="12">Pekan ke-12</option>
                                         <option value="13">Pekan ke-13</option>
                                         <option value="14">Pekan ke-14</option>
+                                        <option value="15">Pekan ke-15</option>
+                                        <option value="16">Pekan ke-16 (UAS)</option>
                                     </select>
                                 </div>
                             </div>
