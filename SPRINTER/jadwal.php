@@ -265,7 +265,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <dib class="md-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="dosen" class="form-label">Dosen Pengampu</label>
+                                    <input type="text" class="form-control" name="dosen"></input>
+                                </div>
+                            </div>
+                        </dib>
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
