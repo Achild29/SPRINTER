@@ -35,7 +35,7 @@ if (empty($user) || empty($pass)){
 			$_SESSION['id']=$rsProdi['id'];
 			$_SESSION['nama']=$rsProdi['username'];
 			$_SESSION['level']='Prodi';
-	
+			$_SESSION['prodi']=$user;
 			header('location: lihatJadwal.php#lihatJadwal');
 	}
 }

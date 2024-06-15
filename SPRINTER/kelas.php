@@ -1,5 +1,5 @@
 <!-- pengecekaan untuk session -->
-	<?php
+<?php
         error_reporting(0);
         session_start();
         if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
@@ -7,21 +7,21 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-            
+
     ?>
 <!-- end of pengecekaan untuk session -->
 
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home | Sistem Penjadwalan Praktikum Lab Komputer</title>
+        <title>Input Kelas | Sistem Penjadwalan Praktikum Lab Komputer</title>
 <!-- CSS -->
     <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- end of bootstrap -->
-    <!-- native css -->
+        <!-- native css -->
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
     <!-- end of native css -->
 <!-- end of CSS -->
@@ -36,13 +36,13 @@
                 </button>
                 <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">SPRINTER MENU</h5>
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">SPRINTER INFO</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="jadwal.php#JADWAL">Jadwal</a>
@@ -85,38 +85,79 @@
         </div> 
     <!-- end of navbar  -->
     
-    <!-- Banner -->
-        <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
-                </div>
-            </div>
-        </div>
-    <!-- end of Banner -->
-
-    <!-- Master Prodi -->
+    <!-- Master Kelas -->
         <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
+            <div id="Master-Kelas" class="">
+                <h5 class="card-header">Master Kelas</h5>
+                <div class="card-body">
+                    <form action="Controller/Kelas.php" method="post">
+                        <div class="mb-3">
+                            <label for="kode-kelas" class="form-label">Kode Kelas</label>
+                            <input type="text" class="form-control" name="kode_kelas" id="kode_kelas" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="Kode_prodi" class="form-label">Kode Prodi</label>
+                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                <option selected>Pilih Prodi</option>
+                                    <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                                        }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="semester" class="form-label">Semester</label>
+                                    <input type="text" class="form-control" name="semester"></input>
+                                </div>
+                                <div class="col">
+                                    <label for="reguler" class="form-label">Reguler</label>
+                                    <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
+                                        <option selected>Pilih Reguler</option>
+                                        <option value="A">Reguler A</option>
+                                        <option value="B">Reguler B</option>
+                                        <option value="C">Reguler C</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <div class="mb-3">
+                        </div>
+                    </form>
                 </div>
+                
             </div>
         </div>
-    <!-- end of Master Prodi -->
+    <!-- end of Master Kelas -->
+
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Kelas</span>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
 
     <!-- Footer -->
-        <div class="card text-bg-secondary text-center ">
+        <div class="card text-bg-secondary text-center fixed-bottom">
             <div class="card-header">
                 SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
             </div>

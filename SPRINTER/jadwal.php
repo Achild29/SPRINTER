@@ -157,7 +157,7 @@
     <!-- end of navbar  -->
     
     <!-- Banner -->
-        <div id="carouselExampleIndicators" class="carousel">
+        <!-- <div id="carouselExampleIndicators" class="carousel">
             <div class="carousel-indicators gap-5 p-5">
                 
             </div>
@@ -166,7 +166,7 @@
                 <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
                 </div>
             </div>
-        </div>
+        </div> -->
     <!-- end of Banner -->
 
     <!-- input Jadwal -->
@@ -238,10 +238,23 @@
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
-                                <label for="kelas" class="form-label">Kelas</label>
-                            <input type="text" id="kelas" name="kelas" class="form-control" aria-label="Kelas">
-                                
-                            </input>
+                                    <label for="kode_kelas" class="form-label">Kelas</label>
+                                    <select class="form-select" aria-label="Kode MKP" name="kelas" required>
+                                        <option selected>Kelas</option>
+                                        <?php
+                                            if (isset($_GET['kode_prodi'])) {
+                                                $kode_prodi = $_GET['kode_prodi'];
+                                                $query = "SELECT * FROM kelas WHERE kode_prodi = ? ORDER BY kode_kelas ASC";
+                                                $field = $connect->prepare($query);
+                                                $field->bind_param("s", $kode_prodi);
+                                                $field->execute();
+                                                $res2 = $field->get_result();
+                                                while ($row = $res2->fetch_assoc()) {
+                                                    echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                                                }
+                                            }
+                                        ?> 
+                                    </select>
                                 </div>
                                 <div class="col">
                                     <label for="pekan" class="form-label">Pekan</label>
@@ -265,14 +278,14 @@
                                 </div>
                             </div>
                         </div>
-                        <dib class="md-3">
+                        <div class="md-3">
                             <div class="row">
                                 <div class="col">
                                     <label for="dosen" class="form-label">Dosen Pengampu</label>
                                     <input type="text" class="form-control" name="dosen"></input>
                                 </div>
                             </div>
-                        </dib>
+                        </div>
                         <div class="md-3">
                             <div class="row">
                                 <div class="col">
