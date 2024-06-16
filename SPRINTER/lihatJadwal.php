@@ -140,7 +140,6 @@
                                             echo "</tr>";
                                             
                                         }
-                                        echo "why";
                                     } else {
                                         echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
                                     }
