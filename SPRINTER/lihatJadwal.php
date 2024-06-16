@@ -41,10 +41,11 @@
     </div>
 
     <!-- lihat Jadwal -->
-        <div class="container-fluid w-75 p-5">
-            <div id="lihatJadwal"class="card">
-                <h5 class="card-header">Jadwal Praktikum</h5>
-                <div class="card-body">
+        <div class="content">
+            <div class="container-new">
+            <!--<div class="card">-->
+                <h5>Jadwal Praktikum</h5>
+                
                     <div class="mb-3">
                         <form method="GET" action="">
                             <div class="row mb-3">
@@ -146,8 +147,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
+             </div>   
         </div>
     <!-- end of lihat Jadwal -->
 

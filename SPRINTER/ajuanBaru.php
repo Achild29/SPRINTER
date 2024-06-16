@@ -42,7 +42,7 @@
     </div>
 
     <!-- input ajuan -->
-        <div class="container-fluid w-75 p-5">
+        <div class="content">
             <div id="inputAjuan" class="card">
                 <h5 class="card-header">form pengajuan baru</h5>
                 <div class="card-body">

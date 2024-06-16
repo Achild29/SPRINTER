@@ -41,9 +41,10 @@
          <a href="logout.php">Logout</a>
     </div>
     <!-- ajuan -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Daftar yang telah diajukan</h5>
+        <div class="content">
+            <div class="container-new">
+            <!--<div class="card">-->
+                
                 <div class="card-body">
                     <div class="mb-3">
                         <div class="col-md-3">
@@ -56,9 +57,10 @@
                                 <tr>
                                     <th>kode ajuan</th>
                                     <th>kode kelas</th>
-                                    <th>kode mkp</th>
-                                    <th>dosen pengampu</th>
-                                    <th>status</th>
+                                    <th>Mata Kuliah Praktikum</th>
+                                    <th>dosen Pengampu</th>
+                                    <th>status Ajuan</th>
+                                    <th>keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +68,8 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                <!-- </div>-->
+            <!-- </div>-->
             </div>
         </div>
     <!-- end of ajuan -->

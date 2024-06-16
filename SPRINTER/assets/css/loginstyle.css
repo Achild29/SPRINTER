@@ -100,8 +100,8 @@
   
   .input-field {
     width: 100%;
-    height: 55px;
-    font-size: 16px;
+    height: 70px;
+    font-size: 20px;
     background: transparent;
     color: var(--second-color);
     padding-inline: 20px 50px;
@@ -171,7 +171,7 @@
     font-weight: 500;
   }
   
-  @media only screen and (max-width: 564px) {
+  @media only screen and (max-width: 500px) {
     .wrapper {
       padding: 20px;
     }
