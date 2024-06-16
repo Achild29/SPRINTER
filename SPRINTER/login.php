@@ -26,88 +26,49 @@ return (true);
 }
 </script>
 
-<html>
-	<head>
-		<title>SPRINTER</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SPRINTER UNPAM</title>
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
+<link rel="stylesheet" href="assets/css/loginstyle.css">
 
-		<!-- Header -->
-			<header id="header">
-				<nav class="left">
-					<a href="#menu"><span>Menu</span></a>
-				</nav>
-				<a href="index.php" class="logo"><font color= "white">Sistem Penjadwalan Praktikum Lab Komputer</font></a>
-				
-			</header>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="login_box">
+    <div class="login-header">
+      <span>SPRINTER</span>
+    </div>
 
-		
+	<form action="cek_login.php" method="post">
+	<div class="input_box">
+      <input type="text" id="user" name="nama" class="input-field" required>
+      <label for="user" class="label">Username</label>
+      <i class="bx bx-user icon"></i>
+    </div>
 
+    <div class="input_box">
+      <input type="password" id="pass" name="password" class="input-field" required>
+      <label for="pass" class="label">Password</label>
+      <i class="bx bx-lock-alt icon"></i>
+    </div>
 
-		<!-- One -->
-			<section id="one" class="wrapper">
-			<div class="inner">
-			<h1>HALAMAN LOGIN</h1>
-			<!--form-->
-			<form method="post" action="cek_login.php" name="FormLogin" onSubmit="return validasi_input(this)">
-										<div class="row uniform">
-											
-											<!-- Break -->
-											<div class="12u$">
-												
-											</div>
-											<div class="6u 12u$(xsmall)">
-												<input type="text" name="nama" placeholder="Nama Pengguna" autofocus id="nama"/>
-											</div>
-											<div class="6u$ 12u$(xsmall)">
-												<input type="password" name="password" placeholder="password" id="password"/>
-											</div>
-											
-											<!-- Break -->
-											
-											
-											<!-- Break -->
-											<div class="12u$">
-												<ul class="actions">
-													<li><input type="submit" value="Masuk" name="proses" /></li>
-													<li><input type="reset" value="Reset" class="alt" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-									
-									<?php
-									//if(isset($_POST['nama'])&&isset($_POST['password'])){
-										//if($_POST['nama']=="admin"&&$_POST['password']=="pbr001"){
-											//session_start();
-											//$_SESSION['admin']="valid";
-											//header("location: index.php");
-										//}
-										//else echo "password salah";
-									//}
-									?> 
+    
 
-			<!--eof-->
-			</div>	
-			</section>
+    <div class="input_box">
+      <input type="submit" class="input-submit" value="Login">
+    </div>
+	</form>
+   
 
-		
-		<!-- Footer -->
-			<footer id="footer">
-				
-				<div class="copyright">
-					&copy; 2024. Designed by Anak SI</a>.
-				</div>
-			</footer>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
 </html>
