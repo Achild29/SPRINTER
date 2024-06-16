@@ -52,7 +52,7 @@
                                 <div class="col">
                                     <label for="mkp" class="form-label">Mata kuliah Praktikum</label>
                                     <select class="form-select" aria-label="Kode PRODI" name="kode_mkp" required onchange="this.form.submit()">
-                                        <option selected>Pilih Mata kuliah praktikum</option>
+                                        <option>Pilih Mata kuliah praktikum</option>
                                         <?php
                                             include 'koneksi.php';
                                             $query = "SELECT * FROM mkp WHERE kode_prodi = '$prodi'";
@@ -60,7 +60,14 @@
                                             $field->execute();
                                             $res2 = $field->get_result();
                                             while ($row = $res2->fetch_assoc()) {
-                                                echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                                                $showOptions="<option ";
+                                                if(isset($_GET['kode_mkp'])){
+                                                    if($row['kode_mkp']== $_GET['kode_mkp']){
+                                                        $showOptions.="selected ";
+                                                    }
+                                                }
+                                                $showOptions.="value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                                                echo ($showOptions);
                                             }
                                             ?>
                                     </select>
@@ -130,16 +137,7 @@
     <!-- end of input ajuan -->
 
     <!-- Footer -->
-        <div class="card text-bg-secondary text-center ">
-            <div class="card-header">
-                SPRINTER | Sistem Penjadwalan Praktikum Lab Komputer
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">&copy; 2024. Designed by Anak SI</h5>
-                <p class="card-text">Thanks to Bootstrap, AdminLTE | code with php</p>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-        </div>
+        
     <!-- end of Footer -->
 
     <!-- Scripts -->

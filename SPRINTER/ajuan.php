@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <div class="col-md-3">
-                            <a href="ajuanBaru.php#inputAjuan" class="btn btn-success">Buat pengajuan Baru</a>
+                            <a href="ajuanBaru.php" class="btn btn-success">Buat pengajuan Baru</a>
                         </div>
                     </div>
                     <div class="mb-3">
