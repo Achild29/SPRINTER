@@ -55,6 +55,7 @@
                                     <li><a class="dropdown-item" href="prodi.php">Master PRODI</a></li>
                                     <li><a class="dropdown-item" href="mkp.php">Master MKP</a></li>
                                     <li><a class="dropdown-item" href="waktu.php">Master WAKTU</a></li>
+                                    <li><a class="dropdown-item" href="kelas.php">Master KELAS</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -138,6 +139,9 @@
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>

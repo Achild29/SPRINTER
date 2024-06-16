@@ -100,6 +100,7 @@
                                     <li><a class="dropdown-item" href="prodi.php">Master PRODI</a></li>
                                     <li><a class="dropdown-item" href="mkp.php">Master MKP</a></li>
                                     <li><a class="dropdown-item" href="waktu.php">Master WAKTU</a></li>
+                                    <li><a class="dropdown-item" href="kelas.php">Master KELAS</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -181,7 +182,7 @@
     <!-- <br><br><br> -->
     
     <!-- page navigation -->
-    <nav aria-label="page-nav">
+        <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="prodi.php">Master Prodi</a>
@@ -191,6 +192,9 @@
                 </li>
                 <li class="page-item active" aria-current="page">
                     <span class="page-link">Master Waktu</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>

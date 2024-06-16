@@ -55,6 +55,7 @@
                                     <li><a class="dropdown-item" href="prodi.php">Master PRODI</a></li>
                                     <li><a class="dropdown-item" href="mkp.php">Master MKP</a></li>
                                     <li><a class="dropdown-item" href="waktu.php">Master WAKTU</a></li>
+                                    <li><a class="dropdown-item" href="kelas.php">Master KELAS</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -101,7 +102,7 @@
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
             </div> -->
         <div class="container-fluid w-75 p-5">
-            <div id="MKP" class="">
+            <div id="MKP" class="card">
                 <h5 class="card-header">Master MKP</h5>
                 <div class="card-body">
                     <form method="post" action="Controller/Mkp.php">
@@ -147,6 +148,9 @@
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>
