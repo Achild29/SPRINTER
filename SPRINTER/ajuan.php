@@ -60,7 +60,6 @@
                                     <th>Mata Kuliah Praktikum</th>
                                     <th>dosen Pengampu</th>
                                     <th>status Ajuan</th>
-                                    <th>keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>

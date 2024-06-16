@@ -194,7 +194,7 @@
                                     </select>
                                 </div>
                     </form>
-                    <form action="Controller/Jadwal.php" method="post">
+                    <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
                     
                     <div class="col">
                     <label for="kode_mkp" class="form-label">Mata Kuliah Program</label>
@@ -356,6 +356,7 @@
                                     <th>Prodi</th>
                                     <th>Mata Kuliah</th>
                                     <th>Kelas</th>
+                                    <th>Dosen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -365,7 +366,7 @@
 
                                 // Buat query SQL dengan filter pekan
                                     $query = "
-                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, kelas
+                                        SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, kode_kelas, dosen
                                         FROM jadwal j
                                         JOIN waktu w ON j.kode_waktu = w.kode_waktu
                                         JOIN mkp m ON j.kode_mkp = m.kode_mkp
@@ -399,7 +400,8 @@
                                             echo "<td>" . $row['jam_selesai'] . "</td>";
                                             echo "<td>" . $row['nama_prodi'] . "</td>";
                                             echo "<td>" . $row['nama_mkp'] . "</td>";
-                                            echo "<td>" . $row['kelas'] . "</td>";
+                                            echo "<td>" . $row['kode_kelas'] . "</td>";
+                                            echo "<td>" . $row['dosen'] . "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
