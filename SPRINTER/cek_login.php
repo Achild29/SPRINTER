@@ -26,6 +26,7 @@ if (empty($user) || empty($pass)){
 			$_SESSION['id']=$rsUser['id'];
 			$_SESSION['nama']=$rsUser['username'];
 			$_SESSION['level']='Admin';
+			$_SESSION['bagian']=$user;
 	
 			header('location: index.php');
 	} else if ($countProdi > 0){
