@@ -1,7 +1,7 @@
 <?php
 include "koneksi.php";
 $pass=$_POST['password'];
-$user=$_POST['nama'];
+$user=$_POST['username'];
 
 $sqlUser=mysqli_query($connect,"select * from admin where username='$user' and password='$pass'");
 $countUser=mysqli_num_rows($sqlUser);
