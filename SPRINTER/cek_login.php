@@ -37,7 +37,7 @@ if (empty($user) || empty($pass)){
 			$_SESSION['nama']=$rsProdi['username'];
 			$_SESSION['level']='Prodi';
 			$_SESSION['prodi']=$user;
-			header('location: lihatJadwal.php');
+			header('location: beranda.php');
 	}
 }
 ?>
