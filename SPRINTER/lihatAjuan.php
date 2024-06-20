@@ -83,7 +83,7 @@
         </div> 
     <!-- end of navbar  -->
 
-    <div class="containerfluid w-75 p5">
+    <div class="container-fluid w-75 p5">
         <div class="card" id="lihatAjuan">
             <h5 class="card-header">List Ajuan</h5>
             <div class="card-body">
@@ -119,6 +119,7 @@
                                 <th>Prodi</th>
                                 <th>MKP</th>
                                 <th>Kelas</th>
+                                <th>Dosen</th>
                                 <th>URL PDF</th>
                                 <th>Action</th>
                             </tr>
@@ -129,10 +130,11 @@
                                 $prodi = isset($_GET['kode_prodi']) ? $_GET['kode_prodi'] :'';
 
                                 $sqlQuery ="
-                                    SELECT a.kode_ajuan, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.url_rps
+                                    SELECT a.kode_ajuan, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, a.url_rps
                                     FROM ajuan a
                                     JOIN prodi p on a.kode_prodi = p.kode_prodi
                                     JOIN mkp m on a.kode_mkp = m.kode_mkp
+                                    where status_ajuan = 'diproses'
                                 ";
 
                                 //Tambahkan kondisi WHERE jika prodi dipilih
@@ -159,12 +161,13 @@
                                         echo "<td>". $row['nama_prodi'] . "</td>";
                                         echo "<td>". $row['nama_mkp'] . "</td>";
                                         echo "<td>". $row['kode_kelas'] . "</td>";
+                                        echo "<td>". $row['dosen'] . "</td>";
                                         echo "<td>". $row['url_rps'] . "</td>";
-                                        echo "<td>". "<a href='"."jadwal.php?".$row['kode_ajuan']."' class='btn btn-success m-3'>accept</a>"."<a href='' class='btn btn-danger m-3'>reject</a>". "</td>";
+                                        echo "<td>". "<a href='"."jadwal.php?k=".$row['kode_ajuan']."' class='btn btn-success m-3'>accept</a>"."<a href='"."ajuanReject.php?k=".$row['kode_ajuan']."' class='btn btn-danger m-3'>reject</a>". "</td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='5'>Tidak ada ajuan tersedia</td></tr>";
+                                    echo "<tr><td colspan='7'>Tidak ada ajuan tersedia</td></tr>";
                                 }
                                 $stt->close();
                                 $connect->close();
@@ -174,6 +177,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="downloadfile">
+        <?php
+            
+        ?>
     </div>
 
     <!-- Footer -->
