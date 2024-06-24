@@ -12,35 +12,225 @@
 <!-- end of pengecekaan session -->
 
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ajuan</title>
-<!-- CSS -->
-    <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- end of bootstrap -->
-    <!-- native css -->
-    <link href="assets/css/newformat.css" rel="stylesheet" type="text/css">
-    <!-- end of native css -->
-<!-- end of CSS -->
-    </head>
-    <body>
-     <!-- header -->
-     <div class="header">
-        <a href="#default" class="logo">SPRINTER</a>
-        <div class="header-right">
-            
-        </div>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Ajuan - SPRINTER UNPAM</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- ====== Favicons ====== -->
+  <link href="assets/img/icon-unpam-website.png" rel="icon">
+  <link href="assets/img/icon-unpam-apple-touch.png" rel="apple-touch-icon">
+
+  <!-- ====== Google Fonts ====== -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- ====== Vendor CSS Files ====== -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- ====== Template Main CSS File ====== -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ====== Header ====== -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <!-- Logo -->
+    <div>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="beranda.php" class="logo d-flex align-items-center">
+        <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
+        <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
+      </a>
     </div>
-    <!-- Navigation sidebar -->
-    <div class="sidebar">
-         <a href="lihatJadwal.php">Home</a>
-         <a class="active" href="ajuan.php">Ajuan</a>
-         <a href="logout.php">Logout</a>
-    </div>
-    <!-- ajuan -->
+
+    <!-- ====== Icons Navigation ====== -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+          </form>
+        </div><!-- End Search Bar -->
+
+        <!-- Search Icon-->
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <!-- ======= Messages Nav ======= -->
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">2</span>
+          </a>
+
+          <!-- Messages Dropdown Items -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <div>
+                  <h4>Pengajuan Anda di ACC</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <div>
+                  <h4>Pengajuan Anda di REJECT</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <!-- ======= Profile Nav ======= -->
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-person-gear" alt="Profile" class="rounded-circle"></i>
+          </a>
+
+          <!-- Profile Dropdown Items -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Name Dosen, M.Kom.</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- ======= End Profile Nav ======= -->
+
+      </ul>
+    </nav><!-- ====== End Icons Navigation ====== -->
+
+  </header><!-- ====== End Header ====== -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <!-- ======= Sidebar | Logo ======= -->
+      <li class="nav-logo">
+        <a class="nav-logo " href="beranda.php">
+          <img src="assets/img/Logo Unpam.png">
+        </a>
+      </li><!-- ======= Sidebar | End Logo ======= -->
+      
+      <!-- ======= Sidebar | Beranda ======= -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="beranda.php">
+          <i class="bi bi-columns-gap"></i>
+          <span>Beranda</span>
+        </a>
+      </li><!-- ======= Sidebar | End Dashboard ======= -->
+
+      <!-- ======= Sidebar | Ajuan ======= -->
+      <li class="nav-item">
+        <a class="nav-link " href="ajuan.php">
+          <i class="bi bi-calendar2-plus"></i>
+          <span>Ajuan</span>
+        </a>
+      </li><!-- ======= Sidebar | End Jadwal ======= -->
+
+      <!-- ======= Sidebar | Jadwal ======= -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="lihatJadwal.php">
+          <i class="bi bi-calendar4-event"></i>
+          <span>Jadwal</span>
+        </a>
+      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      
+    </ul>
+
+  </aside><!-- ======= End Sidebar ======= -->
+
+  <!-- ======= #main ======= -->
+  <main id="main" class="mainAjuan">
+
+    <div class="pagetitle">
+      <h1>PENGAJUAN</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Ajuan</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    
+    <section class="section jadwal">
+        <class="row">
+
         <div class="content">
             <div class="container-new">
             <!--<div class="card">-->
@@ -71,22 +261,39 @@
             <!-- </div>-->
             </div>
         </div>
-    <!-- end of ajuan -->
 
+        </div>
+    </section>
     
+  </main><!-- ======= End #main ======= -->
 
-    <!-- Scripts -->
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-        <!-- Scripts boostrap -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <!-- end of Scripts -->
-    </body>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footerAjuan">
+    <div class="copyright">
+      &copy; Copyright <strong><span>2024</span></strong>
+    </div>
+    <div class="credits">
+      Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
+    </div>
+  </footer><!-- ======= End Footer ======= -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
 <?php
     }
