@@ -7,7 +7,7 @@
     } else if ($_SESSION['level'] != 'Prodi') {
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
-      
+      $prodi = $_SESSION['prodi'];
 ?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
@@ -228,31 +228,7 @@
     </div><!-- End Page Title -->
     
     <section id="ajuan" class="ajuan">
-      <div class="row mb-3">
-        <div class="col-md-9">
-          <div class="form-group">
-            <select class="form-select" id="ajuan" name="ajuan">
-              <option value="">Semua Ajuan</option>
-              <?php
-              include 'koneksi.php';
-              // Query untuk mengambil daftar pekan dari tabel jadwal
-              $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
-              $resultPekan = $connect->query($queryPekan);
-              if ($resultPekan->num_rows > 0) {
-                while ($rowPekan = $resultPekan->fetch_assoc()) {
-                  $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
-                  echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
-                }
-              }
-              ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <button type="submit" class="btn btn-primary">Filter</button>
-          <a href="prodi-ajuan-baru.php" class="btn btn-ajuan">Buat Pengajuan Baru</a>
-        </div>
-      </div>
+      
       
       <div class="mb-3 table-container">
         <table class="table table-striped">
@@ -260,14 +236,40 @@
             <tr>
               <th>Kode Ajuan</th>
               <th>Kode Kelas</th>
-              <th>Laboratorium</th>
               <th>Mata Kuliah Praktikum</th>
+              <th>laboratorium</th>
               <th>Dosen Pengampu</th>
               <th>Status Ajuan</th>
             </tr>
           </thead>
           <tbody>
-            <!-- Content Table -->
+            <?php
+            $query = "
+            SELECT a.kode_ajuan, k.kode_kelas, m.nama_mkp, l.nama_lab, a.dosen, a.status_ajuan FROM ajuan a 
+            JOIN kelas k ON a.kode_kelas = k.kode_kelas 
+            JOIN mkp m ON a.kode_mkp = m.kode_mkp 
+            JOIN laboratorium l ON a.kode_lab = l.kode_lab
+            ";
+
+            $field = $connect->prepare($query);
+            $field->execute();
+            $result = $field->get_result();
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['kode_ajuan'] . "</td>";
+                echo "<td>" . $row['kode_kelas'] . "</td>";
+                echo "<td>" . $row['nama_mkp'] . "</td>";
+                echo "<td>" . $row['nama_lab'] . "</td>";
+                echo "<td>" . $row['dosen'] . "</td>";
+                echo "<td>" . $row['status_ajuan'] . "</td>";
+                echo "</tr>";
+              }
+            } else {
+              echo "<tr><td colspan='5'>Tidak ada Pengajuan tersedia</td></tr>";
+            }
+            
+            ?>
           </tbody>
         </table>
       </div>
