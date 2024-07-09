@@ -1,15 +1,14 @@
-<!-- pengecekaan untuk session -->
-	<?php
-        error_reporting(0);
-        session_start();
-        if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
-            header('location:login.php');
-        }else if ($_SESSION['level'] != 'Admin'){
-            header('location:login.php');	
-        }else if ($_SESSION['level'] == 'Admin'){
-            
-    ?>
-<!-- end of pengecekaan untuk session -->
+<!-- ====== Pengecekan Session ====== -->
+<?php
+    error_reporting(0);
+    session_start();
+    if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])) {
+      header('location:login.php');
+    } else if ($_SESSION['level'] != 'Prodi') {
+      header('location:login.php');
+    } else if ($_SESSION['level']=='Prodi') {
+      
+?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Account Settings - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,7 +39,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,14 +47,12 @@
   <!-- ====== Header ====== -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Logo -->
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div>
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
-        <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
+      <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
     </div>
@@ -151,7 +148,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center active" href="prodi-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -180,74 +177,35 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <!-- ======= Sidebar | Logo ======= -->
       <li class="nav-logo">
-        <a class="nav-logo " href="index.php">
+        <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li><!-- ======= Sidebar | End Logo ======= -->
+      </li>
       
-      <!-- ======= Sidebar | Dashboard ======= -->
+      <!-- ======= Sidebar | Beranda ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
-          <span>Dashboard</span>
+          <span>Beranda</span>
         </a>
-      </li><!-- ======= Sidebar | End Dashboard ======= -->
+      </li>
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar | Ajuan ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="lihatAjuan.php">
+        <a class="nav-link collapsed" href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li>
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="jadwal.php">
+        <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
-
-      <!-- ======= Sidebar | Master ======= -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="prodi.php">
-              <i class="bi bi-circle"></i><span>Master PRODI</span>
-            </a>
-          </li>
-          <li>
-            <a href="mkp.php">
-              <i class="bi bi-circle"></i><span>Master MKP</span>
-            </a>
-          </li>
-          <li>
-            <a href="waktu.php">
-              <i class="bi bi-circle"></i><span>Master WAKTU</span>
-            </a>
-          </li>
-          <li>
-            <a href="kelas.php">
-              <i class="bi bi-circle"></i><span>Master KELAS</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- ======= Sidebar | End Master ======= -->
-
-      <!-- ======= Sidebar | logout ======= -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="login.html">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Logout</span>
-        </a>
-      </li> -->
-      <!-- ======= Sidebar | Logout ======= -->
+      </li>
       
     </ul>
 
@@ -255,41 +213,82 @@
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
-    
-    <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                
-                </div>
-            </div>
-        </div>
-    <!-- end of Banner -->
 
-    <!-- Master Prodi -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
-                </div>
-            </div>
+    <div class="pagetitle">
+      <div class="full-bg">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          <h1>ACCOUNT SETTINGS</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active">Halaman Change Password</li>
+            </ol>
+          </nav>
         </div>
-    <!-- end of Master Prodi -->
-
-  </main>
+      </div>
+    </div><!-- End Page Title -->
     
+    <section id="account-settings" class="account-settings">
+      <div class="row">
+
+        <form>
+          <div class="row mb-3">
+            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="password" type="password" class="form-control" id="currentPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('currentPassword')">
+                <i class="bi bi-eye-slash" id="toggleCurrentPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="newpassword" type="password" class="form-control" id="newPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('newPassword')">
+                <i class="bi bi-eye-slash" id="toggleNewPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">*Re-enter New Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('renewPassword')">
+                <i class="bi bi-eye-slash" id="toggleRenewPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Change Password</button>
+          </div>
+        </form>
+        
+      </div>
+    </section>
+
+    <script>
+    function togglePasswordVisibility(id) {
+      const passwordField = document.getElementById(id);
+      const toggleIcon = document.getElementById('toggle' + id.charAt(0).toUpperCase() + id.slice(1));
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove("bi-eye-slash");
+        toggleIcon.classList.add("bi-eye");
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove("bi-eye");
+        toggleIcon.classList.add("bi-eye-slash");
+      }}
+    </script>
+
+  </main><!-- ======= End #main ======= -->
+
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footerAjuan">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
@@ -313,7 +312,8 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-    </body>
+</body>
+
 </html>
 <?php
     }

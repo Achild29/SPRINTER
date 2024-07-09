@@ -2,6 +2,7 @@
 session_start();
 session_destroy();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +30,9 @@ session_destroy();
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/loginstyle.css" rel="stylesheet">
+
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/sytle-login.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,7 +49,7 @@ session_destroy();
                 <div class="card-body">
                   
                   <div class="d-flex justify-content-center py-4">
-                    <img src="assets/images/Logo Unpam.png" alt="" class="logo">
+                    <img src="assets/img/Logo Unpam.png" alt="" class="logo">
                   </div>
                   <div class="pt-4 pb-2 text-center">
                     <h1 class="card-title">SPRINTER</h1>
@@ -105,7 +106,7 @@ session_destroy();
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- ====== Template Main JS File ====== -->
+  <!-- ====== Main JS File ====== -->
   <script src="assets/js/main.js"></script>
 
 </body>

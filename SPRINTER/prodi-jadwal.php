@@ -1,15 +1,14 @@
-<!-- pengecekaan untuk session -->
-	<?php
-        error_reporting(0);
-        session_start();
-        if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
-            header('location:login.php');
-        }else if ($_SESSION['level'] != 'Admin'){
-            header('location:login.php');	
-        }else if ($_SESSION['level'] == 'Admin'){
-            
-    ?>
-<!-- end of pengecekaan untuk session -->
+<!-- ====== Pengecekan Session ====== -->
+<?php
+    error_reporting(0);
+    session_start();
+    if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])) {
+      header('location:login.php');
+    } else if ($_SESSION['level'] != 'Prodi') {
+      header('location:login.php');
+    } else if ($_SESSION['level']=='Prodi') {
+      
+?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Jadwal - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,7 +39,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -54,7 +53,7 @@
     </div><!-- End Logo -->
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
+      <a href="beranda.php" class="logo d-flex align-items-center">
         <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
@@ -151,7 +150,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="prodi-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -182,22 +181,22 @@
 
       <!-- ======= Sidebar | Logo ======= -->
       <li class="nav-logo">
-        <a class="nav-logo " href="index.php">
+        <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
       </li><!-- ======= Sidebar | End Logo ======= -->
       
-      <!-- ======= Sidebar | Dashboard ======= -->
+      <!-- ======= Sidebar | Beranda ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
-          <span>Dashboard</span>
+          <span>Beranda</span>
         </a>
       </li><!-- ======= Sidebar | End Dashboard ======= -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar | Ajuan ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="lihatAjuan.php">
+        <a class="nav-link collapsed" href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
@@ -205,49 +204,11 @@
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="jadwal.php">
+        <a class="nav-link " href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
       </li><!-- ======= Sidebar | End Jadwal ======= -->
-
-      <!-- ======= Sidebar | Master ======= -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="prodi.php">
-              <i class="bi bi-circle"></i><span>Master PRODI</span>
-            </a>
-          </li>
-          <li>
-            <a href="mkp.php">
-              <i class="bi bi-circle"></i><span>Master MKP</span>
-            </a>
-          </li>
-          <li>
-            <a href="waktu.php">
-              <i class="bi bi-circle"></i><span>Master WAKTU</span>
-            </a>
-          </li>
-          <li>
-            <a href="kelas.php">
-              <i class="bi bi-circle"></i><span>Master KELAS</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- ======= Sidebar | End Master ======= -->
-
-      <!-- ======= Sidebar | logout ======= -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="login.html">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Logout</span>
-        </a>
-      </li> -->
-      <!-- ======= Sidebar | Logout ======= -->
       
     </ul>
 
@@ -255,39 +216,148 @@
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
-    
-    <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                
-                </div>
-            </div>
+  
+    <div class="pagetitle">
+      <div class="full-bg">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          <h1>JADWAL</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active">Halaman Jadwal Praktikum</li>
+            </ol>
+          </nav>
         </div>
-    <!-- end of Banner -->
+      </div>
+    </div><!-- End Page Title -->
 
-    <!-- Master Prodi -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
-                </div>
+    <section class="section jadwal">
+          
+    <div class="mb-3">
+  <form method="GET" action="">
+    <div class="row mb-3">
+      <div class="col-md-3 mb-3">
+        <select class="form-select" id="pekan" name="pekan">
+          <option value="">Semua Pekan</option>
+          <?php
+          include 'koneksi.php';
+          $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
+          $resultPekan = $connect->query($queryPekan);
+          if ($resultPekan->num_rows > 0) {
+            while ($rowPekan = $resultPekan->fetch_assoc()) {
+              $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
+              echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
+            }
+          }
+          ?>
+        </select>
+      </div>
+      <div class="col mb-3">
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <select class="form-select" id="jadwal" name="jadwal">
+          <option value="">Semua Pekan</option>
+          <?php
+          // Sama dengan sebelumnya, disesuaikan dengan kebutuhan Anda
+          $queryJadwal = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
+          $resultJadwal = $connect->query($queryJadwal);
+          if ($resultJadwal->num_rows > 0) {
+            while ($rowJadwal = $resultJadwal->fetch_assoc()) {
+              $selected = isset($_GET['jadwal']) && $_GET['jadwal'] == $rowJadwal['pekan'] ? 'selected' : '';
+              echo "<option value='" . $rowJadwal['pekan'] . "' $selected>Pekan " . $rowJadwal['pekan'] . "</option>";
+            }
+          }
+          ?>
+        </select>
+      </div>
+      <div class="col mb-3">
+        <button type="submit" class="btn btn-fltr">Filter</button>
+      </div>
+            
+      <div class="col mb-3">
+        <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">Export to Excel</a>
+      </div>
+      <div class="col mb-3">
+        <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">Export to PDF</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+            <div class="mb-3 table-container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Hari</th>
+                    <th>Jam Mulai</th>
+                    <th>Jam Selesai</th>
+                    <th>Prodi</th>
+                    <th>Mata Kuliah</th>
+                    <th>Kelas</th>
+                    <th>Dosen</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  // Ambil nilai pekan dari query string
+                  $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
+
+                  // Buat query SQL dengan filter pekan
+                  $query = "
+                      SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, kode_kelas, dosen
+                      FROM jadwal j
+                      JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                      JOIN mkp m ON j.kode_mkp = m.kode_mkp
+                      JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                  ";
+                  
+                  // Tambahkan kondisi WHERE jika pekan dipilih
+                  if ($pekan !== '') {
+                    $query .= " WHERE j.pekan = ?";
+                  }
+                  $query .= " ORDER BY w.hari, w.jam_mulai";
+
+                  // Prepare dan execute query
+                  $stmt = $connect->prepare($query);
+
+                  // Bind parameter jika pekan dipilih
+                  if ($pekan !== '') {                      
+                    $stmt->bind_param("i", $pekan);
+                  }
+
+                  $stmt->execute();
+                  $result = $stmt->get_result();
+
+                  // Tampilkan hasil query
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<tr>";
+                      echo "<td>" . $row['hari'] . "</td>";
+                      echo "<td>" . $row['jam_mulai'] . "</td>";
+                      echo "<td>" . $row['jam_selesai'] . "</td>";
+                      echo "<td>" . $row['nama_prodi'] . "</td>";
+                      echo "<td>" . $row['nama_mkp'] . "</td>";
+                      echo "<td>" . $row['kode_kelas'] . "</td>";
+                      echo "<td>" . $row['dosen'] . "</td>";
+                      echo "</tr>";
+                    }
+                  } else {
+                    echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
+                  }
+
+                  $stmt->close();
+                  $connect->close();
+                  ?>
+                </tbody>
+              </table>
             </div>
-        </div>
-    <!-- end of Master Prodi -->
 
-  </main>
-    
+    </section>
+
+  </main><!-- ======= End #main ======= -->
+
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -313,7 +383,8 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-    </body>
+</body>
+
 </html>
 <?php
     }

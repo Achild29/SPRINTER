@@ -1,15 +1,14 @@
-<!-- pengecekaan session -->
-    <?php
-        error_reporting(0);
-        session_start();
-        if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])) {
-            header('location:login.php');
-        } else if ($_SESSION['level'] != 'Prodi') {
-            header('location:login.php');
-        } else if ($_SESSION['level']=='Prodi'){
-
-    ?>
-<!-- end of pengecekaan session -->
+<!-- ====== Pengecekan Session ====== -->
+<?php
+    error_reporting(0);
+    session_start();
+    if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])) {
+      header('location:login.php');
+    } else if ($_SESSION['level'] != 'Prodi') {
+      header('location:login.php');
+    } else if ($_SESSION['level']=='Prodi') {
+      
+?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +39,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,14 +47,12 @@
   <!-- ====== Header ====== -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Logo -->
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div>
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
-        <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
     </div>
@@ -151,7 +148,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="prodi-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -180,12 +177,11 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <!-- ======= Sidebar | Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li><!-- ======= Sidebar | End Logo ======= -->
+      </li>
       
       <!-- ======= Sidebar | Beranda ======= -->
       <li class="nav-item">
@@ -193,76 +189,139 @@
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li><!-- ======= Sidebar | End Dashboard ======= -->
+      </li>
 
       <!-- ======= Sidebar | Ajuan ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="ajuan.php">
+        <a class="nav-link " href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li>
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="lihatJadwal.php">
+        <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li>
       
     </ul>
 
   </aside><!-- ======= End Sidebar ======= -->
 
   <!-- ======= #main ======= -->
-  <main id="main" class="mainAjuan">
+  <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>PENGAJUAN</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Ajuan</li>
-        </ol>
-      </nav>
+      <div class="full-bg">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          <h1>AJUAN</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active">Halaman Pengajuan Praktikum Baru</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
     </div><!-- End Page Title -->
     
-    <section class="section jadwal">
-        <class="row">
-
-        <div class="content">
-            <div class="container-new">
-            <!--<div class="card">-->
-                
+    <section id="ajuan-baru" class="ajuan-baru">
+      <!-- input ajuan -->
+      <div class="content">
+            <div id="inputAjuan" class="card">
+                <h5 class="card-header">form pengajuan baru</h5>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <div class="col-md-3">
-                            <a href="ajuanBaru.php" class="btn btn-success">Buat pengajuan Baru</a>
+                    <form action="" method="GET">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="mkp" class="form-label">Mata kuliah Praktikum</label>
+                                    <select class="form-select" aria-label="Kode PRODI" name="kode_mkp" required onchange="this.form.submit()">
+                                        <option>Pilih Mata kuliah praktikum</option>
+                                        <?php
+                                            include 'koneksi.php';
+                                            $query = "SELECT * FROM mkp WHERE kode_prodi = '$prodi'";
+                                            $field = $connect->prepare($query);
+                                            $field->execute();
+                                            $res2 = $field->get_result();
+                                            while ($row = $res2->fetch_assoc()) {
+                                                $showOptions="<option ";
+                                                if(isset($_GET['kode_mkp'])){
+                                                    if($row['kode_mkp']== $_GET['kode_mkp']){
+                                                        $showOptions.="selected ";
+                                                    }
+                                                }
+                                                $showOptions.="value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                                                echo ($showOptions);
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="sks" class="form-label">sks</label>
+                                    <select id="sks" class="form-select" required disabled>
+                                        <?php
+                                        if (isset($_GET['kode_mkp'])) {
+                                            $kode_mkp = $_GET['kode_mkp'];
+                                            $query = "SELECT * FROM mkp WHERE kode_mkp = ?";
+                                            $field = $connect->prepare($query);
+                                            $field->bind_param("s", $kode_mkp);
+                                            $field->execute();
+                                            $res2 = $field->get_result();
+                                            while ($row = $res2->fetch_assoc()) {
+                                                echo "<option>" . $row['sks'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>kode ajuan</th>
-                                    <th>kode kelas</th>
-                                    <th>Mata Kuliah Praktikum</th>
-                                    <th>dosen Pengampu</th>
-                                    <th>status Ajuan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                <!-- </div>-->
-            <!-- </div>-->
+                    </form>
+                    <form action="Controller/Pengajuan.php" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="kelas" class="form-label">kelas</label>
+                                    <select name="kelas" id="kode_kelas" class="form-select">
+                                        <?php
+                                            $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
+                                            $field = $connect->prepare($query);
+                                            $field->execute();
+                                            $res2 = $field->get_result();
+                                            while ($row = $res2->fetch_assoc()) {
+                                                echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="dosen" class="form-label">Dosen pengampu</label>
+                                    <input type="text" class="form-control" name="dosen"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="col">
+                                <label for="rps" class="form-label">upload rps</label>
+                                <input class="form-control" type="file" id="rps" name="rps">
+                            </div>
+                            <div class="col">
+                                <input type="hidden" name="mkp"<?php
+                                    $kode_mkp = $_GET['kode_mkp'];
+                                    echo "value='".$kode_mkp."'";
+                                ?>
+                                >
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        </div>
+    <!-- end of input ajuan -->
     </section>
     
   </main><!-- ======= End #main ======= -->
