@@ -456,7 +456,25 @@
                   <option value="16">Pekan ke-16 (UAS)</option>
                 </select>
               </div>
-              
+              <div class="md-3">
+                <div class="row">
+                  <div class="col">
+                    <label for="lab" class="form-label">LABORATORIUM</label>
+                    <Select name="kode_lab" id="kode_lab" class="form-select">
+                      <option value="">Pilih Labrotarium</option>
+                      <?php
+                        $query = "SELECT * FROM laboratorium";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res2 = $field->get_result();
+                       while ($row = $res2->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div class="md-3">
                 <div class="row">
                   <div class="col">

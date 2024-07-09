@@ -7,7 +7,7 @@
     } else if ($_SESSION['level'] != 'Prodi') {
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
-      
+      $_SESSION['prodi'];
 ?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
