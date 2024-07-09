@@ -162,7 +162,7 @@
                                         echo "<td>". $row['nama_mkp'] . "</td>";
                                         echo "<td>". $row['kode_kelas'] . "</td>";
                                         echo "<td>". $row['dosen'] . "</td>";
-                                        echo "<td>". $row['url_rps'] . "</td>";
+                                        echo "<td>"."<a href='"."/sprinterlab/sprinter/sprinter/files/".$row['url_rps']."' taget='_blank'> download rps here" ."</td>";
                                         echo "<td>". "<a href='"."jadwal.php?k=".$row['kode_ajuan']."' class='btn btn-success m-3'>accept</a>"."<a href='"."ajuanReject.php?k=".$row['kode_ajuan']."' class='btn btn-danger m-3'>reject</a>". "</td>";
                                         echo "</tr>";
                                     }

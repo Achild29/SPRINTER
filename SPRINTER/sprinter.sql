@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 15, 2024 at 06:38 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jul 09, 2024 at 10:55 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,20 +47,21 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 
 CREATE TABLE `ajuan` (
   `kode_ajuan` varchar(20) NOT NULL,
+  `kode_prodi` varchar(10) NOT NULL,
   `kode_kelas` varchar(10) NOT NULL,
   `kode_mkp` varchar(10) NOT NULL,
   `dosen` varchar(50) NOT NULL,
   `url_rps` varchar(20) NOT NULL,
-  `status_ajuan` varchar(10) NOT NULL
+  `status_ajuan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ajuan`
 --
 
-INSERT INTO `ajuan` (`kode_ajuan`, `kode_kelas`, `kode_mkp`, `dosen`, `url_rps`, `status_ajuan`) VALUES
-('03SISM001/SI01Per23', '03SISM001', 'SI01Per23', 'Abi', 'SI01Per23.pdf', 'On Process'),
-('03SISM001/SI01Sta12', '03SISM001', 'SI01Sta12', 'SEL', 'SI01Sta12.pdf', 'On Process');
+INSERT INTO `ajuan` (`kode_ajuan`, `kode_prodi`, `kode_kelas`, `kode_mkp`, `dosen`, `url_rps`, `status_ajuan`) VALUES
+('tesryjjjh', 'SI01', '03SISM001', 'SI01Sta12', 'kristiano', 'sta.pdf', 'diproses'),
+('test', 'SI01', '03SISM001', 'SI01Per23', 'abi', 'tes.pdf', 'MAAF ajuan anda DITOLAK karena file RPS anda tidak sesuai');
 
 -- --------------------------------------------------------
 
@@ -83,6 +84,7 @@ CREATE TABLE `jadwal` (
 
 INSERT INTO `jadwal` (`kode_jadwal`, `kode_waktu`, `kode_mkp`, `kode_kelas`, `pekan`, `dosen`) VALUES
 ('ace52', 'SenB18:20', 'SI01Per23', '03SISM001', 3, ''),
+('SenA071er23017', 'SenA07:10', 'SI01Per23', '03SISM001', 7, 'Galih'),
 ('SenA071ta1211', 'SenA07:10', 'SI01Sta12', '01SIP001', 1, ''),
 ('SenA07er230114', 'SenA07:10', 'SI01Per23', '03SISM001', 14, ''),
 ('SenA07ta1214', 'SenA07:10', 'SK01Sta12', '', 14, ''),
@@ -114,6 +116,18 @@ CREATE TABLE `kelas` (
 
 INSERT INTO `kelas` (`kode_kelas`, `kode_prodi`, `semester`, `Reguler`) VALUES
 ('03SISM001', 'SI01', 3, 'B');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laboratorium`
+--
+
+CREATE TABLE `laboratorium` (
+  `kode_lab` varchar(10) NOT NULL,
+  `nama_lab` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -184,12 +198,19 @@ INSERT INTO `waktu` (`kode_waktu`, `reguler`, `hari`, `jam_mulai`, `jam_selesai`
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- Indexes for table `ajuan`
 --
 ALTER TABLE `ajuan`
   ADD PRIMARY KEY (`kode_ajuan`),
   ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `kode_mkp` (`kode_mkp`);
+  ADD KEY `kode_mkp` (`kode_mkp`),
+  ADD KEY `kode_prodi` (`kode_prodi`);
 
 --
 -- Indexes for table `jadwal`
@@ -208,6 +229,13 @@ ALTER TABLE `jadwal`
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`kode_kelas`),
   ADD KEY `kode_prodi` (`kode_prodi`);
+
+--
+-- Indexes for table `laboratorium`
+--
+ALTER TABLE `laboratorium`
+  ADD PRIMARY KEY (`kode_lab`),
+  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `mkp`
@@ -237,7 +265,8 @@ ALTER TABLE `waktu`
 --
 ALTER TABLE `ajuan`
   ADD CONSTRAINT `ajuan_ibfk_1` FOREIGN KEY (`kode_kelas`) REFERENCES `kelas` (`kode_kelas`),
-  ADD CONSTRAINT `ajuan_ibfk_2` FOREIGN KEY (`kode_mkp`) REFERENCES `mkp` (`kode_mkp`);
+  ADD CONSTRAINT `ajuan_ibfk_2` FOREIGN KEY (`kode_mkp`) REFERENCES `mkp` (`kode_mkp`),
+  ADD CONSTRAINT `ajuan_ibfk_3` FOREIGN KEY (`kode_prodi`) REFERENCES `prodi` (`kode_prodi`);
 
 --
 -- Constraints for table `jadwal`
@@ -252,6 +281,12 @@ ALTER TABLE `jadwal`
 ALTER TABLE `kelas`
   ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`kode_prodi`) REFERENCES `prodi` (`kode_prodi`),
   ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`kode_kelas`) REFERENCES `jadwal` (`kode_kelas`);
+
+--
+-- Constraints for table `laboratorium`
+--
+ALTER TABLE `laboratorium`
+  ADD CONSTRAINT `laboratorium_ibfk_1` FOREIGN KEY (`username`) REFERENCES `admin` (`username`);
 
 --
 -- Constraints for table `mkp`
