@@ -1,5 +1,5 @@
-<!-- ====== Pengecekaan Untuk Session ====== -->
-	<?php
+<!-- pengecekaan untuk session -->
+<?php
         error_reporting(0);
         session_start();
         if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
@@ -9,7 +9,7 @@
         }else if ($_SESSION['level'] == 'Admin'){
             
     ?>
-    <!-- ====== End Pengecekaan Untuk Session ====== -->
+<!-- end of pengecekaan untuk session -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Master Waktu - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -41,6 +41,50 @@
 
   <!-- ====== Template Main CSS File ====== -->
   <link href="assets/css/style-admin.css" rel="stylesheet">
+
+  <script>
+            function updateJamOptions() {
+                var reg = document.getElementById("reg").value;
+                var jam = document.getElementById("jam");
+                var hari = document.getElementById("hari")
+                // Clear previous options
+                jam.innerHTML = ""; 
+                hari.innerHTML = "";
+                if (reg == "A" || reg == "B") {
+                    addOption(hari, "Senin", "Senin");
+                    addOption(hari, "Selasa", "Selasa");
+                    addOption(hari, "Rabu", "Rabu");
+                    addOption(hari, "Kamis", "Kamis");
+                    addOption(hari, "Jumat", "Jum'at");
+                    if (reg == "A") {
+                        addOption(jam, "1", "Jam ke-1 (07.10)");
+                        addOption(jam, "2", "Jam ke-2 (08.50)");
+                        addOption(jam, "3", "Jam ke-3 (10.30)");
+                        addOption(jam, "4", "Jam ke-4 (13.00)");
+                        addOption(jam, "5", "Jam ke-5 (14.40)");
+                    } else if (reg == "B") {
+                        addOption(jam, "1", "Jam ke-1 (18.20)");
+                        addOption(jam, "2", "Jam ke-2 (20.00)");
+                    }
+                } else if (reg == "C") {
+                    addOption(jam, "1", "Jam ke-1 (07.40)");
+                    addOption(jam, "2", "Jam ke-2 (09.20)");
+                    addOption(jam, "3", "Jam ke-3 (11.00)");
+                    addOption(jam, "4", "Jam ke-4 (12.40)");
+                    addOption(jam, "5", "Jam ke-5 (14.20)");
+                    addOption(hari, "Kamis K-1", "Kamis K-1");
+                    addOption(hari, "Kamis K-2", "Kamis K-2");
+                    addOption(hari, "Sabtu K-1", "Sabtu K-1");
+                    addOption(hari, "Sabtu K-2", "Sabtu K-2");
+                } 
+            }
+            function addOption(selectbox, value, text) {
+                var option = document.createElement("option");
+                option.value = value;
+                option.text = text;
+                selectbox.appendChild(option);
+            }
+        </script>
 </head>
 
 <body>
@@ -189,7 +233,7 @@
       
       <!-- ======= Sidebar | Dashboard ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-columns-gap"></i>
           <span>Dashboard</span>
         </a>
@@ -213,7 +257,7 @@
 
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -228,7 +272,7 @@
             </a>
           </li>
           <li>
-            <a href="admin-master-waktu.php">
+            <a href="admin-master-waktu.php" class="active">
               <i class="bi bi-circle"></i><span>Master WAKTU</span>
             </a>
           </li>
@@ -249,45 +293,87 @@
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <h1>DASHBOARD</h1>
+          <h1>Master Waktu</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Halaman Utama</li>
+              <li class="breadcrumb-item active">Halaman Master Waktu</li>
             </ol>
           </nav>
         </div>
       </div>
     </div><!-- End Page Title -->
 
+    <section id="master-waktu" class="master-waktu">
     <!-- Banner -->
     <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
+            
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                
+               <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
                 </div>
             </div>
         </div>
     <!-- end of Banner -->
 
-    <!-- Master Prodi -->
+    <!-- WAKTU -->
         <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
+            
+            <div id="WAKTU" class="">
+                <h5 class="card-header">Master Waktu</h5>
+                <div class="card-body">
+                    <form method="post" action="Controller/Waktu.php">
+                        <div class="mb-3">
+                            <label for="reg" class="form-label">Reguler</label>
+                            <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
+                                <option selected>Pilih Reguler</option>
+                                <option value="A">Reguler A</option>
+                                <option value="B">Reguler B</option>
+                                <option value="C">Reguler C</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hari" class="form-label">Hari</label>
+                            <select id="hari" name="hari" class="form-select" aria-label="Kode HARI">
+                                <option selected>Pilih Hari</option>
+                                
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jam" class="form-label">Jam Mulai</label>
+                            <input type="time" id="jam" name="jam" min="07:10" max="21.40" class="form-select" aria-label="Jam MULAI">
+                                
+                            </input>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
-    <!-- end of Master Prodi -->
+    <!-- end of WAKTU -->
+    <br><br><br>
+    
+
+    <!-- <br><br><br> -->
+    
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Waktu</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
+    </section>
 
   </main>
     

@@ -1,5 +1,5 @@
-<!-- ====== Pengecekaan Untuk Session ====== -->
-	<?php
+<!-- pengecekaan untuk session -->
+<?php
         error_reporting(0);
         session_start();
         if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
@@ -7,9 +7,9 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-            
+
     ?>
-    <!-- ====== End Pengecekaan Untuk Session ====== -->
+<!-- end of pengecekaan untuk session -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Account Settings - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -151,7 +151,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="admin-account-settings.php">
+              <a class="dropdown-item d-flex align-items-center active" href="admin-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -189,7 +189,7 @@
       
       <!-- ======= Sidebar | Dashboard ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-columns-gap"></i>
           <span>Dashboard</span>
         </a>
@@ -245,54 +245,82 @@
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
-    
+
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <h1>DASHBOARD</h1>
+          <h1>ACCOUNT SETTINGS</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Halaman Utama</li>
+              <li class="breadcrumb-item active">Halaman Change Password</li>
             </ol>
           </nav>
         </div>
       </div>
     </div><!-- End Page Title -->
-
-    <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                
-                </div>
-            </div>
-        </div>
-    <!-- end of Banner -->
-
-    <!-- Master Prodi -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
-                </div>
-            </div>
-        </div>
-    <!-- end of Master Prodi -->
-
-  </main>
     
+    <section id="account-settings" class="account-settings">
+      <div class="row">
+
+        <form>
+          <div class="row mb-3">
+            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="password" type="password" class="form-control" id="currentPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('currentPassword')">
+                <i class="bi bi-eye-slash" id="toggleCurrentPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="newpassword" type="password" class="form-control" id="newPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('newPassword')">
+                <i class="bi bi-eye-slash" id="toggleNewPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">*Re-enter New Password</label>
+            <div class="col-md-8 col-lg-9 position-relative">
+              <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('renewPassword')">
+                <i class="bi bi-eye-slash" id="toggleRenewPassword"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Change Password</button>
+          </div>
+        </form>
+        
+      </div>
+    </section>
+
+    <script>
+    function togglePasswordVisibility(id) {
+      const passwordField = document.getElementById(id);
+      const toggleIcon = document.getElementById('toggle' + id.charAt(0).toUpperCase() + id.slice(1));
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove("bi-eye-slash");
+        toggleIcon.classList.add("bi-eye");
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove("bi-eye");
+        toggleIcon.classList.add("bi-eye-slash");
+      }}
+    </script>
+
+  </main><!-- ======= End #main ======= -->
+
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footerAjuan">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
@@ -316,7 +344,8 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-    </body>
+</body>
+
 </html>
 <?php
     }

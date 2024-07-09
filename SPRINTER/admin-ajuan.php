@@ -18,7 +18,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Ajuan - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -189,7 +189,7 @@
       
       <!-- ======= Sidebar | Dashboard ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-columns-gap"></i>
           <span>Dashboard</span>
         </a>
@@ -197,7 +197,7 @@
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="admin-ajuan.php">
+        <a class="nav-link " href="admin-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
@@ -249,45 +249,119 @@
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <h1>DASHBOARD</h1>
+          <h1>AJUAN</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Halaman Utama</li>
+              <li class="breadcrumb-item active">Halaman Pengajuan</li>
             </ol>
           </nav>
         </div>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
-            </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                
+    <section id="admin-ajuan" class="admin-ajuan">
+  <div class="container-fluid w-75 p5">
+        <div class="card" id="lihatAjuan">
+            <h5 class="card-header">List Ajuan</h5>
+            <div class="card-body">
+                <div class="mb-3">
+                    <form action="" method="get">
+                        <div class="col-md-3 d-flex align-items-end">
+                            <label for="prodi" class="form-label"></label>
+                            <select name="prodi" id="prodi" class="form-select">
+                            <option selected>Pilih Prodi</option>
+                            <?php
+                                include 'koneksi.php';
+                                // Query untuk menambil prodi
+                                $sql = "SELECT * FROM prodi";
+                                $field = $connect->prepare($sql);
+                                $field->execute();
+                                $res1 = $field->get_result();
+                                while ($row = $res1->fetch_assoc()) {
+                                    echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                                }
+                            ?>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary">Filer</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
-        </div>
-    <!-- end of Banner -->
+                <div class="mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Kode Ajuan</th>
+                                <th>Prodi</th>
+                                <th>MKP</th>
+                                <th>Kelas</th>
+                                <th>Dosen</th>
+                                <th>URL PDF</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Ambil nilai kode_prodi dari query string
+                                $prodi = isset($_GET['kode_prodi']) ? $_GET['kode_prodi'] :'';
 
-    <!-- Master Prodi -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
+                                $sqlQuery ="
+                                    SELECT a.kode_ajuan, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, a.url_rps
+                                    FROM ajuan a
+                                    JOIN prodi p on a.kode_prodi = p.kode_prodi
+                                    JOIN mkp m on a.kode_mkp = m.kode_mkp
+                                    where status_ajuan = 'diproses'
+                                ";
+
+                                //Tambahkan kondisi WHERE jika prodi dipilih
+                                if ($prodi !=='') {
+                                    $sqlQuery .= " WHERE a.kode_prodi = ?";
+                                }
+
+                                $stmt = $connect->prepare($sqlQuery);
+
+                                // Bind paramater jika prodi dipilih
+                                if ($prodi !== '') {
+                                    $stmt->bind_param("i", $prodi);
+                                }
+
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                
+
+                                // Tampilkan hasil query
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>". $row['kode_ajuan'] . "</td>";
+                                        echo "<td>". $row['nama_prodi'] . "</td>";
+                                        echo "<td>". $row['nama_mkp'] . "</td>";
+                                        echo "<td>". $row['kode_kelas'] . "</td>";
+                                        echo "<td>". $row['dosen'] . "</td>";
+                                        echo "<td>"."<a href='"."/sprinterlab/sprinter/sprinter/files/".$row['url_rps']."' taget='_blank'> download rps here" ."</td>";
+                                        echo "<td>". "<a href='"."jadwal.php?k=".$row['kode_ajuan']."' class='btn btn-success m-3'>accept</a>"."<a href='"."ajuanReject.php?k=".$row['kode_ajuan']."' class='btn btn-danger m-3'>reject</a>". "</td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='7'>Tidak ada ajuan tersedia</td></tr>";
+                                }
+                                $stt->close();
+                                $connect->close();
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    <!-- end of Master Prodi -->
+    </div>
+
+    <div class="downloadfile">
+        <?php
+            
+        ?>
+    </div>
+    </section>
 
   </main>
     

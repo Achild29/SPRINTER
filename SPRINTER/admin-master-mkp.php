@@ -1,5 +1,5 @@
-<!-- ====== Pengecekaan Untuk Session ====== -->
-	<?php
+<!-- pengecekaan untuk session -->
+<?php
         error_reporting(0);
         session_start();
         if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
@@ -9,7 +9,7 @@
         }else if ($_SESSION['level'] == 'Admin'){
             
     ?>
-    <!-- ====== End Pengecekaan Untuk Session ====== -->
+<!-- end of pengecekaan untuk session -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - SPRINTER UNPAM</title>
+  <title>Master MKP - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -189,7 +189,7 @@
       
       <!-- ======= Sidebar | Dashboard ======= -->
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-columns-gap"></i>
           <span>Dashboard</span>
         </a>
@@ -213,7 +213,7 @@
 
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -223,7 +223,7 @@
             </a>
           </li>
           <li>
-            <a href="admin-master-mkp.php">
+            <a href="admin-master-mkp.php" class="active">
               <i class="bi bi-circle"></i><span>Master MKP</span>
             </a>
           </li>
@@ -249,45 +249,88 @@
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <h1>DASHBOARD</h1>
+          <h1>Master MKP</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Halaman Utama</li>
+              <li class="breadcrumb-item active">Halaman Master MKP</li>
             </ol>
           </nav>
         </div>
       </div>
     </div><!-- End Page Title -->
 
+    <section id="master-mkp" class="master-mkp">
     <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
+        <!-- <div id="carouselExampleIndicators" class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div> -->
+    <!-- end of Banner -->
+
+    <!-- Master MKP -->
             <!-- <div class="carousel-indicators gap-5 p-5">
                 <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
                 <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Waktu</a>
+                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
             </div> -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                
+            <div class="container-fluid w-75 p-5">
+            <div id="MKP" class="card">
+                <h5 class="card-header">Master MKP</h5>
+                <div class="card-body">
+                    <form method="post" action="Controller/Mkp.php">
+                        <div class="mb-3">
+                            <label for="kode_prodi" class="form-label">PRODI</label>
+                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                <option selected>Pilih Prodi</option>
+                                    <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                                        }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama_mkp" class="form-label">Nama MKP</label>
+                            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  >
+                        </div>
+                        <div class="mb-3">
+                            <label for="sks" class="form-label">SKS</label>
+                            <input type="text" class="form-control" id="sks" name="sks" >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
-    <!-- end of Banner -->
+    <!-- end of Master MKP -->
+    <!-- <br><br><br> -->
 
-    <!-- Master Prodi -->
-        <div class="container-fluid w-75 p-5">
-            <div class="card">
-                <h5 class="card-header">Main Home</h5>
-                <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
-                </div>
-            </div>
-        </div>
-    <!-- end of Master Prodi -->
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master MKP</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
+    </section>
 
   </main>
     
