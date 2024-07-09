@@ -4,8 +4,9 @@
     // var_dump($_POST);
     // var_dump($_FILES);
     // die;
-
+    
     $kode_kelas = $_POST['kelas'];
+    $kode_prodi = $_POST['prodi'];
     $kode_mkp = $_POST['mkp'];
     $dosen = $_POST['dosen'];
     $kode_lab = $_POST['kode_lab'];
@@ -47,8 +48,8 @@
     $kode_ajuan = $kode_kelas . "/" . $kode_mkp;
     $status_ajuan = "On Process";
 
-    $sql = "INSERT INTO ajuan (kode_ajuan, kode_kelas, kode_mkp, dosen,kode_lab, url_rps, status_ajuan) VALUES ('$kode_ajuan','$kode_kelas','$kode_mkp','$dosen','$kode_lab', '$rps','$status_ajuan')";
+    $sql = "INSERT INTO ajuan (kode_ajuan, kode_prodi, kode_kelas, kode_mkp, dosen,kode_lab, url_rps, status_ajuan) VALUES ('$kode_ajuan','$kode_prodi','$kode_kelas','$kode_mkp','$dosen','$kode_lab', '$rps','$status_ajuan')";
     $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
-    header("location: ../ajuanBaru.php")
+    header("location: ../prodi-ajuan-baru.php")
 
 ?>

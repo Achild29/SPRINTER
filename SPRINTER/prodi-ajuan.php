@@ -228,8 +228,10 @@
     </div><!-- End Page Title -->
     
     <section id="ajuan" class="ajuan">
-      
-      
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-primary">Filter</button>
+      <a href="prodi-ajuan-baru.php" class="btn btn-ajuan">Buat Pengajuan Baru</a>
+    </div>    
       <div class="mb-3 table-container">
         <table class="table table-striped">
           <thead>
@@ -245,15 +247,17 @@
           <tbody>
             <?php
             $query = "
-            SELECT a.kode_ajuan, k.kode_kelas, m.nama_mkp, l.nama_lab, a.dosen, a.status_ajuan FROM ajuan a 
+            SELECT kode_ajuan, p.kode_prodi, k.kode_kelas, m.nama_mkp, l.nama_lab, dosen, status_ajuan 
+            FROM ajuan a
             JOIN kelas k ON a.kode_kelas = k.kode_kelas 
-            JOIN mkp m ON a.kode_mkp = m.kode_mkp 
+            JOIN mkp m ON a.kode_mkp = m.kode_mkp
             JOIN laboratorium l ON a.kode_lab = l.kode_lab
+            JOIN prodi p ON m.kode_prodi = p.kode_prodi
             ";
-
+            $query .= " WHERE a.kode_prodi='" . $prodi . "'";
             $field = $connect->prepare($query);
             $field->execute();
-            $result = $field->get_result();
+            $res2 = $field->get_result();
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
@@ -268,7 +272,6 @@
             } else {
               echo "<tr><td colspan='5'>Tidak ada Pengajuan tersedia</td></tr>";
             }
-            
             ?>
           </tbody>
         </table>

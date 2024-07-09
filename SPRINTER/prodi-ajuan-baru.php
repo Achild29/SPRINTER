@@ -306,8 +306,8 @@
                         </div>
                         <div class="mb-3">
                             <div class="col">
-                                <label for="kode_lab" class="form-label">Kode Labrotarium</label>
-                                <Select name="kelas" id="kode_kelas" class="form-select">
+                                <label for="kode_lab" class="form-label">Labrotarium</label>
+                                <Select name="kode_lab" id="kode PRODI" class="form-select">
                                   <option value="">Pilih Labrotarium</option>
                                   <?php
                                             $query = "SELECT * FROM laboratorium";
@@ -330,6 +330,11 @@
                                 <input type="hidden" name="mkp"<?php
                                     $kode_mkp = $_GET['kode_mkp'];
                                     echo "value='".$kode_mkp."'";
+                                ?>
+                                >
+                                <input type="hidden" name="prodi"<?php
+                                    // $prodi = $_GET['kode_mkp'];
+                                    echo "value='".$prodi."'";
                                 ?>
                                 >
                             </div>
