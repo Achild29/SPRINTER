@@ -7,7 +7,7 @@
     } else if ($_SESSION['level'] != 'Prodi') {
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
-      
+      $prodi = $_SESSION['prodi'];
 ?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
@@ -286,6 +286,7 @@
                                 <div class="col">
                                     <label for="kelas" class="form-label">kelas</label>
                                     <select name="kelas" id="kode_kelas" class="form-select">
+                                      <option value="">Pilih kelas</option>
                                         <?php
                                             $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
                                             $field = $connect->prepare($query);
@@ -301,6 +302,23 @@
                                     <label for="dosen" class="form-label">Dosen pengampu</label>
                                     <input type="text" class="form-control" name="dosen"></input>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="col">
+                                <label for="kode_lab" class="form-label">Kode Labrotarium</label>
+                                <Select name="kelas" id="kode_kelas" class="form-select">
+                                  <option value="">Pilih Labrotarium</option>
+                                  <?php
+                                            $query = "SELECT * FROM laboratorium";
+                                            $field = $connect->prepare($query);
+                                            $field->execute();
+                                            $res2 = $field->get_result();
+                                            while ($row = $res2->fetch_assoc()) {
+                                                echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                                            }
+                                        ?>
+                                </Select>
                             </div>
                         </div>
                         <div class="mb-3">
