@@ -9,7 +9,7 @@
     if ($smt) {
         $sql = "INSERT INTO kelas (kode_kelas, kode_prodi, semester, Reguler) VALUES ('$kode_kelas','$kode_prodi','$semester','$reg')";
         $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
-        header("location: ../kelas.php");
+        header("location: ../admin-master-kelas.php");
     } else {
         echo "<script language='javascript'> alert('Semester harus berupa angka jangan huruf');
 	window.location = 'javascript:history.go(-1)'</script>";

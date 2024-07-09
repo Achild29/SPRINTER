@@ -267,7 +267,7 @@
                 <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
             </div> -->
             <div class="container-fluid w-75 p-5">
-            <div id="PRODI" class="">
+            <div id="PRODI" class="card">
                 <h5 class="card-header">Master PRODI</h5>
                 <div class="card-body">
                 <form action="Controller/Prodi.php" method="post">
@@ -300,13 +300,13 @@
                     <span class="page-link">Master Prodi</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="mkp.php">Master MKP</a>
+                    <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                    <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                    <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>

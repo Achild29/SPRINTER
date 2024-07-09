@@ -316,16 +316,16 @@
         <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                    <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
                 </li>
                 <li class="page-item active" aria-current="page">
                     <span class="page-link">Master MKP</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                    <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                    <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>

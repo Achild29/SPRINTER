@@ -262,7 +262,7 @@
     <section id="master-kelas" class="master-kelas">
     <!-- Master Kelas -->
     <div class="container-fluid w-75 p-5">
-            <div id="Master-Kelas" class="">
+            <div id="Master-Kelas" class="card">
                 <h5 class="card-header">Master Kelas</h5>
                 <div class="card-body">
                     <form action="Controller/Kelas.php" method="post">
@@ -316,13 +316,13 @@
         <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                    <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="mkp.php">Master MKP</a>
+                    <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                    <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
                 </li>
                 <li class="page-item active" aria-current="page">
                     <span class="page-link">Master Kelas</span>

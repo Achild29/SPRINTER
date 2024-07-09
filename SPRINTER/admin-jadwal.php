@@ -353,8 +353,16 @@
                       $field->execute();
                       $res1 = $field->get_result();
                       while ($row = $res1->fetch_assoc()) {
-                        $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
-                        echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
+                      $showOptions="<option ";
+                      if(isset($_GET['kode_prodi'])){
+                          if($row['kode_prodi']== $_GET['kode_prodi']){
+                              $showOptions.="selected ";
+                          }
+                      }
+                      $showOptions.="value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                      echo ($showOptions);
+                        // $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
+                        // echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
                       }
                       ?>
                     </select>

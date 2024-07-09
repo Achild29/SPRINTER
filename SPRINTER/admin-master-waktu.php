@@ -318,7 +318,7 @@
     <!-- WAKTU -->
         <div class="container-fluid w-75 p-5">
             
-            <div id="WAKTU" class="">
+            <div id="WAKTU" class="card">
                 <h5 class="card-header">Master Waktu</h5>
                 <div class="card-body">
                     <form method="post" action="Controller/Waktu.php">
@@ -359,16 +359,16 @@
         <nav aria-label="page-nav">
             <ul class="pagination pagination-lg justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                    <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="mkp.php">Master MKP</a>
+                    <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
                 </li>
                 <li class="page-item active" aria-current="page">
                     <span class="page-link">Master Waktu</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                    <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
                 </li>
             </ul>
         </nav>
