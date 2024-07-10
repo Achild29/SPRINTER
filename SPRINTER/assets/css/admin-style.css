@@ -949,6 +949,151 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Jadwal
+--------------------------------------------------------------*/
+.jadwal .card-body {
+  background-color: #fff;
+  padding: 25px 30px 20px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.jadwal .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.jadwal .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.jadwal .form-control {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.jadwal .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.jadwal .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.jadwal .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
+}
+
+/* ======== Lihat jadwal ======== */
+.lihat-jadwal .card-body {
+  background-color: #fff;
+  padding: 30px 30px 25px 30px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+
+.lihat-jadwal .btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.lihat-jadwal .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.lihat-jadwal .btn-primary {
+  background-color: #007bff;
+  margin-left: -10px;
+}
+
+.lihat-jadwal .btn-primary:hover {
+  background-color: #0065d0;
+}
+
+.lihat-jadwal .btn-success {
+  background-color: #28a745;
+  margin-right: 20px;
+}
+
+.lihat-jadwal .btn-success:hover {
+  background-color: #218838;
+}
+
+.lihat-jadwal .btn-danger {
+  background-color: #dc3545;
+}
+
+.lihat-jadwal .btn-danger:hover {
+  background-color: #b92534;
+}
+
+.lihat-jadwal .col {
+  text-align: right;
+}
+
+.lihat-jadwal .table {
+  margin-top: 25px;
+}
+
+.lihat-jadwal .table th,
+.lihat-jadwal .table td {
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  text-align: left;
+}
+
+.lihat-jadwal .table thead th {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #007bff;
+  text-transform: uppercase;
+
+}
+
+.lihat-jadwal .table tbody td {
+  font-size: 15px;
+  font-weight: 500;
+  color: #464646;
+  font-family: "Inter", sans-serif;
+}
+
+/*--------------------------------------------------------------
 # Master Prodi
 --------------------------------------------------------------*/
 .master-prodi .card-body {
@@ -1351,219 +1496,10 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Jadwal
---------------------------------------------------------------*/
-.admin-jadwal {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
-/* .jadwal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.jadwal .form-select {
-  width: 80%;
-  padding: 10px 15px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #007bff;
-  background-clip: padding-box;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  margin-top: -0.5px;
-}
-
-.jadwal .btn-primary,
-.jadwal .btn-fltr {
-  padding: 10px 20px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  border-radius: 5px;
-  transition: all 0.15s ease-in-out;  
-}
-
-.jadwal .btn-primary,
-.jadwal .btn-fltr {
-  color: #fff;
-  background-color: #007bff;
-  margin-left: -55px;
-}
-
-.jadwal .btn-primary:hover,
-.jadwal .btn-fltr:hover {
-  color: #fff;
-  background-color: #0056b3;
-}
-
-.jadwal .btn-success,
-.jadwal .btn-danger {
-  padding: 10px 20px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  border-radius: 5px;
-  transition: all 0.15s ease-in-out;  
-}
-
-.jadwal .btn-success {
-  color: #fff;
-  background-color: #28a745;
-  margin-left: -20px;
-}
-
-.jadwal .btn-success:hover {
-  color: #fff;
-  background-color: #218838;
-}
-
-.jadwal .btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  margin-left: -10px;
-}
-
-.jadwal .btn-danger:hover {
-  color: #fff;
-  background-color: #c82333;
-}
-
-.jadwal table {
-  width: 100%;
-  margin-bottom: -5px;
-  color: #212529;
-  border-collapse: collapse;
-}
-
-.jadwal table th,
-.jadwal table td {
-  padding: 10px 15px;
-  vertical-align: top;
-  border: 2px solid #007bff;
-}
-
-.jadwal table th {
-  vertical-align: bottom;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #fff;
-  border-bottom: 2px solid #007bff;
-  background-color: #007bff;
-}
-
-.jadwal table tbody tr:nth-of-type(even) {
-  background-color: #f2f2f2;
-} */
-
-/* 
-.jadwal .form-select {
-  width: 75%;
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 2px solid #007bff;
-  color: #007bff;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  margin-top: -0.5px;
-}
-
-.jadwal .btn {
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-bottom: 5px;
-  margin-right: 30px;
-}
-
-.jadwal .btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  margin-left: 215px;
-}
-
-.jadwal .btn-primary:hover {
-  background-color: #0069d9;
-}
-
-.jadwal .btn-fltr {
-  background-color: #007bff;
-  color: #fff;
-  margin-left: 215px;
-}
-
-.jadwal .btn-fltr:hover {
-  background-color: #0069d9;
-}
-
-.jadwal .btn-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.jadwal .btn-success:hover {
-  background-color: #218838;
-}
-
-.jadwal .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  margin-left: 60px;
-}
-
-.jadwal .btn-danger:hover {
-  background-color: #c82333;
-}
-
-.jadwal table {
-  width: 100%;
-  margin-bottom: 20px;
-  color: #212529;
-  border-collapse: collapse;
-}
-
-.jadwal table th,
-.jadwal table td {
-  padding: 10px 15px;
-  vertical-align: top;
-  border: 2px solid #007bff;
-}
-
-.jadwal table th {
-  vertical-align: bottom;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #fff;
-  border-bottom: 2px solid #007bff;
-  background-color: #007bff;
-}
-
-.jadwal table tbody tr:nth-of-type(even) {
-  background-color: #f2f2f2;
-}
-
-.col-md-3 .mb-3 {
-  margin-inline-end: 100px; 
-} */
-
-/*--------------------------------------------------------------
 # Account Settings
 --------------------------------------------------------------*/
 .account-settings {
-margin-bottom: -225px;
+  margin-bottom: -225px;
 }
 
 .account-settings .card-body {

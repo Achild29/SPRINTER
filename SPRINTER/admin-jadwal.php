@@ -332,109 +332,99 @@
       </div>
     </div><!-- End Page Title -->
 
-    <section id="admin-jadwal" class="admin-jadwal">
-      
-      <!-- ======= Jadwal ======= -->
-      <div class="container-fluid w-75 p-5">
-        <div id="JADWAL" class="card">
-          <h5 class="card-header">Input Jadwal Praktikum</h5>
-          <div class="card-body">
+    <section id="jadwal" class="jadwal">
 
-            <form method="get" action="">
-              <div class="md-3">
-                <div class="row">
-                  <div class="col">
-                    <label for="kode_prodi" class="form-label">Prodi</label>
-                    <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" required onchange="this.form.submit()">
-                      <option selected>Pilih Prodi</option>
-                      <?php include 'koneksi.php';
-                      $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-                      $field = $connect->prepare($query);
-                      $field->execute();
-                      $res1 = $field->get_result();
-                      while ($row = $res1->fetch_assoc()) {
-                      $showOptions="<option ";
-                      if(isset($_GET['kode_prodi'])){
-                          if($row['kode_prodi']== $_GET['kode_prodi']){
-                              $showOptions.="selected ";
-                          }
-                      }
-                      $showOptions.="value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
-                      echo ($showOptions);
-                        // $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
-                        // echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </form>
-            
-            <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
-              <div class="col">
-                <label for="kode_mkp" class="form-label">Mata Kuliah Program</label>
+      <!-- ======= Input Jadwal ======= -->
+      <div id="jadwal" class="card-body">
+        <div class="mb-3">
+          <div class="row">
+            <div class="col">
+              <form method="get" action="">
+                <label for="kode_prodi" class="form-label">Prodi</label>
+                <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" required onchange="this.form.submit()">
+                  <option selected>Pilih Prodi</option>
+                    <?php include 'koneksi.php';
+                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res1 = $field->get_result();
+                        while ($row = $res1->fetch_assoc()) {
+                          $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
+                          echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
+                        }
+                    ?>
+                </select>
+              </form>
+            </div>
+            <div class="col">
+              <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
+              <label for="kode_mkp" class="form-label">Mata Kuliah Program</label>
                 <select class="form-select" aria-label="Kode MKP" name="kode_mkp" required>
                   <option selected>Pilih Mata Kuliah</option>
-                  <?php
-                  if (isset($_GET['kode_prodi'])) {
-                    $kode_prodi = $_GET['kode_prodi'];
-                    $query = "SELECT * FROM mkp WHERE kode_prodi = ? ORDER BY kode_mkp ASC";
-                    $field = $connect->prepare($query);
-                    $field->bind_param("s", $kode_prodi);
-                    $field->execute();
-                    $res2 = $field->get_result();
-                    while ($row = $res2->fetch_assoc()) {
-                      echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
-                    }
-                  }
-                  ?>
-                </select>
-              </div>
-              
-              <div class="md-3">
-                <div class="row">
-                  <label for="waktu" class="form-label">Waktu</label>
-                  <select id="kode_waktu" name="kode_waktu" class="form-select" aria-label="Kode Waktu">
-                    <option selected>Pilih Waktu</option>
-                    <?php include 'koneksi.php';
-                    $query = "SELECT * FROM waktu ORDER BY reguler ASC";
-                    $field = $connect->prepare($query);
-                    $field->execute();
-                    $res1 = $field->get_result();
-                    while ($row = $res1->fetch_assoc()) {
-                      echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " ".$row['hari']. " ".$row['jam_mulai']."</option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-              </div>
-              
-              <div class="md-3">
-                <div class="row">
-                  <div class="col">
-                    <label for="kode_kelas" class="form-label">Kelas</label>
-                    <select class="form-select" aria-label="Kode MKP" name="kelas" required>
-                      <option selected>Kelas</option>
-                      <?php
-                      if (isset($_GET['kode_prodi'])) {
-                        $kode_prodi = $_GET['kode_prodi'];
-                        $query = "SELECT * FROM kelas WHERE kode_prodi = ? ORDER BY kode_kelas ASC";
-                        $field = $connect->prepare($query);
-                        $field->bind_param("s", $kode_prodi);
-                        $field->execute();
-                        $res2 = $field->get_result();
-                        while ($row = $res2->fetch_assoc()) {
-                          echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                    <?php
+                        if (isset($_GET['kode_prodi'])) {
+                          $kode_prodi = $_GET['kode_prodi'];
+                          $query = "SELECT * FROM mkp WHERE kode_prodi = ? ORDER BY kode_mkp ASC";
+                          $field = $connect->prepare($query);
+                          $field->bind_param("s", $kode_prodi);
+                          $field->execute();
+                          $res2 = $field->get_result();
+                          while ($row = $res2->fetch_assoc()) {
+                            echo "<option value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                          }
                         }
-                      }
-                      ?> 
-                    </select>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col">
+                    ?>
+                </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <div class="row">
+            <div class="col">
+              <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
+                <label for="waktu" class="form-label">Waktu</label>
+                <select id="kode_waktu" name="kode_waktu" class="form-select" aria-label="Kode Waktu">
+                  <option selected>Pilih Waktu</option>
+                    <?php include 'koneksi.php';
+                        $query = "SELECT * FROM waktu ORDER BY reguler ASC";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res1 = $field->get_result();
+                        while ($row = $res1->fetch_assoc()) {
+                          echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " ".$row['hari']. " ".$row['jam_mulai']."</option>";
+                        }
+                    ?>
+                </select>
+              </form>
+            </div>
+            <div class="col">
+              <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
+                <label for="kode_kelas" class="form-label">Kelas</label>
+                <select class="form-select" aria-label="Kode MKP" name="kelas" required>
+                  <option selected>Kelas</option>
+                    <?php
+                        if (isset($_GET['kode_prodi'])) {
+                          $kode_prodi = $_GET['kode_prodi'];
+                          $query = "SELECT * FROM kelas WHERE kode_prodi = ? ORDER BY kode_kelas ASC";
+                          $field = $connect->prepare($query);
+                          $field->bind_param("s", $kode_prodi);
+                          $field->execute();
+                          $res2 = $field->get_result();
+                          while ($row = $res2->fetch_assoc()) {
+                            echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                          }
+                        }
+                    ?>
+                </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <div class="row">
+            <div class="col">
+              <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
                 <label for="pekan" class="form-label">Pekan</label>
                 <select id="pekan" name="pekan" class="form-select" aria-label="Kode PRODI">
                   <option selected>Pilih Pekan</option>
@@ -455,106 +445,75 @@
                   <option value="15">Pekan ke-15</option>
                   <option value="16">Pekan ke-16 (UAS)</option>
                 </select>
-              </div>
-              <div class="md-3">
-                <div class="row">
-                  <div class="col">
-                    <label for="lab" class="form-label">LABORATORIUM</label>
-                    <Select name="kode_lab" id="kode_lab" class="form-select">
-                      <option value="">Pilih Labrotarium</option>
-                      <?php
-                        $query = "SELECT * FROM laboratorium";
-                        $field = $connect->prepare($query);
-                        $field->execute();
-                        $res2 = $field->get_result();
-                       while ($row = $res2->fetch_assoc()) {
-                        echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="md-3">
-                <div class="row">
-                  <div class="col">
-                    <label for="dosen" class="form-label">Dosen Pengampu</label>
-                    <input type="text" class="form-control" name="dosen"></input>
-                  </div>
-                </div>
-              </div>
-              <div class="md-3">
-                <div class="row">
-                  <div class="col">
-                    <label for="" class="form-label"></label>
-                    <div class="d-grid gap-2">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          
+              </form>
+            </div>
+            <div class="col">
+              <form action="Controller/Jadwal.php?k=<?php echo ($_GET['kode_prodi'])?>" method="post">
+                <label for="dosen" class="form-label">Dosen Pengampu</label>
+                <input type="text" class="form-control" name="dosen"></input>
+              </form>
+            </div>
           </div>
         </div>
-      </div><!-- ======= End Jadwal ======= -->
+        
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div><!-- ======= End Input Jadwal ======= -->
+    
+    </section>
 
+    <section id="lihat-jadwal" class="lihat-jadwal">  
+      
       <!-- ======= Lihat Jadwal ======= -->
-      <div class="container-fluid w-75 p-5">
-        <div id="lihatJadwal"class="card">
-          <h5 class="card-header">Jadwal Praktikum</h5>
-          <div class="card-body">
-            <div class="mb-3">
-
-              <form method="GET" action="">
-                <div class="row mb-3">
-                  <div class="col-md-3 d-flex align-items-end">
-                    <label for="pekan" class="form-label"></label>
-                    <select class="form-select" id="pekan" name="pekan">
-                      <option value="">Semua Pekan</option>
-                      <?php
-                      include 'koneksi.php';
-                      // Query untuk mengambil daftar pekan dari tabel jadwal
-                      $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
-                      $resultPekan = $connect->query($queryPekan);
-                      if ($resultPekan->num_rows > 0) {
-                        while ($rowPekan = $resultPekan->fetch_assoc()) {
-                          $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
-                          echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
+      <div id="lihat-jadwal" class="card-body">
+        <div class="mb-3">
+          <form method="GET" action="">
+            <div class="row mb-3">
+              <div class="col-md-3 d-flex align-items-end">
+                <label for="pekan" class="form-label"></label>
+                <select class="form-select" id="pekan" name="pekan">
+                  <option value="">Semua Pekan</option>
+                    <?php
+                        include 'koneksi.php';
+                        // Query untuk mengambil daftar pekan dari tabel jadwal
+                        $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
+                        $resultPekan = $connect->query($queryPekan);
+                        if ($resultPekan->num_rows > 0) {
+                          while ($rowPekan = $resultPekan->fetch_assoc()) {
+                            $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
+                            echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
+                          }
                         }
-                      }
-                      ?>
-                    </select>
-                  </div>
-                  <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                  </div>
-                  <div class="col-md-3 ms-auto">
-                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">export to Excel</a>
-                  </div>
-                  <div class="col-md-3 ms-auto">
-                    <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">export to pdf</a>
-                  </div>
-                </div>
-              </form>
-            
+                    ?>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Filter</button>
+              </div>
+              <div class="col">
+                <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">Export to Excel</a>
+                <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">Export to pdf</a>
+              </div>
             </div>
-            
-            <div class="mb-3">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Hari</th>
-                    <th>Jam Mulai</th>
-                    <th>Jam Selesai</th>
-                    <th>Prodi</th>
-                    <th>Mata Kuliah</th>
-                    <th>Kelas</th>
-                    <th>Dosen</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
+          </form>
+        </div>
+        
+        <div class="mb-3">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Hari</th>
+                <th>Jam Mulai</th>
+                <th>Jam Selesai</th>
+                <th>Prodi</th>
+                <th>Mata Kuliah</th>
+                <th>Kelas</th>
+                <th>Dosen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
                   // Ambil nilai pekan dari query string
                   $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
                   // Buat query SQL dengan filter pekan
@@ -565,8 +524,8 @@
                       JOIN mkp m ON j.kode_mkp = m.kode_mkp
                       JOIN prodi p ON m.kode_prodi = p.kode_prodi
                       ";
-                  // Tambahkan kondisi WHERE jika pekan dipilih
-                  if ($pekan !== '') {
+                   // Tambahkan kondisi WHERE jika pekan dipilih
+                   if ($pekan !== '') {
                     $query .= " WHERE j.pekan = ?";
                   }
                   $query .= " ORDER BY w.hari, w.jam_mulai";
@@ -596,14 +555,11 @@
                   }
                   $stmt->close();
                   $connect->close();
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          
-          </div>
+              ?>
+            </tbody>
+          </table>
         </div>
-      </div><!-- ======= End Lihat Jadwal ======= -->
+      </div><!-- End Lihat Jadwal -->
 
     </section>
 
