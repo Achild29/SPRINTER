@@ -7,7 +7,7 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-            
+          $user = $_SESSION['bagian'];
     ?>
 <!-- end of pengecekaan untuk session -->
 
@@ -144,7 +144,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Admin</h6>
+              <h6>Hello <?php echo $user ?>!</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -266,7 +266,7 @@
           <div class="mb-3">
             <label for="kode_prodi" class="form-label">PRODI</label>
             <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
-              <option selected>Pilih Prodi</option>
+              <option selected value='Pilih Prodi'>Pilih Prodi</option>
                 <?php include 'koneksi.php';
                     $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
                     $field = $connect->prepare($query);
