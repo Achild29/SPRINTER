@@ -304,75 +304,51 @@
     </div><!-- End Page Title -->
 
     <section id="master-waktu" class="master-waktu">
-    <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel">
             
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-               <!--<img src="images/labkom1.jpeg" class="d-block w-100" alt="...">-->
-                </div>
-            </div>
-        </div>
-    <!-- end of Banner -->
+      <div id="waktu" class="card-body">
+        <form method="post" action="Controller/Waktu.php">
+          <div class="mb-3">
+            <label for="reg" class="form-label">Reguler</label>
+            <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
+              <option selected>Pilih Reguler</option>
+              <option value="A">Reguler A</option>
+              <option value="B">Reguler B</option>
+              <option value="C">Reguler C</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="hari" class="form-label">Hari</label>
+            <select id="hari" name="hari" class="form-select" aria-label="Kode HARI">
+              <option selected>Pilih Hari</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="jam" class="form-label">Jam Mulai</label>
+            <input type="time" id="jam" name="jam" min="07:10" max="21.40" class="form-select" aria-label="Jam MULAI">
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div><!-- End Master Waktu -->
 
-    <!-- WAKTU -->
-        <div class="container-fluid w-75 p-5">
-            
-            <div id="WAKTU" class="">
-                <h5 class="card-header">Master Waktu</h5>
-                <div class="card-body">
-                    <form method="post" action="Controller/Waktu.php">
-                        <div class="mb-3">
-                            <label for="reg" class="form-label">Reguler</label>
-                            <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
-                                <option selected>Pilih Reguler</option>
-                                <option value="A">Reguler A</option>
-                                <option value="B">Reguler B</option>
-                                <option value="C">Reguler C</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="hari" class="form-label">Hari</label>
-                            <select id="hari" name="hari" class="form-select" aria-label="Kode HARI">
-                                <option selected>Pilih Hari</option>
-                                
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="jam" class="form-label">Jam Mulai</label>
-                            <input type="time" id="jam" name="jam" min="07:10" max="21.40" class="form-select" aria-label="Jam MULAI">
-                                
-                            </input>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <!-- end of WAKTU -->
-    <br><br><br>
+      <nav aria-label="page-nav" class="card-nav">
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
+          </li>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">Master Waktu</span>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
+          </li>
+        </ul>
+      </nav><!-- End Page Navigation -->
     
-
-    <!-- <br><br><br> -->
-    
-    <!-- page navigation -->
-        <nav aria-label="page-nav">
-            <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="prodi.php">Master Prodi</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="mkp.php">Master MKP</a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">Master Waktu</span>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="kelas.php">Master Kelas</a>
-                </li>
-            </ul>
-        </nav>
-    <!-- end of page navigation -->
     </section>
 
   </main>
