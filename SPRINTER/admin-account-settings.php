@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <link href="assets/css/admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -260,61 +260,53 @@
     </div><!-- End Page Title -->
     
     <section id="account-settings" class="account-settings">
-      <div class="row">
-
-        <form>
-          <div class="row mb-3">
-            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="password" type="password" class="form-control" id="currentPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('currentPassword')">
-                <i class="bi bi-eye-slash" id="toggleCurrentPassword"></i>
-              </span>
+      
+      <div id="account-settings" class="card-body">
+        <form action="" method="post">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <div class="password-wrapper">
+            <input name="password" type="password" class="form-control" id="currentPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="row mb-3">
-            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="newpassword" type="password" class="form-control" id="newPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('newPassword')">
-                <i class="bi bi-eye-slash" id="toggleNewPassword"></i>
-              </span>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <div class="password-wrapper">
+            <input name="newpassword" type="password" class="form-control" id="newPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="row mb-3">
-            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">*Re-enter New Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('renewPassword')">
-                <i class="bi bi-eye-slash" id="toggleRenewPassword"></i>
-              </span>
+          <div class="mb-3">
+            <label for="renewPassword" class="form-label">*Re-enter New Password</label>
+            <div class="password-wrapper">
+            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="text-center">
+          <div class="mb-3">
             <button type="submit" class="btn btn-primary">Change Password</button>
           </div>
         </form>
-        
       </div>
-    </section>
-
-    <script>
-    function togglePasswordVisibility(id) {
-      const passwordField = document.getElementById(id);
-      const toggleIcon = document.getElementById('toggle' + id.charAt(0).toUpperCase() + id.slice(1));
       
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleIcon.classList.remove("bi-eye-slash");
-        toggleIcon.classList.add("bi-eye");
-      } else {
-        passwordField.type = "password";
-        toggleIcon.classList.remove("bi-eye");
-        toggleIcon.classList.add("bi-eye-slash");
-      }}
+    </section>
+    
+    <script>
+        document.querySelectorAll('.password-wrapper i').forEach(item => {
+            item.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('bi-eye-slash');
+                    this.classList.add('bi-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('bi-eye');
+                    this.classList.add('bi-eye-slash');
+                }
+            });
+        });
     </script>
 
   </main><!-- ======= End #main ======= -->

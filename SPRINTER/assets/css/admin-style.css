@@ -949,6 +949,408 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Master Prodi
+--------------------------------------------------------------*/
+.master-prodi .card-body {
+  background-color: #fff;
+  padding: 25px 30px 20px 30px;
+  border-radius: 10px;
+}
+
+.master-prodi .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.master-prodi .form-control {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-prodi .password-wrapper {
+  position: relative;
+}
+
+.master-prodi .password-wrapper input {
+  padding-right: 2rem; 
+}
+
+.master-prodi .password-wrapper i {
+  position: absolute;
+  top: 48%;
+  right: 15px; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #007bff;
+  font-size: 25px;
+}
+
+.master-prodi .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.master-prodi .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.master-prodi .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
+}
+
+.master-prodi .card-nav {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.master-prodi .page-item.active .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  color: #fff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-prodi .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1.8px solid #007bff;
+  color: #007bff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-prodi .page-link:hover {
+  background-color: #007bff37;
+}
+
+.master-prodi .pagination .page-item + .page-item {
+  margin-left: 20px;
+}
+
+/*--------------------------------------------------------------
+# Master MKP
+--------------------------------------------------------------*/
+.master-mkp .card-body {
+  background-color: #fff;
+  padding: 25px 30px 20px 30px;
+  border-radius: 10px;
+}
+
+.master-mkp .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.master-mkp .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-mkp .form-control {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-mkp .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.master-mkp .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.master-mkp .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
+}
+
+.master-mkp .card-nav {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.master-mkp .page-item.active .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  color: #fff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-mkp .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1.8px solid #007bff;
+  color: #007bff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-mkp .page-link:hover {
+  background-color: #007bff37;
+}
+
+.master-mkp .pagination .page-item + .page-item {
+  margin-left: 20px;
+}
+
+/*--------------------------------------------------------------
+# Master Waktu
+--------------------------------------------------------------*/
+.master-waktu .card-body {
+  background-color: #fff;
+  padding: 25px 30px 20px 30px;
+  border-radius: 10px;
+}
+
+.master-waktu .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.master-waktu .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-waktu .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.master-waktu .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.master-waktu .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
+}
+
+.master-waktu .card-nav {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.master-waktu .page-item.active .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  color: #fff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-waktu .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1.8px solid #007bff;
+  color: #007bff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-waktu .page-link:hover {
+  background-color: #007bff37;
+}
+
+.master-waktu .pagination .page-item + .page-item {
+  margin-left: 20px;
+}
+
+/*--------------------------------------------------------------
+# Master Kelas
+--------------------------------------------------------------*/
+.master-kelas .card-body {
+  background-color: #fff;
+  padding: 25px 30px 20px 30px;
+  border-radius: 10px;
+}
+
+.master-kelas .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.master-kelas .form-control {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-kelas .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.master-kelas .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.master-kelas .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.master-kelas .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
+}
+
+.master-kelas .card-nav {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.master-kelas .page-item.active .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  color: #fff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-kelas .page-link {
+  padding: 10px 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1.8px solid #007bff;
+  color: #007bff;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.master-kelas .page-link:hover {
+  background-color: #007bff37;
+}
+
+.master-kelas .pagination .page-item + .page-item {
+  margin-left: 20px;
+}
+
+/*--------------------------------------------------------------
 # Jadwal
 --------------------------------------------------------------*/
 .admin-jadwal {
@@ -1161,70 +1563,71 @@ h6 {
 # Account Settings
 --------------------------------------------------------------*/
 .account-settings {
+margin-bottom: -225px;
+}
+
+.account-settings .card-body {
   background-color: #fff;
-  padding: 20px;
+  padding: 25px 30px 20px 30px;
   border-radius: 10px;
 }
 
-.account-settings .col-form-label {
-  /* text-align: right; */
-  color: #007bff;
+.account-settings .form-label {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  padding-top: 11px;
-  padding-left: 25px;
-  margin-right: -55px;
+  font-weight: 600;
+  color: #464646;
 }
 
 .account-settings .form-control {
-  width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
-  border: 1px solid #ced4da;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
-.account-settings .translate-middle-y {
+.account-settings .password-wrapper {
+  position: relative;
+}
+
+.account-settings .password-wrapper input {
+  padding-right: 2rem; 
+}
+
+.account-settings .password-wrapper i {
+  position: absolute;
+  top: 48%;
+  right: 15px; 
   transform: translateY(-50%);
-}
-
-.account-settings .cursor-pointer {
   cursor: pointer;
+  color: #007bff;
+  font-size: 25px;
 }
 
-.account-settings .bi-eye-slash {
-  font-size: 1.2rem;
-  color: #6c757d;
-}
-
-.account-settings .text-center {
-  text-align: center;
+.account-settings .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
 }
 
 .account-settings .btn-primary {
+  width: 100%;
   background-color: #007bff;
-  border-color: #007bff;
+  border: 1.8px solid #007bff;
   padding: 10px 20px;
-  font-size: 16px;
   border-radius: 5px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
 }
 
 .account-settings .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
-}
-
-.account-settings .btn-primary:focus,
-.account-settings .btn-primary:active {
-  background-color: #004085;
-  border-color: #003768;
-}
-
-.account-settings .btn-primary:disabled {
-  background-color: #c0c0c0;
-  border-color: #c0c0c0;
-  cursor: not-allowed;
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
 }
 
 /*--------------------------------------------------------------
