@@ -15,5 +15,5 @@ else $kode_mkp = "".substr($kode_prodi,5).$nama_mkp.$sks;
 
 $sql = "INSERT INTO mkp (kode_mkp, kode_prodi, nama_mkp, sks) VALUES ('$kode_mkp','$kode_prodi','$nama_mkp','$sks')";
 $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
-header("location: ../mkp.php")
+header("location: ../admin-master-mkp.php")
 ?>

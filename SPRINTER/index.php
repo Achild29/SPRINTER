@@ -279,11 +279,11 @@
             <div class="card">
                 <h5 class="card-header">Main Home</h5>
                 <div class="card-body text-center">
-                    <a class="btn btn-success m-3"href="prodi.php">Master Prodi</a>
-                    <a class="btn btn-success m-3"href="mkp.php">Master MKP</a>
-                    <a class="btn btn-success m-3"href="waktu.php">Master Waktu</a>
-                    <a class="btn btn-success m-3"href="kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="jadwal.php">Input Jadwal</a>
+                    <a class="btn btn-success m-3"href="admin-master-prodi.php">Master Prodi</a>
+                    <a class="btn btn-success m-3"href="admin-master-mkp.php">Master MKP</a>
+                    <a class="btn btn-success m-3"href="admin-master-waktu.php">Master Waktu</a>
+                    <a class="btn btn-success m-3"href="admin-master-kelas.php">Master Kelas</a>
+                    <a class="btn btn-primary m-3"href="admin-jadwal.php">Input Jadwal</a>
                 </div>
             </div>
         </div>

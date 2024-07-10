@@ -260,47 +260,57 @@
     </div><!-- End Page Title -->
 
     <section id="master-prodi" class="master-prodi">
-      
-      <div id="prodi" class="card-body">
-        <form action="Controller/Prodi.php" method="post">
-          <div class="mb-3">
-            <label for="kode_prodi" class="form-label">Kode Prodi</label>
-            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi">
-          </div>
-          <div class="mb-3">
-            <label for="nama_prodi" class="form-label">Nama Prodi</label>
-            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <div class="password-wrapper">
-              <input type="password" class="form-control" id="pass" name="pass">
-              <i class="bi bi-eye-slash" id="togglePassword"></i>
+  <!-- Master Prodi -->
+            <!-- <div class="carousel-indicators gap-5 p-5">
+                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
+                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
+                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
+            </div> -->
+            <div class="container-fluid w-75 p-5">
+            <div id="PRODI" class="">
+                <h5 class="card-header">Master PRODI</h5>
+                <div class="card-body">
+                <form action="Controller/Prodi.php" method="post">
+                    <div class="mb-3">
+                        <label for="kode_prodi" class="form-label">Kode Prodi</label>
+                        <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama_prodi" class="form-label">Nama Prodi</label>
+                        <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="pass" name="pass" >
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <div class="mb-3">
+                        
+                    </div>
+                </form>
+                </div>
+                
             </div>
-          </div>
-          <div class="mb-3">
-            <input type="submit" value="Submit" class="btn btn-primary">
-          </div>
-        </form>
-      </div><!-- End Master Prodi -->
-
-      <nav aria-label="page-nav" class="card-nav">
-        <ul class="pagination pagination-lg justify-content-center">
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">Master Prodi</span>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
-          </li>
-        </ul>
-      </nav><!-- End Page Navigation -->
-
+        </div>
+    <!-- end of Master Prodi -->
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Prodi</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="kelas.php">Master Kelas</a>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
     </section>
 
     <script>

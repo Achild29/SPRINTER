@@ -7,7 +7,7 @@
     } else if ($_SESSION['level'] != 'Prodi') {
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
-      
+      $prodi = $_SESSION['prodi'];
 ?><!-- ====== End Pengecekan Session ====== -->
 
 <!DOCTYPE html>
@@ -286,6 +286,7 @@
                                 <div class="col">
                                     <label for="kelas" class="form-label">kelas</label>
                                     <select name="kelas" id="kode_kelas" class="form-select">
+                                      <option value="">Pilih kelas</option>
                                         <?php
                                             $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
                                             $field = $connect->prepare($query);
@@ -305,6 +306,23 @@
                         </div>
                         <div class="mb-3">
                             <div class="col">
+                                <label for="kode_lab" class="form-label">Labrotarium</label>
+                                <Select name="kode_lab" id="kode PRODI" class="form-select">
+                                  <option value="">Pilih Labrotarium</option>
+                                  <?php
+                                            $query = "SELECT * FROM laboratorium";
+                                            $field = $connect->prepare($query);
+                                            $field->execute();
+                                            $res2 = $field->get_result();
+                                            while ($row = $res2->fetch_assoc()) {
+                                                echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                                            }
+                                        ?>
+                                </Select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="col">
                                 <label for="rps" class="form-label">upload rps</label>
                                 <input class="form-control" type="file" id="rps" name="rps">
                             </div>
@@ -312,6 +330,11 @@
                                 <input type="hidden" name="mkp"<?php
                                     $kode_mkp = $_GET['kode_mkp'];
                                     echo "value='".$kode_mkp."'";
+                                ?>
+                                >
+                                <input type="hidden" name="prodi"<?php
+                                    // $prodi = $_GET['kode_mkp'];
+                                    echo "value='".$prodi."'";
                                 ?>
                                 >
                             </div>

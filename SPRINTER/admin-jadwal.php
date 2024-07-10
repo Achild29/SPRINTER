@@ -353,8 +353,16 @@
                       $field->execute();
                       $res1 = $field->get_result();
                       while ($row = $res1->fetch_assoc()) {
-                        $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
-                        echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
+                      $showOptions="<option ";
+                      if(isset($_GET['kode_prodi'])){
+                          if($row['kode_prodi']== $_GET['kode_prodi']){
+                              $showOptions.="selected ";
+                          }
+                      }
+                      $showOptions.="value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                      echo ($showOptions);
+                        // $selected = isset($_POST['kode_prodi']) && $_POST['kode_prodi'] == $row['kode_prodi'] ? 'selected' : '';
+                        // echo "<option value='" . $row['kode_prodi'] . "' $selected>" . $row['nama_prodi'] . "</option>";
                       }
                       ?>
                     </select>
@@ -448,7 +456,25 @@
                   <option value="16">Pekan ke-16 (UAS)</option>
                 </select>
               </div>
-              
+              <div class="md-3">
+                <div class="row">
+                  <div class="col">
+                    <label for="lab" class="form-label">LABORATORIUM</label>
+                    <Select name="kode_lab" id="kode_lab" class="form-select">
+                      <option value="">Pilih Labrotarium</option>
+                      <?php
+                        $query = "SELECT * FROM laboratorium";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res2 = $field->get_result();
+                       while ($row = $res2->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div class="md-3">
                 <div class="row">
                   <div class="col">

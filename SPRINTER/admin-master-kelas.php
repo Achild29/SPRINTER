@@ -260,68 +260,76 @@
     </div><!-- End Page Title -->
 
     <section id="master-kelas" class="master-kelas">
-    
-      <div id="kelas" class="card-body">
-        <form action="Controller/Kelas.php" method="post">
-          <div class="mb-3">
-            <label for="kode-kelas" class="form-label">Kode Kelas</label>
-            <input type="text" class="form-control" name="kode_kelas" id="kode_kelas" >
-          </div>
-          <div class="mb-3">
-            <label for="Kode_prodi" class="form-label">Kode Prodi</label>
-            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
-              <option selected>Pilih Prodi</option>
-              <?php include 'koneksi.php';
-              $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-              $field = $connect->prepare($query);
-              $field->execute();
-              $res1 = $field->get_result();
-              while ($row = $res1->fetch_assoc()) {
-                echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
-              }
-              ?>
-            </select>
-          </div>
-          <div class="mb-3">
-            <div class="row">
-              <div class="col">
-                <label for="semester" class="form-label">Semester</label>
-                <input type="text" class="form-control" name="semester"></input>
-              </div>
-              <div class="col">
-                <label for="reguler" class="form-label">Reguler</label>
-                <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
-                  <option selected>Pilih Reguler</option>
-                  <option value="A">Reguler A</option>
-                  <option value="B">Reguler B</option>
-                  <option value="C">Reguler C</option>
-                </select>
-              </div>
+    <!-- Master Kelas -->
+    <div class="container-fluid w-75 p-5">
+            <div id="Master-Kelas" class="">
+                <h5 class="card-header">Master Kelas</h5>
+                <div class="card-body">
+                    <form action="Controller/Kelas.php" method="post">
+                        <div class="mb-3">
+                            <label for="kode-kelas" class="form-label">Kode Kelas</label>
+                            <input type="text" class="form-control" name="kode_kelas" id="kode_kelas" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="Kode_prodi" class="form-label">Kode Prodi</label>
+                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+                                <option selected>Pilih Prodi</option>
+                                    <?php include 'koneksi.php';
+                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                                        $field = $connect->prepare($query);
+                                        $field->execute();
+                                        $res1 = $field->get_result();
+                                        while ($row = $res1->fetch_assoc()) {
+                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                                        }
+                                    ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="semester" class="form-label">Semester</label>
+                                    <input type="text" class="form-control" name="semester"></input>
+                                </div>
+                                <div class="col">
+                                    <label for="reguler" class="form-label">Reguler</label>
+                                    <select id="reg" name="reg" class="form-select" aria-label="Kode REGULER"  onchange="updateJamOptions()">
+                                        <option selected>Pilih Reguler</option>
+                                        <option value="A">Reguler A</option>
+                                        <option value="B">Reguler B</option>
+                                        <option value="C">Reguler C</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <div class="mb-3">
+                        </div>
+                    </form>
+                </div>
+                
             </div>
-          </div>
-          <div class="mb-3">
-            <input type="submit" value="Submit" class="btn btn-primary">
-          </div>
-        </form>
-      </div><!-- End Master Kelas -->
-      
-      <nav aria-label="page-nav" class="card-nav">
-        <ul class="pagination pagination-lg justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
-          </li>
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">Master Kelas</span>
-          </li>
-        </ul>
-      </nav><!-- End Page Navigation -->
+        </div>
+    <!-- end of Master Kelas -->
 
+    <!-- page navigation -->
+        <nav aria-label="page-nav">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="prodi.php">Master Prodi</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="mkp.php">Master MKP</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="waktu.php">Master Waktu</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">Master Kelas</span>
+                </li>
+            </ul>
+        </nav>
+    <!-- end of page navigation -->
     </section>
 
   </main>
