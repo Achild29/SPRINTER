@@ -397,6 +397,47 @@
 
                   $stmt->close();
                   $connect->close();
+              } else {
+                $pekan = isset($_GET['pekan'])?$_GET['pekan']:'';
+                $sql = "
+                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, j.kode_kelas, j.dosen, l.nama_lab, j.pekan
+                FROM jadwal j
+                JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                JOIN mkp m ON j.kode_mkp = m.kode_mkp
+                JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                JOIN laboratorium l ON j.kode_lab = l.kode_lab
+                ";
+                $sql .= " WHERE l.username ='" . $user ."'";
+                if ($pekan !== '') {
+                  $sql .= " AND j.pekan = ?";
+                }
+                $sql .= " ORDER BY w.hari, w.jam_mulai";
+                $stmt = $connect->prepare($sql);
+                if ($pekan !== '') {                      
+                  $stmt->bind_param("i", $pekan);
+                }
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['hari'] . "</td>";
+                    echo "<td>" . $row['jam_mulai'] . "</td>";
+                    echo "<td>" . $row['jam_selesai'] . "</td>";
+                    echo "<td>" . $row['nama_prodi'] . "</td>";
+                    echo "<td>" . $row['nama_mkp'] . "</td>";
+                    echo "<td>" . $row['kode_kelas'] . "</td>";
+                    echo "<td>" . $row['dosen'] . "</td>";
+                    echo "<td>" . $row['nama_lab'] . "</td>";
+                    echo "<td>" . $row['pekan'] . "</td>";
+                    echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
+                }
+
+                $stmt->close();
+                $connect->close();
               }
             ?>
             </tbody>
