@@ -195,22 +195,34 @@
         </a>
       </li><!-- ======= Sidebar | End Dashboard ======= -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+    <!-- ======= Sidebar | Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="admin-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li>
+    <!-- ======= Sidebar | End Ajuan ======= -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+    <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="admin-jadwal.php">
-          <i class="bi bi-calendar4-event"></i>
-          <span>Jadwal</span>
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
-
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="admin-jadwal.php">
+              <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin-input-jadwal.php">
+              <i class="bi bi-circle"></i><span>Input Jadwal</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    <!-- ======= Sidebar | End Jadwal ======= -->
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
@@ -283,7 +295,7 @@
                     <a class="btn btn-success m-3"href="admin-master-mkp.php">Master MKP</a>
                     <a class="btn btn-success m-3"href="admin-master-waktu.php">Master Waktu</a>
                     <a class="btn btn-success m-3"href="admin-master-kelas.php">Master Kelas</a>
-                    <a class="btn btn-primary m-3"href="admin-jadwal.php">Input Jadwal</a>
+                    <a class="btn btn-primary m-3"href="admin-jadwal.php">Lihat Jadwal</a>
                 </div>
             </div>
         </div>

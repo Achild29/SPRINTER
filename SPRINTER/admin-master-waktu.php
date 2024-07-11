@@ -51,11 +51,11 @@
                 jam.innerHTML = ""; 
                 hari.innerHTML = "";
                 if (reg == "A" || reg == "B") {
-                    addOption(hari, "Senin", "Senin");
-                    addOption(hari, "Selasa", "Selasa");
-                    addOption(hari, "Rabu", "Rabu");
-                    addOption(hari, "Kamis", "Kamis");
-                    addOption(hari, "Jumat", "Jum'at");
+                    addOption(hari, "1. Senin", "Senin");
+                    addOption(hari, "2. Selasa", "Selasa");
+                    addOption(hari, "3. Rabu", "Rabu");
+                    addOption(hari, "4. Kamis", "Kamis");
+                    addOption(hari, "5. Jumat", "Jum'at");
                     if (reg == "A") {
                         addOption(jam, "1", "Jam ke-1 (07.10)");
                         addOption(jam, "2", "Jam ke-2 (08.50)");
@@ -72,10 +72,10 @@
                     addOption(jam, "3", "Jam ke-3 (11.00)");
                     addOption(jam, "4", "Jam ke-4 (12.40)");
                     addOption(jam, "5", "Jam ke-5 (14.20)");
-                    addOption(hari, "Kamis K-1", "Kamis K-1");
-                    addOption(hari, "Kamis K-2", "Kamis K-2");
-                    addOption(hari, "Sabtu K-1", "Sabtu K-1");
-                    addOption(hari, "Sabtu K-2", "Sabtu K-2");
+                    addOption(hari, "4Kamis K-1", "Kamis K-1");
+                    addOption(hari, "4Kamis K-2", "Kamis K-2");
+                    addOption(hari, "6Sabtu K-1", "Sabtu K-1");
+                    addOption(hari, "6Sabtu K-2", "Sabtu K-2");
                 } 
             }
             function addOption(selectbox, value, text) {
@@ -249,11 +249,23 @@
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="admin-jadwal.php">
-          <i class="bi bi-calendar4-event"></i>
-          <span>Jadwal</span>
-        </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                  <a href="admin-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="admin-input-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Input Jadwal</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      <!-- ======= Sidebar | End Jadwal ======= -->
 
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
