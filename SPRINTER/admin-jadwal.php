@@ -323,6 +323,40 @@
               </select>
             </div>
             </form>
+            
+            <div class="col-md-4 ms-auto">
+              <div class="row">
+                <div class="col">
+                  <?php if ($user == "darksystem") { ?>
+                  <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-success">Export to XLS</a>
+                  <?php } else { ?>
+                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-success">Export to XLS</a>
+                  <?php
+                  }
+                  ?>
+                </div>
+                <div class="col">
+                  <?php if ($user == "darksystem") { ?>
+                  <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-danger">Export to PDF</a>
+                  <?php } else {
+                    $kd_lab = "SELECT kode_lab FROM laboratorium WHERE username='" . $user . "'";
+                    $kdLab = "";
+                    $field = $connect->prepare($kd_lab);
+                    $field->execute();
+                    $res1 = $field->get_result();
+                    if ($res1->num_rows > 0) {
+                      while ($row = $res1->fetch_assoc()) {
+                        $kdLab .= $row['kode_lab'];
+                      }
+                    }
+                  ?>
+                    <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($kdLab) ?>" class="btn btn-danger">Export to PDF</a>
+                  <?php
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -344,59 +378,72 @@
             <tbody>
             <?php
               if ($user == "darksystem") {
-                $lab = isset($_GET['kode_lab']) ? $_GET['lab'] : '';
+                // Ambil nilai pekan dan kode_lab dari query string
+                $lab = isset($_GET['kode_lab']) ? $_GET['kode_lab'] : '';
                 $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
-                $sql = "
-                  SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, j.kode_kelas, j.dosen, l.nama_lab, j.pekan
+
+                // Buat query SQL dengan filter pekan
+                $query = "
+                  SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, l.nama_lab, kode_kelas, dosen, pekan
                   FROM jadwal j
-                  INNER JOIN waktu w ON j.kode_waktu = w.kode_waktu
-                  INNER JOIN mkp m ON j.kode_mkp = m.kode_mkp
-                  INNER JOIN prodi p ON m.kode_prodi = p.kode_prodi
-                  INNER JOIN laboratorium l ON j.kode_lab = l.kode_lab
+                  JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                  JOIN mkp m ON j.kode_mkp = m.kode_mkp
+                  JOIN laboratorium l ON j.kode_lab = l.kode_lab
+                  JOIN prodi p ON m.kode_prodi = p.kode_prodi
                 ";
-                if ($lab !== '' && $pekan !== '') {
-                  $sql .= " WHERE l.kode_lab = ?";
-                  $sql .= " AND j.pekan = ?";
-                } 
+
+                $where = [];
+                $params = [];
+                $types = '';
+
                 if ($lab !== '') {
-                  $sql .= " WHERE l.kode_lab = ?";
-                } 
+                  $where[] = 'j.kode_lab = ?';
+                  $params[] = $lab;
+                  $types .= 's';
+                }
+
                 if ($pekan !== '') {
-                  $sql .= " WHERE j.pekan = ?";
+                  $where[] = 'j.pekan = ?';
+                  $params[] = $pekan;
+                  $types .= 'i';
                 }
-                $sql .= " ORDER BY w.hari, w.jam_mulai";
-                $stmt = $connect->prepare($sql);
-                
-                if ($lab !== '') {                      
-                  $stmt->bind_param("i", $lab);
+
+                if (count($where) > 0) {
+                  $query .= ' WHERE ' . implode(' AND ', $where);
                 }
-                if ($pekan !== '') {                      
-                  $stmt->bind_param("i", $pekan);
+
+                $query .= " ORDER BY j.pekan, w.hari, w.jam_mulai";
+                // Prepare dan execute query
+                $stmt = $connect->prepare($query);
+
+                if (count($params) > 0) {
+                  $stmt->bind_param($types, ...$params);
                 }
+
                 $stmt->execute();
                 $result = $stmt->get_result();
 
-                  // Tampilkan hasil query
-                  if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                      echo "<tr>";
-                      echo "<td>" . $row['hari'] . "</td>";
-                      echo "<td>" . $row['jam_mulai'] . "</td>";
-                      echo "<td>" . $row['jam_selesai'] . "</td>";
-                      echo "<td>" . $row['nama_prodi'] . "</td>";
-                      echo "<td>" . $row['nama_mkp'] . "</td>";
-                      echo "<td>" . $row['kode_kelas'] . "</td>";
-                      echo "<td>" . $row['dosen'] . "</td>";
-                      echo "<td>" . $row['nama_lab'] . "</td>";
-                      echo "<td>" . $row['pekan'] . "</td>";
-                      echo "</tr>";
-                    }
-                  } else {
-                    echo "<tr><td colspan='5'>Tidak ada jadwal tersedia</td></tr>";
+                // Tampilkan hasil query
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['hari'] . "</td>";
+                    echo "<td>" . $row['jam_mulai'] . "</td>";
+                    echo "<td>" . $row['jam_selesai'] . "</td>";
+                    echo "<td>" . $row['nama_prodi'] . "</td>";
+                    echo "<td>" . $row['nama_mkp'] . "</td>";
+                    echo "<td>" . $row['kode_kelas'] . "</td>";
+                    echo "<td>" . $row['dosen'] . "</td>";
+                    echo "<td>" . $row['nama_lab'] . "</td>";
+                    echo "<td>" . $row['pekan'] . "</td>";
+                    echo "</tr>";
                   }
+                } else {
+                  echo "<tr><td colspan='8'>Tidak ada jadwal tersedia</td></tr>";
+                }
 
-                  $stmt->close();
-                  $connect->close();
+                $stmt->close();
+                $connect->close();
               } else {
                 $pekan = isset($_GET['pekan'])?$_GET['pekan']:'';
                 $sql = "
@@ -411,7 +458,7 @@
                 if ($pekan !== '') {
                   $sql .= " AND j.pekan = ?";
                 }
-                $sql .= " ORDER BY w.hari, w.jam_mulai";
+                $sql .= " ORDER BY j.pekan, w.hari, w.jam_mulai";
                 $stmt = $connect->prepare($sql);
                 if ($pekan !== '') {                      
                   $stmt->bind_param("i", $pekan);

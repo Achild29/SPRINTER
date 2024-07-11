@@ -207,7 +207,7 @@
         </a>
         <ul id="jadwal-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="admin-jadwal-new.php">
+            <a href="admin-jadwal.php">
               <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
             </a>
           </li>
