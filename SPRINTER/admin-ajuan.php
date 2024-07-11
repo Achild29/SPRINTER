@@ -41,6 +41,7 @@
 
   <!-- ====== Template Main CSS File ====== -->
   <link href="assets/css/admin-style.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -260,10 +261,7 @@
     </div><!-- End Page Title -->
 
     <section id="admin-ajuan" class="admin-ajuan">
-  <div class="container-fluid w-75 p5">
-        <div class="card" id="lihatAjuan">
-            <h5 class="card-header">List Ajuan</h5>
-            <div class="card-body">
+        <div id="ajuan" class="card-body">
                 <div class="mb-3">
                     <form action="" method="get">
                         <div class="col-md-3 d-flex align-items-end">
