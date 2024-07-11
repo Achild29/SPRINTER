@@ -7,7 +7,7 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-            
+          $user = $_SESSION['bagian'];
     ?>
 <!-- end of pengecekaan untuk session -->
 
@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -144,7 +144,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Admin</h6>
+              <h6>Hello <?php echo $user ?>!</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -205,11 +205,23 @@
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="admin-jadwal.php">
-          <i class="bi bi-calendar4-event"></i>
-          <span>Jadwal</span>
-        </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                  <a href="admin-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="admin-input-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Input Jadwal</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      <!-- ======= Sidebar | End Jadwal ======= -->
 
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
@@ -260,58 +272,63 @@
     </div><!-- End Page Title -->
 
     <section id="master-prodi" class="master-prodi">
-  <!-- Master Prodi -->
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div> -->
-            <div class="container-fluid w-75 p-5">
-            <div id="PRODI" class="card">
-                <h5 class="card-header">Master PRODI</h5>
-                <div class="card-body">
-                <form action="Controller/Prodi.php" method="post">
-                    <div class="mb-3">
-                        <label for="kode_prodi" class="form-label">Kode Prodi</label>
-                        <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="nama_prodi" class="form-label">Nama Prodi</label>
-                        <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pass" name="pass" >
-                    </div>
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                    <div class="mb-3">
-                        
-                    </div>
-                </form>
-                </div>
-                
+      
+      <div id="prodi" class="card-body">
+        <form action="Controller/Prodi.php" method="post">
+          <div class="mb-3">
+            <label for="kode_prodi" class="form-label">Kode Prodi</label>
+            <input type="text" class="form-control" name="kode_prodi" id="kode_prodi" >
+          </div>
+          <div class="mb-3">
+            <label for="nama_prodi" class="form-label">Nama Prodi</label>
+            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" >
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="password-wrapper">
+              <input type="password" class="form-control" id="pass" name="pass">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
-        </div>
-    <!-- end of Master Prodi -->
-    <!-- page navigation -->
-        <nav aria-label="page-nav">
-            <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">Master Prodi</span>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
-                </li>
-            </ul>
-        </nav>
-    <!-- end of page navigation -->
+          </div>
+          <div class="mb-3">
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </div>
+        </form>
+      </div><!-- End Master Prodi -->
+      
+      <nav aria-label="page-nav" class="card-nav">
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">Master Prodi</span>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-mkp.php">Master MKP</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
+          </li>
+        </ul>
+      </nav><!-- End Page Navigation -->
+
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      const togglePassword = document.getElementById("togglePassword");
+      const password = document.getElementById("pass");
+
+      togglePassword.addEventListener("click", function() {
+      
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+      
+        this.classList.toggle("bi-eye");
+      });
+    });
+    </script>
 
   </main>
     

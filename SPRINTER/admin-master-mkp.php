@@ -7,7 +7,7 @@
         }else if ($_SESSION['level'] != 'Admin'){
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
-            
+          $user = $_SESSION['bagian'];
     ?>
 <!-- end of pengecekaan untuk session -->
 
@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/admin-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -144,7 +144,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Admin</h6>
+              <h6>Hello <?php echo $user ?>!</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -205,11 +205,23 @@
 
       <!-- ======= Sidebar | Jadwal ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="admin-jadwal.php">
-          <i class="bi bi-calendar4-event"></i>
-          <span>Jadwal</span>
-        </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                  <a href="admin-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="admin-input-jadwal.php">
+                      <i class="bi bi-circle"></i><span>Input Jadwal</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      <!-- ======= Sidebar | End Jadwal ======= -->
 
       <!-- ======= Sidebar | Master ======= -->
       <li class="nav-item">
@@ -260,76 +272,55 @@
     </div><!-- End Page Title -->
 
     <section id="master-mkp" class="master-mkp">
-    <!-- Banner -->
-        <!-- <div id="carouselExampleIndicators" class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="images/labkom1.jpeg" class="d-block w-100" alt="...">
-                </div>
-            </div>
-        </div> -->
-    <!-- end of Banner -->
+    
+      <div id="mkp" class="card-body">
+        <form method="post" action="Controller/Mkp.php">
+          <div class="mb-3">
+            <label for="kode_prodi" class="form-label">PRODI</label>
+            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
+              <option selected value='Pilih Prodi'>Pilih Prodi</option>
+                <?php include 'koneksi.php';
+                    $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
+                    $field = $connect->prepare($query);
+                    $field->execute();
+                    $res1 = $field->get_result();
+                    while ($row = $res1->fetch_assoc()) {
+                      echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
+                    }
+                ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="nama_mkp" class="form-label">Nama MKP</label>
+            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp">
+          </div>
+          <div class="mb-3">
+            <label for="sks" class="form-label">SKS</label>
+            <input type="text" class="form-control" id="sks" name="sks">
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div><!-- End Master MKP -->
 
-    <!-- Master MKP -->
-            <!-- <div class="carousel-indicators gap-5 p-5">
-                <a href="prodi.php#PRODI" class="btn btn-success btn-lg">Master Prodi</a>
-                <a href="mkp.php#MKP" class="btn btn-success btn-lg">Master MKP</a>
-                <a href="waktu.php#WAKTU" class="btn btn-success btn-lg">Master Waktu</a>
-            </div> -->
-            <div class="container-fluid w-75 p-5">
-            <div id="MKP" class="card">
-                <h5 class="card-header">Master MKP</h5>
-                <div class="card-body">
-                    <form method="post" action="Controller/Mkp.php">
-                        <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">PRODI</label>
-                            <select class="form-select" aria-label="Kode PRODI" name="kode_prodi" require>
-                                <option selected>Pilih Prodi</option>
-                                    <?php include 'koneksi.php';
-                                        $query = "SELECT * FROM prodi ORDER BY kode_prodi ASC";
-                                        $field = $connect->prepare($query);
-                                        $field->execute();
-                                        $res1 = $field->get_result();
-                                        while ($row = $res1->fetch_assoc()) {
-                                            echo "<option value='" . $row['kode_prodi'] . "'>" . $row['nama_prodi'] . "</option>";
-                                        }
-                                    ?>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_mkp" class="form-label">Nama MKP</label>
-                            <input type="text" class="form-control" id="nama_mkp" name="nama_mkp"  >
-                        </div>
-                        <div class="mb-3">
-                            <label for="sks" class="form-label">SKS</label>
-                            <input type="text" class="form-control" id="sks" name="sks" >
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <!-- end of Master MKP -->
-    <!-- <br><br><br> -->
-
-    <!-- page navigation -->
-        <nav aria-label="page-nav">
-            <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">Master MKP</span>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
-                </li>
-            </ul>
-        </nav>
-    <!-- end of page navigation -->
+      <nav aria-label="page-nav" class="card-nav">
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="admin-master-prodi.php">Master Prodi</a>
+          </li>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">Master MKP</span>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-waktu.php">Master Waktu</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="admin-master-kelas.php">Master Kelas</a>
+          </li>
+        </ul>
+      </nav><!-- End Page Navigation -->
+    
     </section>
 
   </main>
