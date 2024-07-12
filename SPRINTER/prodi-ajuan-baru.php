@@ -17,7 +17,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ajuan - SPRINTER UNPAM</title>
+  <title>Form Ajuan Baru - SPRINTER UNPAM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,8 +38,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/prodi-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,13 +49,13 @@
 
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -69,7 +69,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -177,35 +177,36 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li>
+      </li><!-- End Sidebar Logo -->
       
-      <!-- ======= Sidebar | Beranda ======= -->
+      <!-- ======= Sidebar Beranda ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Beranda -->
 
-      <!-- ======= Sidebar | Ajuan ======= -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link " href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li>
+      </li><!-- EndSidebar Ajuan -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Jadwal -->
       
     </ul>
 
@@ -220,7 +221,7 @@
           <h1>AJUAN</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active">Halaman Pengajuan Praktikum Baru</li>
+              <li class="breadcrumb-item active">Halaman Form Pengajuan Praktikum Baru</li>
             </ol>
           </nav>
         </div>
@@ -228,129 +229,128 @@
     </div><!-- End Page Title -->
     
     <section id="ajuan-baru" class="ajuan-baru">
-      <!-- input ajuan -->
-      <div class="content">
-            <div id="inputAjuan" class="card">
-                <h5 class="card-header">form pengajuan baru</h5>
-                <div class="card-body">
-                    <form action="" method="GET">
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="mkp" class="form-label">Mata kuliah Praktikum</label>
-                                    <select class="form-select" aria-label="Kode PRODI" name="kode_mkp" required onchange="this.form.submit()">
-                                        <option>Pilih Mata kuliah praktikum</option>
-                                        <?php
-                                            include 'koneksi.php';
-                                            $query = "SELECT * FROM mkp WHERE kode_prodi = '$prodi'";
-                                            $field = $connect->prepare($query);
-                                            $field->execute();
-                                            $res2 = $field->get_result();
-                                            while ($row = $res2->fetch_assoc()) {
-                                                $showOptions="<option ";
-                                                if(isset($_GET['kode_mkp'])){
-                                                    if($row['kode_mkp']== $_GET['kode_mkp']){
-                                                        $showOptions.="selected ";
-                                                    }
-                                                }
-                                                $showOptions.="value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
-                                                echo ($showOptions);
-                                            }
-                                            ?>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="sks" class="form-label">sks</label>
-                                    <select id="sks" class="form-select" required disabled>
-                                        <?php
-                                        if (isset($_GET['kode_mkp'])) {
-                                            $kode_mkp = $_GET['kode_mkp'];
-                                            $query = "SELECT * FROM mkp WHERE kode_mkp = ?";
-                                            $field = $connect->prepare($query);
-                                            $field->bind_param("s", $kode_mkp);
-                                            $field->execute();
-                                            $res2 = $field->get_result();
-                                            while ($row = $res2->fetch_assoc()) {
-                                                echo "<option>" . $row['sks'] . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <form action="Controller/Pengajuan.php" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="kelas" class="form-label">kelas</label>
-                                    <select name="kelas" id="kode_kelas" class="form-select">
-                                      <option value="">Pilih kelas</option>
-                                        <?php
-                                            $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
-                                            $field = $connect->prepare($query);
-                                            $field->execute();
-                                            $res2 = $field->get_result();
-                                            while ($row = $res2->fetch_assoc()) {
-                                                echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="dosen" class="form-label">Dosen pengampu</label>
-                                    <input type="text" class="form-control" name="dosen"></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="col">
-                                <label for="kode_lab" class="form-label">Labrotarium</label>
-                                <Select name="kode_lab" id="kode PRODI" class="form-select">
-                                  <option value="">Pilih Labrotarium</option>
-                                  <?php
-                                            $query = "SELECT * FROM laboratorium";
-                                            $field = $connect->prepare($query);
-                                            $field->execute();
-                                            $res2 = $field->get_result();
-                                            while ($row = $res2->fetch_assoc()) {
-                                                echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
-                                            }
-                                        ?>
-                                </Select>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="col">
-                                <label for="rps" class="form-label">upload rps</label>
-                                <input class="form-control" type="file" id="rps" name="rps">
-                            </div>
-                            <div class="col">
-                                <input type="hidden" name="mkp"<?php
-                                    $kode_mkp = $_GET['kode_mkp'];
-                                    echo "value='".$kode_mkp."'";
-                                ?>
-                                >
-                                <input type="hidden" name="prodi"<?php
-                                    // $prodi = $_GET['kode_mkp'];
-                                    echo "value='".$prodi."'";
-                                ?>
-                                >
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+      <div id="ajuan-baru" class="card-body">
+        
+        <form action="" method="GET">
+          <div class="mb-3">
+            <div class="row">
+              <div class="col">
+                <label for="mkp" class="form-label">Mata Kuliah Praktikum</label>
+                <select class="form-select" aria-label="Kode PRODI" name="kode_mkp" required onchange="this.form.submit()">
+                  <option>Pilih Mata Kuliah Praktikum</option>
+                    <?php
+                        include 'koneksi.php';
+                        $query = "SELECT * FROM mkp WHERE kode_prodi = '$prodi'";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res2 = $field->get_result();
+                        while ($row = $res2->fetch_assoc()) {
+                          $showOptions="<option ";
+                          if(isset($_GET['kode_mkp'])){
+                            if($row['kode_mkp']== $_GET['kode_mkp']){
+                              $showOptions.="selected ";
+                            }
+                          }
+                          $showOptions.="value='" . $row['kode_mkp'] . "'>" . $row['nama_mkp'] . "</option>";
+                          echo ($showOptions);
+                        }
+                    ?>
+                </select>
+              </div>
+              <div class="col">
+                <label for="sks" class="form-label">SKS</label>
+                <select id="sks" class="form-select" required disabled>
+                  <?php
+                      if (isset($_GET['kode_mkp'])) {
+                        $kode_mkp = $_GET['kode_mkp'];
+                        $query = "SELECT * FROM mkp WHERE kode_mkp = ?";
+                        $field = $connect->prepare($query);
+                        $field->bind_param("s", $kode_mkp);
+                        $field->execute();
+                        $res2 = $field->get_result();
+                        while ($row = $res2->fetch_assoc()) {
+                          echo "<option>" . $row['sks'] . "</option>";
+                        }
+                      }
+                  ?>
+                </select>
+              </div>
             </div>
-        </div>
-    <!-- end of input ajuan -->
+          </div>
+        </form>
+        
+        <form action="Controller/Pengajuan.php" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <div class="row">
+              <div class="col">
+                <label for="kelas" class="form-label">Kelas</label>
+                <select name="kelas" id="kode_kelas" class="form-select">
+                  <option value="">Pilih Kelas</option>
+                    <?php
+                        $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res2 = $field->get_result(); 
+                        while ($row = $res2->fetch_assoc()) {
+                          echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                        }
+                    ?>
+                </select>
+              </div>
+              <div class="col">
+                <label for="dosen" class="form-label">Dosen Pengampu</label>
+                <input type="text" class="form-control" name="dosen"></input>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col">
+                <label for="kode_lab" class="form-label">Labrotarium</label>
+                <Select name="kode_lab" id="kode PRODI" class="form-select">
+                  <option value="">Pilih Labrotarium</option>
+                    <?php
+                        $query = "SELECT * FROM laboratorium";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res2 = $field->get_result(); 
+                        while ($row = $res2->fetch_assoc()) { 
+                          echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                        }
+                    ?>
+                </Select>
+              </div>
+              <div class="col">
+                <label for="rps" class="form-label">Upload RPS</label>
+                <input class="form-control" type="file" id="rps" name="rps">
+                <input type="hidden" name="mkp"
+                  <?php
+                      $kode_mkp = $_GET['kode_mkp'];
+                      echo "value='".$kode_mkp."'";
+                  ?>
+                >
+                <input type="hidden" name="prodi"
+                  <?php
+                      // $prodi = $_GET['kode_mkp'];
+                      echo "value='".$prodi."'";
+                  ?>
+                >
+              </div>
+              <div class="mb-3-3">
+                <input type="submit" value="Submit" class="btn btn-primary" Submit>
+              </div>
+            </div>
+          </div>
+        </form>
+      
+      </div>
     </section>
     
   </main><!-- ======= End #main ======= -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footerAjuan">
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
@@ -361,7 +361,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- ======= Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -371,7 +371,7 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
 </body>

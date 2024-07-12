@@ -121,7 +121,6 @@ h6 {
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings
 --------------------------------------------------------------*/
-/* Dropdown menus */
 .dropdown-menu {
   border-radius: 10px;
   animation-name: dropdown-animate;
@@ -500,7 +499,8 @@ h6 {
   
 .header-nav .profile .dropdown-item {
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 500;
   padding: 10px 15px;
   transition: 0.3s;
   color: #464646;
@@ -513,9 +513,14 @@ h6 {
   line-height: 0;
   color: #464646;
 }
-  
+
+.header-nav .profile .dropdown-item:hover i {
+  color: #007bff;
+}
+
 .header-nav .profile .dropdown-item:hover {
   background-color: #007bff37;
+  color: #007bff;
 }
   
 .header-nav .profile .dropdown-item.active i {
@@ -690,7 +695,6 @@ h6 {
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
-/* Filter dropdown */
 .dashboard .filter {
   position: absolute;
   right: 0px;
@@ -728,7 +732,6 @@ h6 {
   padding: 8px 15px;
 }
   
-/* Info Cards */
 .dashboard .info-card {
   padding-bottom: 10px;
 }
@@ -765,7 +768,6 @@ h6 {
   background: #ffecdf;
 }
   
-/* Activity */
 .dashboard .activity {
   font-size: 14px;
 }
@@ -815,38 +817,41 @@ h6 {
 /*--------------------------------------------------------------
 # Ajuan
 --------------------------------------------------------------*/
-.ajuan {
+.ajuan .card-body {
   background-color: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
+  margin-bottom: 260px;
 }
 
-.ajuan .btn.btn-ajuan {
-  font-size: 15px;
+.ajuan .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.ajuan .btn-ajuan {
+  padding: 10px 30px;
+  border-radius: 5px;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 16px;
   background-color: #28a745;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-left: 77px;
 }
 
-.ajuan .btn.btn-ajuan:hover {
+.ajuan .btn-ajuan:hover {
   background-color: #218838;
 }
 
-.ajuan .table-container {
-  margin-top: 20px;
-  overflow-x: auto;
+.ajuan .table {
+  margin-top: 10px;
 }
 
-.ajuan .table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #007bff;
-  border-collapse: collapse;
+.ajuan .table th,
+.ajuan .table td {
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  text-align: left;
 }
 
 .ajuan .table thead th {
@@ -855,255 +860,113 @@ h6 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: #fff;
-  border-bottom: 2px solid #007bff;
   background-color: #007bff;
-  padding: 10px 0 10px 15px;
-  text-align: left;
   text-transform: uppercase;
-  letter-spacing: -0.5px;
 }
 
-.ajuan .table tbody tr:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.ajuan .form-label {
-  display: block;
-  margin-bottom: 5px;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
+.ajuan .table tbody td {
+  font-size: 15px;
   font-weight: 500;
-  color: #ffffff;
-  text-transform: uppercase;
+  color: #464646;
+  font-family: "Inter", sans-serif;
 }
 
-.ajuan .form-select {
-  width: 25%;
+/*--------------------------------------------------------------
+# Form Ajuan Baru
+--------------------------------------------------------------*/
+.ajuan-baru .card-body {
+  background-color: #fff;
+  padding: 20px 25px 25px 25px;
+  border-radius: 10px;
+  margin-bottom: 140px;
+}
+
+.ajuan-baru .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.ajuan-baru .form-control {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 2px solid #007bff;
-  color: #007bff;
-  font-size: 15px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  /* margin-top: -5.5px; */
-}
-
-.ajuan .btn.btn-primary {
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-left: -680px; 
-  margin-right: 600px;
-}
-
-.ajuan .btn.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.footerAjuan {
-  margin-top: 365px;
-  padding: 17px 0;
-  font-size: 13px;
-  background: #007bff;
-  /* border-top: 1px solid #0c57d8; */
-}
-  
-.footerAjuan .copyright {
-  text-align: center;
-  color: #ffffff;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-}
-  
-.footerAjuan .credits {
-  padding-top: 0;
-  text-align: center;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #ffffff;
-}
-  
-.footerAjuan .credits a {
-  color: #fff700;
-  font-size: 15px;
   font-weight: 500;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .ajuan .col-md-3 {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .ajuan .btn.btn-primary {
-    width: 100%;
-    margin-left: 0;
-  }
+.ajuan-baru .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.ajuan-baru .mb-3-3:last-of-type {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.ajuan-baru .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.ajuan-baru .btn-primary:hover {
+  background-color: #0056b3;
+  border: 1.8px solid #0056b3;
 }
 
 /*--------------------------------------------------------------
 # Jadwal
 --------------------------------------------------------------*/
-.jadwal {
+.jadwal .card-body {
   background-color: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
+  margin-bottom: 150px;
 }
 
 .jadwal .form-select {
-  width: 80%;
   padding: 10px 15px;
-  font-size: 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  line-height: 1.5;
-  color: #007bff;
-  background-clip: padding-box;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  margin-top: -0.5px;
 }
 
-.jadwal .btn-primary,
-.jadwal .btn-fltr {
-  padding: 10px 20px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  border-radius: 5px;
-  transition: all 0.15s ease-in-out;  
-}
-
-.jadwal .btn-primary,
-.jadwal .btn-fltr {
-  color: #fff;
-  background-color: #007bff;
-  margin-left: -55px;
-}
-
-.jadwal .btn-primary:hover,
-.jadwal .btn-fltr:hover {
-  color: #fff;
-  background-color: #0056b3;
-}
-
-.jadwal .btn-success,
-.jadwal .btn-danger {
-  padding: 10px 20px;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  border-radius: 5px;
-  transition: all 0.15s ease-in-out;  
-}
-
-.jadwal .btn-success {
-  color: #fff;
-  background-color: #28a745;
-  margin-left: -20px;
-}
-
-.jadwal .btn-success:hover {
-  color: #fff;
-  background-color: #218838;
-}
-
-.jadwal .btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  margin-left: -10px;
-}
-
-.jadwal .btn-danger:hover {
-  color: #fff;
-  background-color: #c82333;
-}
-
-.jadwal table {
-  width: 100%;
-  margin-bottom: -5px;
-  color: #212529;
-  border-collapse: collapse;
-}
-
-.jadwal table th,
-.jadwal table td {
-  padding: 10px 15px;
-  vertical-align: top;
-  border: 2px solid #007bff;
-}
-
-.jadwal table th {
-  vertical-align: bottom;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #fff;
-  border-bottom: 2px solid #007bff;
-  background-color: #007bff;
-}
-
-.jadwal table tbody tr:nth-of-type(even) {
-  background-color: #f2f2f2;
-}
-
-/* 
-.jadwal .form-select {
-  width: 75%;
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 2px solid #007bff;
-  color: #007bff;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  margin-top: -0.5px;
+.jadwal .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
 }
 
 .jadwal .btn {
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-bottom: 5px;
-  margin-right: 30px;
-}
-
-.jadwal .btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  margin-left: 215px;
-}
-
-.jadwal .btn-primary:hover {
-  background-color: #0069d9;
-}
-
-.jadwal .btn-fltr {
-  background-color: #007bff;
-  color: #fff;
-  margin-left: 215px;
-}
-
-.jadwal .btn-fltr:hover {
-  background-color: #0069d9;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .jadwal .btn-success {
   background-color: #28a745;
-  color: #fff;
+  margin-right: 20px;
 }
 
 .jadwal .btn-success:hover {
@@ -1111,139 +974,115 @@ h6 {
 }
 
 .jadwal .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  margin-left: 60px;
+  background-color: #db3747;
 }
 
 .jadwal .btn-danger:hover {
-  background-color: #c82333;
+  background-color: #ba2130;
 }
 
-.jadwal table {
-  width: 100%;
-  margin-bottom: 20px;
-  color: #212529;
-  border-collapse: collapse;
+.jadwal .col {
+  text-align: right;
 }
 
-.jadwal table th,
-.jadwal table td {
+.jadwal .table {
+  margin-top: 10px;
+}
+
+.jadwal .table th,
+.jadwal .table td {
   padding: 10px 15px;
-  vertical-align: top;
   border: 2px solid #007bff;
+  text-align: left;
 }
 
-.jadwal table th {
-  vertical-align: bottom;
+.jadwal .table thead th {
+  font-size: 16px;
+  font-weight: 600;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
-  font-weight: 600;
   color: #fff;
-  border-bottom: 2px solid #007bff;
   background-color: #007bff;
+  text-transform: uppercase;
 }
 
-.jadwal table tbody tr:nth-of-type(even) {
-  background-color: #f2f2f2;
+.jadwal .table tbody td {
+  font-size: 15px;
+  font-weight: 500;
+  color: #464646;
+  font-family: "Inter", sans-serif;
 }
-
-.col-md-3 .mb-3 {
-  margin-inline-end: 100px; 
-} */
 
 /*--------------------------------------------------------------
 # Account Settings
 --------------------------------------------------------------*/
 .account-settings {
-  background-color: #d52d2d;
-  padding: 20px;
-  border-radius: 10px;
+  margin-bottom: 140px;
 }
 
-/* Labels and Inputs */
-.account-settings .col-form-label {
-  margin-left: -100px;
-  padding: 5px 0 20px 0;
-  font-size: 17px;
-  line-height: 1.5;
-  color: #007bff;
+.account-settings .card-body {
+  background-color: #fff;
+  padding: 20px 25px 25px 25px;
+  border-radius: 10px;
+  margin-bottom: 140px;
+}
+
+.account-settings .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
 }
 
 .account-settings .form-control {
-  display: block;
-  width: 100%;
-  padding: 10px 0 10px 0;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
-/* Position Relative for Icons */
-.account-settings .position-relative {
+.account-settings .password-wrapper {
   position: relative;
 }
 
-.account-settings .position-absolute {
+.account-settings .password-wrapper input {
+  padding-right: 2rem; 
+}
+
+.account-settings .password-wrapper i {
   position: absolute;
-}
-
-
-.account-settings .end-0 {
-  right: 0;
-}
-
-.account-settings .translate-middle-y {
+  top: 48%;
+  right: 15px; 
   transform: translateY(-50%);
-}
-
-.account-settings .me-2 {
-  margin-right: .5rem;
-}
-
-.account-settings .cursor-pointer {
   cursor: pointer;
+  color: #007bff;
+  font-size: 25px;
 }
 
-/* Button Styles */
+.account-settings .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
 .account-settings .btn-primary {
-  color: #c41515;
+  width: 100%;
   background-color: #007bff;
-  border-color: #007bff;
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
 }
 
 .account-settings .btn-primary:hover {
-  color: #d31f1f;
-  background-color: #0056b3;
-  border-color: #004085;
-}
-
-.account-settings .text-center {
-  text-align: center;
-}
-
-/* Bootstrap Icons */
-.account-settings .bi-eye-slash,
-.account-settings .bi-eye {
-  font-size: 1.25rem;
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
 }
 
 /*--------------------------------------------------------------
@@ -1253,7 +1092,6 @@ h6 {
   padding: 17px 0;
   font-size: 13px;
   background: #007bff;
-  /* border-top: 1px solid #0c57d8; */
 }
   
 .footer .copyright {

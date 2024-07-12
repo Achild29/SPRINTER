@@ -38,8 +38,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/prodi-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,13 +49,13 @@
 
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -69,7 +69,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -177,35 +177,36 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li>
+      </li><!-- End Sidebar Logo -->
       
-      <!-- ======= Sidebar | Beranda ======= -->
+      <!-- ======= Sidebar Beranda ======= -->
       <li class="nav-item">
         <a class="nav-link " href="beranda.php">
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Beranda -->
 
-      <!-- ======= Sidebar | Ajuan ======= -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Ajuan -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Jadwal -->
       
     </ul>
 

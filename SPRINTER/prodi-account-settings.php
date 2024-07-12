@@ -38,8 +38,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/prodi-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,13 +49,13 @@
 
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -69,7 +69,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -177,35 +177,36 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li>
+      </li><!-- End Sidebar Logo -->
       
-      <!-- ======= Sidebar | Beranda ======= -->
+      <!-- ======= Sidebar Beranda ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Beranda -->
 
-      <!-- ======= Sidebar | Ajuan ======= -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Ajuan -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Jadwal -->
       
     </ul>
 
@@ -228,67 +229,59 @@
     </div><!-- End Page Title -->
     
     <section id="account-settings" class="account-settings">
-      <div class="row">
-
-        <form>
-          <div class="row mb-3">
-            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="password" type="password" class="form-control" id="currentPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('currentPassword')">
-                <i class="bi bi-eye-slash" id="toggleCurrentPassword"></i>
-              </span>
+      
+      <div id="account-settings" class="card-body">
+        <form action="" method="post">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <div class="password-wrapper">
+            <input name="password" type="password" class="form-control" id="currentPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="row mb-3">
-            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="newpassword" type="password" class="form-control" id="newPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('newPassword')">
-                <i class="bi bi-eye-slash" id="toggleNewPassword"></i>
-              </span>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <div class="password-wrapper">
+            <input name="newpassword" type="password" class="form-control" id="newPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="row mb-3">
-            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">*Re-enter New Password</label>
-            <div class="col-md-8 col-lg-9 position-relative">
-              <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-              <span class="position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" onclick="togglePasswordVisibility('renewPassword')">
-                <i class="bi bi-eye-slash" id="toggleRenewPassword"></i>
-              </span>
+          <div class="mb-3">
+            <label for="renewPassword" class="form-label">*Re-enter New Password</label>
+            <div class="password-wrapper">
+            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
-
-          <div class="text-center">
+          <div class="mb-3">
             <button type="submit" class="btn btn-primary">Change Password</button>
           </div>
         </form>
-        
       </div>
-    </section>
-
-    <script>
-    function togglePasswordVisibility(id) {
-      const passwordField = document.getElementById(id);
-      const toggleIcon = document.getElementById('toggle' + id.charAt(0).toUpperCase() + id.slice(1));
       
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleIcon.classList.remove("bi-eye-slash");
-        toggleIcon.classList.add("bi-eye");
-      } else {
-        passwordField.type = "password";
-        toggleIcon.classList.remove("bi-eye");
-        toggleIcon.classList.add("bi-eye-slash");
-      }}
+    </section>
+    
+    <script>
+        document.querySelectorAll('.password-wrapper i').forEach(item => {
+            item.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('bi-eye-slash');
+                    this.classList.add('bi-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('bi-eye');
+                    this.classList.add('bi-eye-slash');
+                }
+            });
+        });
     </script>
 
   </main><!-- ======= End #main ======= -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footerAjuan">
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
@@ -299,7 +292,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- ======= Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -309,7 +302,7 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
 </body>

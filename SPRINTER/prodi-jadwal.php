@@ -38,8 +38,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/prodi-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,17 +47,15 @@
   <!-- ====== Header ====== -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Logo -->
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
-        <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -71,7 +69,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -179,36 +177,36 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <!-- ======= Sidebar | Logo ======= -->
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li><!-- ======= Sidebar | End Logo ======= -->
+      </li><!-- End Sidebar Logo -->
       
-      <!-- ======= Sidebar | Beranda ======= -->
+      <!-- ======= Sidebar Beranda ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li><!-- ======= Sidebar | End Dashboard ======= -->
+      </li><!-- End Sidebar Beranda -->
 
-      <!-- ======= Sidebar | Ajuan ======= -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li><!-- EndSidebar Ajuan -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal ======= -->
       <li class="nav-item">
         <a class="nav-link " href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li><!-- ======= Sidebar | End Jadwal ======= -->
+      </li><!-- End Sidebar Jadwal -->
       
     </ul>
 
@@ -216,7 +214,7 @@
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
-  
+    
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -228,144 +226,143 @@
           </nav>
         </div>
       </div>
-    </div>
-    
-    <!-- End Page Title -->
+    </div><!-- End Page Title -->
 
-<section class="section jadwal">
-  <div class="mb-3">
-    <form action="" method="get">
-      <div class="row">
-        <div class="col-md-3">
-          <select class="form-select" id="pekan" name="kode_lab" required onchange="this.form.submit()">
-            <option value="">Laboratorium</option>
-            <?php 
-            include 'koneksi.php';
-            // Query untuk mengambil daftar laboratorium dari tabel jadwal
-            $queryLab = "SELECT DISTINCT kode_lab FROM jadwal ORDER BY kode_lab";
-            $resultLab = $connect->query($queryLab);
-            if ($resultLab->num_rows > 0) {
-              while ($rowLab = $resultLab->fetch_assoc()) {
-                $selected = isset($_GET['kode_lab']) && $_GET['kode_lab'] == $rowLab['kode_lab'] ? 'selected' : '';
-                echo "<option value='" . $rowLab['kode_lab'] . "' $selected>" . $rowLab['kode_lab'] . "</option>";
-              }
-            }
-            ?>
-          </select>
+    <section id="jadwal" class="jadwal">
+      <div id="jadwal" class="card-body">
+
+        <div class="mb-3">
+          <form action="" method="get">
+            <div class="row">
+              <div class="col-md-3">
+                <select class="form-select" id="pekan" name="kode_lab" required onchange="this.form.submit()">
+                  <option value="">Laboratorium</option>
+                  <?php 
+                      include 'koneksi.php';
+                      // Query untuk mengambil daftar laboratorium dari tabel jadwal
+                      $queryLab = "SELECT DISTINCT kode_lab FROM jadwal ORDER BY kode_lab";
+                      $resultLab = $connect->query($queryLab);
+                      if ($resultLab->num_rows > 0) {
+                        while ($rowLab = $resultLab->fetch_assoc()) {
+                          $selected = isset($_GET['kode_lab']) && $_GET['kode_lab'] == $rowLab['kode_lab'] ? 'selected' : '';
+                          echo "<option value='" . $rowLab['kode_lab'] . "' $selected>" . $rowLab['kode_lab'] . "</option>";
+                        }
+                      }
+                  ?>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select" id="pekan" name="pekan" required onchange="this.form.submit()">
+                  <option value="">Pekan</option>
+                  <?php 
+                      // Query untuk mengambil daftar pekan dari tabel jadwal
+                      $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
+                      $resultPekan = $connect->query($queryPekan);
+                      if ($resultPekan->num_rows > 0) {
+                        while ($rowPekan = $resultPekan->fetch_assoc()) {
+                          $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
+                          echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
+                        }
+                      }
+                  ?>
+                </select>
+              </div>
+              <div class="col">
+                <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">Export to Excel</a>
+                <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">Export to PDF</a>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="col-md-3">
-          <select class="form-select" id="pekan" name="pekan" required onchange="this.form.submit()">
-            <option value="">Pekan</option>
-            <?php 
-            // Query untuk mengambil daftar pekan dari tabel jadwal
-            $queryPekan = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan";
-            $resultPekan = $connect->query($queryPekan);
-            if ($resultPekan->num_rows > 0) {
-              while ($rowPekan = $resultPekan->fetch_assoc()) {
-                $selected = isset($_GET['pekan']) && $_GET['pekan'] == $rowPekan['pekan'] ? 'selected' : '';
-                echo "<option value='" . $rowPekan['pekan'] . "' $selected>Pekan " . $rowPekan['pekan'] . "</option>";
-              }
-            }
-            ?>
-          </select>
+
+        <div class="mb-3 table-container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Hari</th>
+                <th>Jam Mulai</th>
+                <th>Jam Selesai</th>
+                <th>Prodi</th>
+                <th>Mata Kuliah</th>
+                <th>Laboratorium</th>
+                <th>Kelas</th>
+                <th>Dosen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                  // Ambil nilai pekan dan kode_lab dari query string
+                  $lab = isset($_GET['kode_lab']) ? $_GET['kode_lab'] : '';
+                  $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
+
+                  // Buat query SQL dengan filter pekan
+                  $query = "
+                    SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, l.nama_lab, kode_kelas, dosen
+                    FROM jadwal j
+                    JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                    JOIN mkp m ON j.kode_mkp = m.kode_mkp
+                    JOIN laboratorium l ON j.kode_lab = l.kode_lab
+                    JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                  ";
+                  
+                  $where = [];
+                  $params = [];
+                  $types = '';
+
+                  if ($lab !== '') {
+                    $where[] = 'j.kode_lab = ?';
+                    $params[] = $lab;
+                    $types .= 's';
+                  }
+
+                  if ($pekan !== '') {
+                    $where[] = 'j.pekan = ?';
+                    $params[] = $pekan;
+                    $types .= 'i';
+                  }
+
+                  if (count($where) > 0) {
+                    $query .= ' WHERE ' . implode(' AND ', $where);
+                  }
+
+                  $query .= " ORDER BY w.hari, w.jam_mulai";
+                  // Prepare dan execute query
+                  $stmt = $connect->prepare($query);
+
+                  if (count($params) > 0) {
+                    $stmt->bind_param($types, ...$params);
+                  }
+
+                  $stmt->execute();
+                  $result = $stmt->get_result();
+
+                  // Tampilkan hasil query
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<tr>";
+                      echo "<td>" . $row['hari'] . "</td>";
+                      echo "<td>" . $row['jam_mulai'] . "</td>";
+                      echo "<td>" . $row['jam_selesai'] . "</td>";
+                      echo "<td>" . $row['nama_prodi'] . "</td>";
+                      echo "<td>" . $row['nama_mkp'] . "</td>";
+                      echo "<td>" . $row['nama_lab'] . "</td>";
+                      echo "<td>" . $row['kode_kelas'] . "</td>";
+                      echo "<td>" . $row['dosen'] . "</td>";
+                      echo "</tr>";
+                    }
+                  } else {
+                    echo "<tr><td colspan='8'>Tidak ada jadwal tersedia</td></tr>";
+                  }
+
+                   $stmt->close();
+                  $connect->close();
+              ?>
+            </tbody>
+          </table>
         </div>
-        <div class="col-md-3 ms-auto">
-          <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-success">Export to Excel</a>
-        </div>
-        <div class="col-md-3 ms-auto">
-          <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>" class="btn btn-danger">Export to PDF</a>
-        </div>
+      
       </div>
-    </form>
-  </div>
-
-  <div class="mb-3 table-container">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Hari</th>
-          <th>Jam Mulai</th>
-          <th>Jam Selesai</th>
-          <th>Prodi</th>
-          <th>Mata Kuliah</th>
-          <th>Laboratorium</th>
-          <th>Kelas</th>
-          <th>Dosen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        // Ambil nilai pekan dan kode_lab dari query string
-        $lab = isset($_GET['kode_lab']) ? $_GET['kode_lab'] : '';
-        $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
-
-        // Buat query SQL dengan filter pekan
-        $query = "
-          SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, l.nama_lab, kode_kelas, dosen
-          FROM jadwal j
-          JOIN waktu w ON j.kode_waktu = w.kode_waktu
-          JOIN mkp m ON j.kode_mkp = m.kode_mkp
-          JOIN laboratorium l ON j.kode_lab = l.kode_lab
-          JOIN prodi p ON m.kode_prodi = p.kode_prodi
-        ";
-
-        $where = [];
-        $params = [];
-        $types = '';
-
-        if ($lab !== '') {
-          $where[] = 'j.kode_lab = ?';
-          $params[] = $lab;
-          $types .= 's';
-        }
-
-        if ($pekan !== '') {
-          $where[] = 'j.pekan = ?';
-          $params[] = $pekan;
-          $types .= 'i';
-        }
-
-        if (count($where) > 0) {
-          $query .= ' WHERE ' . implode(' AND ', $where);
-        }
-
-        $query .= " ORDER BY w.hari, w.jam_mulai";
-        // Prepare dan execute query
-        $stmt = $connect->prepare($query);
-
-        if (count($params) > 0) {
-          $stmt->bind_param($types, ...$params);
-        }
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Tampilkan hasil query
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $row['hari'] . "</td>";
-            echo "<td>" . $row['jam_mulai'] . "</td>";
-            echo "<td>" . $row['jam_selesai'] . "</td>";
-            echo "<td>" . $row['nama_prodi'] . "</td>";
-            echo "<td>" . $row['nama_mkp'] . "</td>";
-            echo "<td>" . $row['nama_lab'] . "</td>";
-            echo "<td>" . $row['kode_kelas'] . "</td>";
-            echo "<td>" . $row['dosen'] . "</td>";
-            echo "</tr>";
-          }
-        } else {
-          echo "<tr><td colspan='8'>Tidak ada jadwal tersedia</td></tr>";
-        }
-
-        $stmt->close();
-        $connect->close();
-        ?>
-      </tbody>
-    </table>
-  </div>
-</section>
-
+    </section>
 
   </main><!-- ======= End #main ======= -->
 
@@ -381,7 +378,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- ======= Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -391,7 +388,7 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
 </body>

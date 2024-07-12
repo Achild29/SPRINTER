@@ -38,8 +38,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/prodi.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/prodi-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,13 +49,13 @@
 
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -69,7 +69,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -177,35 +177,36 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="beranda.php">
           <img src="assets/img/Logo Unpam.png">
         </a>
-      </li>
+      </li><!-- End Sidebar Logo -->
       
-      <!-- ======= Sidebar | Beranda ======= -->
+      <!-- ======= Sidebar Beranda ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="beranda.php">
           <i class="bi bi-columns-gap"></i>
           <span>Beranda</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Beranda -->
 
-      <!-- ======= Sidebar | Ajuan ======= -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link " href="prodi-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
           <span>Ajuan</span>
         </a>
-      </li>
+      </li><!-- EndSidebar Ajuan -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="prodi-jadwal.php">
           <i class="bi bi-calendar4-event"></i>
           <span>Jadwal</span>
         </a>
-      </li>
+      </li><!-- End Sidebar Jadwal -->
       
     </ul>
 
@@ -228,61 +229,65 @@
     </div><!-- End Page Title -->
     
     <section id="ajuan" class="ajuan">
-    <div class="col-md-3">
-      <button type="submit" class="btn btn-primary">Filter</button>
-      <a href="prodi-ajuan-baru.php" class="btn btn-ajuan">Buat Pengajuan Baru</a>
-    </div>    
-      <div class="mb-3 table-container">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Kode Ajuan</th>
-              <th>Kode Kelas</th>
-              <th>Mata Kuliah Praktikum</th>
-              <th>laboratorium</th>
-              <th>Dosen Pengampu</th>
-              <th>Status Ajuan</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            include 'koneksi.php';
-            $query = "
-            SELECT a.kode_ajuan, p.kode_prodi, k.kode_kelas, m.nama_mkp, l.nama_lab, dosen, status_ajuan 
-            FROM ajuan a
-            JOIN kelas k ON a.kode_kelas = k.kode_kelas 
-            JOIN mkp m ON a.kode_mkp = m.kode_mkp
-            JOIN laboratorium l ON a.kode_lab = l.kode_lab
-            JOIN prodi p ON m.kode_prodi = p.kode_prodi
-            WHERE a.kode_prodi = '$prodi';";
+      <div id="ajuan" class="card-body">
+
+        <div class="mb-3">
+          <a href="prodi-ajuan-baru.php" class="btn btn-ajuan">Buat Pengajuan Baru</a>
+        </div>    
+        <div class="mb-3 table-container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Kode Ajuan</th>
+                <th>Kode Kelas</th>
+                <th>Mata Kuliah Praktikum</th>
+                <th>laboratorium</th>
+                <th>Dosen Pengampu</th>
+                <th>Status Ajuan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                  include 'koneksi.php';
+                  $query = "
+                    SELECT a.kode_ajuan, p.kode_prodi, k.kode_kelas, m.nama_mkp, l.nama_lab, dosen, status_ajuan 
+                    FROM ajuan a
+                    JOIN kelas k ON a.kode_kelas = k.kode_kelas 
+                    JOIN mkp m ON a.kode_mkp = m.kode_mkp
+                    JOIN laboratorium l ON a.kode_lab = l.kode_lab
+                    JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                    WHERE a.kode_prodi = '$prodi';
+                  ";
             
-            $field = $connect->prepare($query);
-            $field->execute();
-            $result = $field->get_result();
-            if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row['kode_ajuan'] . "</td>";
-                echo "<td>" . $row['kode_kelas'] . "</td>";
-                echo "<td>" . $row['nama_mkp'] . "</td>";
-                echo "<td>" . $row['nama_lab'] . "</td>";
-                echo "<td>" . $row['dosen'] . "</td>";
-                echo "<td>" . $row['status_ajuan'] . "</td>";
-                echo "</tr>";
-              }
-            } else {
-              echo "<tr><td colspan='5'>Tidak ada Pengajuan tersedia</td></tr>";
-            }
-            ?>
-          </tbody>
-        </table>
+                  $field = $connect->prepare($query);
+                  $field->execute();
+                  $result = $field->get_result();
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<tr>";
+                      echo "<td>" . $row['kode_ajuan'] . "</td>";
+                      echo "<td>" . $row['kode_kelas'] . "</td>";
+                      echo "<td>" . $row['nama_mkp'] . "</td>";
+                      echo "<td>" . $row['nama_lab'] . "</td>";
+                      echo "<td>" . $row['dosen'] . "</td>";
+                      echo "<td>" . $row['status_ajuan'] . "</td>";
+                      echo "</tr>";
+                    }
+                  } else {
+                    echo "<tr><td colspan='5'>Tidak ada Pengajuan tersedia</td></tr>";
+                  }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      
       </div>
     </section>
     
   </main><!-- ======= End #main ======= -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footerAjuan">
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
@@ -293,7 +298,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- ======= Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -303,7 +308,7 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
 </body>
