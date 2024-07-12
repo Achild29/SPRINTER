@@ -271,7 +271,7 @@
                             <?php
                                 include 'koneksi.php';
                                 // Query untuk menambil prodi
-                                $sql = "SELECT * FROM prodi";
+                                $sql = "SELECT kode_prodi, nama_prodi FROM prodi";
                                 $field = $connect->prepare($sql);
                                 $field->execute();
                                 $res1 = $field->get_result();
@@ -309,7 +309,7 @@
                                     FROM ajuan a
                                     JOIN prodi p on a.kode_prodi = p.kode_prodi
                                     JOIN mkp m on a.kode_mkp = m.kode_mkp
-                                    where status_ajuan = 'diproses'
+                                    where status_ajuan = 'On Process'
                                 ";
 
                                 //Tambahkan kondisi WHERE jika prodi dipilih
@@ -318,6 +318,7 @@
                                 }
 
                                 $stmt = $connect->prepare($sqlQuery);
+                                
 
                                 // Bind paramater jika prodi dipilih
                                 if ($prodi !== '') {
@@ -344,7 +345,7 @@
                                 } else {
                                     echo "<tr><td colspan='7'>Tidak ada ajuan tersedia</td></tr>";
                                 }
-                                $stt->close();
+                                $stmt->close();
                                 $connect->close();
                             ?>
                         </tbody>
