@@ -12,5 +12,5 @@ $msg = $_POST['msg'];
 
 $sql = "UPDATE ajuan set status_ajuan ='MAAF ajuan anda DITOLAK karena $msg' where kode_ajuan ='$kd'";
 $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
-header("location: ../lihatAjuan.php")
+header("location: ../admin-Ajuan.php")
 ?>
