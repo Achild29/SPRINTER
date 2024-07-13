@@ -39,8 +39,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/admin-style.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/style-admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -186,6 +186,13 @@
           <img src="assets/img/Logo Unpam.png">
         </a>
       </li><!-- ======= Sidebar | End Logo ======= -->
+
+      <!-- ======= Sidebar Name Information ======= -->
+      <li class="nav-name">
+        <a class="nav-name">
+          <h1>LAB. SISTEM INFORMASI</h1>
+        </a>
+      </li><!-- End Sidebar Name Information -->
       
       <!-- ======= Sidebar | Dashboard ======= -->
       <li class="nav-item">
@@ -203,32 +210,31 @@
         </a>
       </li><!-- ======= Sidebar | End Jadwal ======= -->
 
-      <!-- ======= Sidebar | Jadwal ======= -->
+      <!-- ======= Sidebar Jadwal Dropdown ======= -->
       <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#jadwal-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="jadwal-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="admin-jadwal.php">
+              <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
             </a>
-            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="admin-jadwal.php">
-                        <i class="bi bi-circle"></i><span>Lihat Jadwal</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="admin-input-jadwal.php">
-                        <i class="bi bi-circle"></i><span>Input Jadwal</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- ======= Sidebar | End Jadwal ======= -->
+          </li>
+          <li>
+            <a href="admin-input-jadwal.php">
+              <i class="bi bi-circle"></i><span>Input Jadwal</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Sidebar Jadwal Dropdown -->
 
-      <!-- ======= Sidebar | Master ======= -->
+      <!-- ======= Sidebar Master Dropdown ======= -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#master-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="master-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="admin-master-prodi.php">
               <i class="bi bi-circle"></i><span>Master PRODI</span>
@@ -250,7 +256,7 @@
             </a>
           </li>
         </ul>
-      </li><!-- ======= Sidebar | End Master ======= -->
+      </li><!-- End Sidebar Master Dropdown -->
     </ul>
 
   </aside><!-- ======= End Sidebar ======= -->

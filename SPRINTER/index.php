@@ -39,8 +39,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- ====== Template Main CSS File ====== -->
-  <link href="assets/css/admin-style.css" rel="stylesheet">
+  <!-- ====== Main CSS File ====== -->
+  <link href="assets/css/style-admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -183,6 +183,13 @@
           <img src="assets/img/Logo Unpam.png">
         </a>
       </li><!-- End Sidebar Logo -->
+
+      <!-- ======= Sidebar Name Information ======= -->
+      <li class="nav-name">
+        <a class="nav-name">
+          <h1>LAB. SISTEM INFORMASI</h1>
+        </a>
+      </li><!-- End Sidebar Name Information -->
 
       <!-- Sidebar Dashboard -->
       <li class="nav-item">
