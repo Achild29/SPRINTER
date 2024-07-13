@@ -9,6 +9,8 @@
         }else if ($_SESSION['level'] == 'Admin'){
             $user = $_SESSION['bagian'];
             include 'koneksi.php';
+            // $kode_ajuan = "";
+
     ?>
 <!-- ====== End Pengecekaan Untuk Session ====== -->
 
@@ -185,7 +187,7 @@
                 <!-- End Sidebar Dashboard -->
                 <!-- Sidebar Ajuan -->
                 <li class="nav-item">
-                    <a class="nav-link" href="admin-ajuan.php">
+                    <a class="nav-link" href="admin-lihat-ajuan.php">
                         <i class="bi bi-calendar2-plus"></i>
                         <span>Ajuan</span>
                     </a>
@@ -200,7 +202,7 @@
                     </a>
                     <ul id="jadwal-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="admin-jadwal-new.php">
+                            <a href="admin-jadwal.php">
                                 <i class="bi bi-circle"></i>
                                 <span>Lihat Jadwal</span>
                             </a>
@@ -383,7 +385,9 @@
 
                                         // Tampilkan hasil query
                                         if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) { ?>
+                                        while ($row = $result->fetch_assoc()) { 
+                                            // $kode_ajuan .= $row['kode_ajuan'];
+                                            ?>
                                                 <tr>
                                                     <td><?php echo ($row['kode_ajuan']) ?></td>
                                                     <td><?php echo ($row['status_ajuan']) ?></td>
@@ -399,15 +403,22 @@
                                                     </td>
                                                     <td><?php echo ($row['nama_lab']) ?></td>
                                                     <td>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <a href="" style="color: green;">accept
-                                                                </a>
+                                                    <?php
+                                                        if ($row['status_ajuan'] == "On Process") { ?>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <a href="admin-ajuan.php?kda=<?php echo ($row['kode_ajuan'])?>" style="color: green;">accept
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <a href="" style="color: red;">reject</a>
+                                                                </div>
                                                             </div>
-                                                            <div class="col">
-                                                                <a href="" style="color: red;">reject</a>
-                                                            </div>
-                                                        </div>
+                                                        <?php
+                                                        } else {
+                                                            echo "no need action";
+                                                        }
+                                                    ?>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -511,15 +522,22 @@
                                                 </td>
                                                 <td><?php echo ($row['nama_lab']) ?></td>
                                                 <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <a href="" style="color: green;">accept
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="" style="color: red;">reject</a>
-                                                        </div>
-                                                    </div>
+                                                    <?php
+                                                        if ($row['status_ajuan'] == "On Process") { ?>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <a href="admin-ajuan.php?kda=<?php echo ($row['kode_ajuan'])?>" style="color: green;">accept
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <a href="" style="color: red;">reject</a>
+                                                                </div>
+                                                            </div>
+                                                        <?php
+                                                        } else {
+                                                            echo "no need action";
+                                                        }
+                                                    ?>
                                                 </td>
                                             </tr>
                                         <!-- end of isi dari table -->

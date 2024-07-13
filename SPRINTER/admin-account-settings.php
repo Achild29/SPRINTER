@@ -274,29 +274,35 @@
     <section id="account-settings" class="account-settings">
       
       <div id="account-settings" class="card-body">
-        <form action="" method="post">
+        <form action="Controller/changePassword.php" method="post">
           <div class="mb-3">
             <label for="currentPassword" class="form-label">Current Password</label>
             <div class="password-wrapper">
-            <input name="password" type="password" class="form-control" id="currentPassword">
+            <input name="oldPassword" type="password" class="form-control" id="currentPassword" required>
               <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
           <div class="mb-3">
             <label for="newPassword" class="form-label">New Password</label>
             <div class="password-wrapper">
-            <input name="newpassword" type="password" class="form-control" id="newPassword">
+            <input name="newPassword" type="password" class="form-control" id="newPassword" required>
               <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
           <div class="mb-3">
             <label for="renewPassword" class="form-label">*Re-enter New Password</label>
             <div class="password-wrapper">
-            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+            <input name="renewPassword" type="password" class="form-control" id="renewPassword" required>
               <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
           </div>
           <div class="mb-3">
+            <input type="hidden" name="user"
+            <?php
+              echo "value='".$user."'";
+            ?>
+            >
+            <input type="hidden" name="level" value="Admin">
             <button type="submit" class="btn btn-primary">Change Password</button>
           </div>
         </form>
