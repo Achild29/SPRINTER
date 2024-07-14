@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -234,7 +234,7 @@
         <ul id="master-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="admin-master-prodi.php">
-              <i class="bi bi-circle"></i><span>Master PRODI</span>
+              <i class="bi bi-circle"></i><span>Master Prodi</span>
             </a>
           </li>
           <li>
@@ -244,12 +244,12 @@
           </li>
           <li>
             <a href="admin-master-waktu.php">
-              <i class="bi bi-circle"></i><span>Master WAKTU</span>
+              <i class="bi bi-circle"></i><span>Master Waktu</span>
             </a>
           </li>
           <li>
             <a href="admin-master-kelas.php">
-              <i class="bi bi-circle"></i><span>Master KELAS</span>
+              <i class="bi bi-circle"></i><span>Master Kelas</span>
             </a>
           </li>
         </ul>
@@ -304,7 +304,7 @@
         </div>
     <!-- end of Master Prodi -->
 
-  </main>
+  </main><!-- ======= End #main ======= -->
     
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -318,7 +318,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!--=======  Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -328,11 +328,13 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
-    </body>
+</body>
+
 </html>
+
 <?php
     }
 ?>

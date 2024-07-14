@@ -926,48 +926,6 @@ h6 {
   background-color: #0056b3;
 }
 
-.footerAjuan {
-  margin-top: 365px;
-  padding: 17px 0;
-  font-size: 13px;
-  background: #007bff;
-  /* border-top: 1px solid #0c57d8; */
-}
-  
-.footerAjuan .copyright {
-  text-align: center;
-  color: #ffffff;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-}
-  
-.footerAjuan .credits {
-  padding-top: 0;
-  text-align: center;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #ffffff;
-}
-  
-.footerAjuan .credits a {
-  color: #fff700;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .ajuan .col-md-3 {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .ajuan .btn.btn-primary {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
 /*--------------------------------------------------------------
 # Jadwal
 --------------------------------------------------------------*/
@@ -1111,6 +1069,66 @@ h6 {
   font-weight: 500;
   color: #464646;
   font-family: "Inter", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Input Jadwal
+--------------------------------------------------------------*/
+.input-jadwal .card-body {
+  background-color: #fff;
+  padding: 20px 25px 25px 25px;
+  border-radius: 10px;
+  margin-bottom: 140px;
+}
+
+.input-jadwal .form-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #464646;
+}
+
+.input-jadwal .form-control {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.input-jadwal .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.input-jadwal .mb-3-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.input-jadwal .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: 1.8px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.input-jadwal .btn-primary:hover {
+  background-color: #0065d0;
+  border: 1.8px solid #0065d0;
 }
 
 /*--------------------------------------------------------------

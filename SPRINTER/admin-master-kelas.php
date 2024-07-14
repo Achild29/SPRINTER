@@ -1,15 +1,15 @@
-<!-- pengecekaan untuk session -->
+<!-- ====== Pengecekan untuk Session ====== -->
 <?php
-        error_reporting(0);
-        session_start();
-        if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
-            header('location:login.php');
-        }else if ($_SESSION['level'] != 'Admin'){
-            header('location:login.php');	
-        }else if ($_SESSION['level'] == 'Admin'){
-          $user = $_SESSION['bagian'];
-    ?>
-<!-- end of pengecekaan untuk session -->
+    error_reporting(0);
+    session_start();
+    if (empty($_SESSION['id']) AND empty($_SESSION['nama']) AND empty($_SESSION['level'])){
+      header('location:login.php');
+    }else if ($_SESSION['level'] != 'Admin'){
+      header('location:login.php');	
+    }else if ($_SESSION['level'] == 'Admin'){
+      $user = $_SESSION['bagian'];
+?>
+<!-- ====== End Pengecekan untuk Session ====== -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,17 +48,15 @@
   <!-- ====== Header ====== -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Logo -->
     <div>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    </div><!-- End Icon Sidebar -->
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
-        <!-- <img src="assets/img/Logo Unpam.png" alt=""> -->
+      <a href="beranda.php" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">SPRINTER UNIVERSITAS PAMULANG</span>
       </a>
-    </div>
+    </div><!-- End Logo -->
 
     <!-- ====== Icons Navigation ====== -->
     <nav class="header-nav ms-auto">
@@ -72,7 +70,7 @@
           </form>
         </div><!-- End Search Bar -->
 
-        <!-- Search Icon-->
+        <!-- Search Icon -->
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
@@ -144,14 +142,14 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Hello <?php echo $user ?>!</h6>
+              <h6>Name Dosen, M.Kom.</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="admin-account-settings.php">
+              <a class="dropdown-item d-flex align-items-center active" href="admin-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -168,6 +166,7 @@
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
+
         </li><!-- ======= End Profile Nav ======= -->
 
       </ul>
@@ -179,7 +178,7 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <!-- Sidebar Logo -->
+      <!-- ======= Sidebar Logo ======= -->
       <li class="nav-logo">
         <a class="nav-logo " href="index.php">
           <img src="assets/img/Logo Unpam.png">
@@ -193,7 +192,7 @@
         </a>
       </li><!-- End Sidebar Name Information -->
 
-      <!-- Sidebar Dashboard -->
+      <!-- ======= Sidebar Dashboard ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php">
           <i class="bi bi-columns-gap"></i>
@@ -201,7 +200,7 @@
         </a>
       </li><!-- End Sidebar Dashboard -->
 
-      <!-- Sidebar Ajuan -->
+      <!-- ======= Sidebar Ajuan ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="admin-lihat-ajuan.php">
           <i class="bi bi-calendar2-plus"></i>
@@ -209,7 +208,7 @@
         </a>
       </li><!-- End Sidebar Ajuan -->
 
-      <!-- ======= Sidebar Jadwal Dropdown ======= -->
+      <!-- ======= Sidebar Jadwal | Dropdown ======= -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#jadwal-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-calendar4-event"></i><span>Jadwal</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -226,9 +225,9 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Sidebar Jadwal Dropdown -->
+      </li><!-- End Sidebar Jadwal | Dropdown -->
 
-      <!-- ======= Sidebar Master Dropdown ======= -->
+      <!-- ======= Sidebar Master | Dropdown ======= -->
       <li class="nav-item">
         <a class="nav-link " data-bs-target="#master-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-database"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -236,7 +235,7 @@
         <ul id="master-nav" class="nav-content show" data-bs-parent="#sidebar-nav">
           <li>
             <a href="admin-master-prodi.php">
-              <i class="bi bi-circle"></i><span>Master PRODI</span>
+              <i class="bi bi-circle"></i><span>Master Prodi</span>
             </a>
           </li>
           <li>
@@ -246,16 +245,16 @@
           </li>
           <li>
             <a href="admin-master-waktu.php">
-              <i class="bi bi-circle"></i><span>Master WAKTU</span>
+              <i class="bi bi-circle"></i><span>Master Waktu</span>
             </a>
           </li>
           <li>
             <a href="admin-master-kelas.php" class="active">
-              <i class="bi bi-circle"></i><span>Master KELAS</span>
+              <i class="bi bi-circle"></i><span>Master Kelas</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Sidebar Master Dropdown -->
+      </li><!-- End Sidebar Master | Dropdown -->
 
     </ul>
   </aside><!-- ======= End Sidebar ======= -->
@@ -263,6 +262,7 @@
   <!-- ======= #main ======= -->
   <main id="main" class="main">
     
+    <!-- ======= Page Title ======= -->
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -276,9 +276,10 @@
       </div>
     </div><!-- End Page Title -->
 
+    <!-- ======= Section Master Kelas ======= -->
     <section id="master-kelas" class="master-kelas">
-
       <div id="kelas" class="card-body">
+
         <form action="Controller/Kelas.php" method="post">
           <div class="mb-3">
             <label for="kode-kelas" class="form-label">Kode Kelas</label>
@@ -299,6 +300,7 @@
                 ?>
             </select>
           </div>
+
           <div class="mb-3">
             <div class="row">
               <div class="col">
@@ -316,10 +318,12 @@
               </div>
             </div>
           </div>
+
           <div class="mb-3">
             <input type="submit" value="Submit" class="btn btn-primary">
           </div>
         </form>
+
       </div><!-- End Master Kelas -->
       
       <nav aria-label="page-nav" class="card-nav">
@@ -339,9 +343,9 @@
         </ul>
       </nav><!-- End Page Navigation -->
     
-    </section>
+    </section><!-- ======= End Section Master Kelas ======= -->
 
-  </main>
+  </main><!-- ======= End #main ======= -->
     
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -355,7 +359,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- ======= Vendor JS Files ======= -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -365,11 +369,13 @@
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- ======= Main JS File ======= -->
   <script src="assets/js/main.js"></script>
 
-    </body>
+</body>
+
 </html>
+
 <?php
     }
 ?>
