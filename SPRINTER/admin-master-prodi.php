@@ -149,7 +149,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center active" href="admin-account-settings.php">
+              <a class="dropdown-item d-flex align-items-center " href="admin-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>

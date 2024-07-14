@@ -340,7 +340,7 @@
   </main><!-- ======= End #main ======= -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footerAjuan">
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
