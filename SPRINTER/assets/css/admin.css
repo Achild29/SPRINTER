@@ -835,158 +835,6 @@ h6 {
 /*--------------------------------------------------------------
 # Ajuan
 --------------------------------------------------------------*/
-.ajuan {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.ajuan .btn.btn-ajuan {
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  background-color: #28a745;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-left: 77px;
-}
-
-.ajuan .btn.btn-ajuan:hover {
-  background-color: #218838;
-}
-
-.ajuan .table-container {
-  margin-top: 20px;
-  overflow-x: auto;
-}
-
-.ajuan .table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #007bff;
-  border-collapse: collapse;
-}
-
-.ajuan .table thead th {
-  font-size: 16px;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  color: #fff;
-  border-bottom: 2px solid #007bff;
-  background-color: #007bff;
-  padding: 10px 0 10px 15px;
-  text-align: left;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-}
-
-.ajuan .table tbody tr:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.ajuan .form-label {
-  display: block;
-  margin-bottom: 5px;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-.ajuan .form-select {
-  width: 25%;
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 2px solid #007bff;
-  color: #007bff;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  /* margin-top: -5.5px; */
-}
-
-.ajuan .btn.btn-primary {
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-left: -680px; 
-  margin-right: 600px;
-}
-
-.ajuan .btn.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-/*--------------------------------------------------------------
-# Jadwal
---------------------------------------------------------------*/
-.jadwal .card-body {
-  background-color: #fff;
-  padding: 25px 30px 20px 30px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.jadwal .form-label {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #464646;
-}
-
-.jadwal .form-select {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1.8px solid #007bff;
-  color: #464646;
-  font-size: 15.5px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-}
-
-.jadwal .form-control {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1.8px solid #007bff;
-  color: #464646;
-  font-size: 15.5px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-}
-
-.jadwal .mb-3:last-of-type {
-  display: flex;
-  justify-content: center;
-}
-
-.jadwal .btn-primary {
-  width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  text-transform: uppercase;
-  margin-top: 15px;
-}
-
-.jadwal .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
-}
-
-/* ======== Lihat jadwal ======== */
 .lihat-jadwal .card-body {
   background-color: #fff;
   padding: 30px 30px 25px 30px;
@@ -1065,6 +913,88 @@ h6 {
 }
 
 .lihat-jadwal .table tbody td {
+  font-size: 15px;
+  font-weight: 500;
+  color: #464646;
+  font-family: "Inter", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Jadwal
+--------------------------------------------------------------*/
+.jadwal .card-body {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 150px;
+}
+
+.jadwal .form-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1.8px solid #007bff;
+  color: #464646;
+  font-size: 15.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.jadwal .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
+}
+
+.jadwal .btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.jadwal .btn-success {
+  background-color: #28a745;
+  margin-right: 20px;
+}
+
+.jadwal .btn-success:hover {
+  background-color: #218838;
+}
+
+.jadwal .btn-danger {
+  background-color: #db3747;
+}
+
+.jadwal .btn-danger:hover {
+  background-color: #ba2130;
+}
+
+.jadwal .col {
+  text-align: right;
+}
+
+.jadwal .table {
+  margin-top: 10px;
+}
+
+.jadwal .table th,
+.jadwal .table td {
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  text-align: left;
+}
+
+.jadwal .table thead th {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #007bff;
+  text-transform: uppercase;
+}
+
+.jadwal .table tbody td {
   font-size: 15px;
   font-weight: 500;
   color: #464646;

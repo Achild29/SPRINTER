@@ -284,51 +284,52 @@
 
         <div class="mb-3">
           <form action="" method="GET">
-          <div class="row">
-            <?php if ($user == "darksystem") { ?>
-            <div class="col-md-3">
-              <select class="form-select" id="pekan" name="kode_lab" required onchange="this.form.submit()">
-                <option value="">laboratorium</option>
-                <?php
-                  $query = "SELECT * FROM laboratorium ORDER BY nama_lab ASC";
-                  $field = $connect->prepare($query);
-                  $field->execute();
-                  $res1 = $field->get_result();
-                  while ($row = $res1->fetch_assoc()) {
-                    $showOptions = "<option ";
-                    if (isset($_GET['kode_lab'])) {
-                        if ($row['kode_lab']==$_GET['kode_lab']) {
-                        $showOptions .= "selected ";
-                        }
-                    }
-                    $showOptions .= "value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
-                    echo ($showOptions);
-                  }
-                ?>
-              </select>
-            </div> <?php } ?>
-            <div class="col-md-3">
-              <select class="form-select" id="pekan" name="pekan" required onchange="this.form.submit()">
-                <option value="">semua pekan</option>
-                <?php
-                  $query = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan ASC";
-                  $field = $connect->prepare($query);
-                  $field->execute();
-                  $res1 = $field->get_result();
-                  while ($row = $res1->fetch_assoc()) {
-                    $showOptions = "<option ";
-                    if (isset($_GET['pekan'])) {
-                        if ($row['pekan']==$_GET['pekan']) {
-                        $showOptions .= "selected ";
-                        }
-                    }
-                    $showOptions .= "value='" . $row['pekan'] . "'>" ."pekan ke-". $row['pekan'] . "</option>";
-                    echo ($showOptions);
-                  }
-                ?>
-              </select>
-            </div>
-            </form>
+            <div class="row">
+              <?php if ($user == "darksystem") { ?>
+                <div class="col-md-3">
+                  <select class="form-select" id="pekan" name="kode_lab" required onchange="this.form.submit()">
+                    <option value="">laboratorium</option>
+                      <?php
+                          $query = "SELECT * FROM laboratorium ORDER BY nama_lab ASC";
+                          $field = $connect->prepare($query);
+                          $field->execute();
+                          $res1 = $field->get_result();
+                          while ($row = $res1->fetch_assoc()) {
+                            $showOptions = "<option ";
+                            if (isset($_GET['kode_lab'])) {
+                              if ($row['kode_lab']==$_GET['kode_lab']) {
+                                $showOptions .= "selected ";
+                              }
+                            }
+                            $showOptions .= "value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                            echo ($showOptions);
+                          }
+                      ?>
+                  </select>
+                </div>
+                <?php } ?>
+                <div class="col-md-3">
+                  <select class="form-select" id="pekan" name="pekan" required onchange="this.form.submit()">
+                    <option value="">semua pekan</option>
+                      <?php
+                          $query = "SELECT DISTINCT pekan FROM jadwal ORDER BY pekan ASC";
+                          $field = $connect->prepare($query);
+                          $field->execute();
+                          $res1 = $field->get_result();
+                          while ($row = $res1->fetch_assoc()) {
+                            $showOptions = "<option ";
+                            if (isset($_GET['pekan'])) {
+                              if ($row['pekan']==$_GET['pekan']) {
+                                $showOptions .= "selected ";
+                              }
+                            }
+                            $showOptions .= "value='" . $row['pekan'] . "'>" ."pekan ke-". $row['pekan'] . "</option>";
+                            echo ($showOptions);
+                          }
+                      ?>
+                  </select>
+                </div>
+              </form>
             
             <div class="col-md-4 ms-auto">
               <div class="row">
