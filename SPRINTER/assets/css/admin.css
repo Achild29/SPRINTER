@@ -72,7 +72,6 @@ h6 {
   color: #fff;
 }
 
-/* Breadcrumbs */
 .breadcrumb {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
@@ -121,7 +120,6 @@ h6 {
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings
 --------------------------------------------------------------*/
-/* Dropdown menus */
 .dropdown-menu {
   border-radius: 10px;
   animation-name: dropdown-animate;
@@ -143,9 +141,9 @@ h6 {
   text-decoration: underline;
 }
   
-  .dropdown-menu .dropdown-footer a:hover {
-    text-decoration: none;
-  }
+.dropdown-menu .dropdown-footer a:hover {
+  text-decoration: none;
+}
   
 .dropdown-menu .dropdown-divider {
   color: #fff;
@@ -277,14 +275,14 @@ h6 {
 }
   
 /* Bordered Tabs */
-.nav-tabs-bordered {
+/* .nav-tabs-bordered {
   border-bottom: 2px solid #ebeef4;
 }
   
 .nav-tabs-bordered .nav-link {
   margin-bottom: -2px;
   border: none;
-  color: #2c384e;
+  color: #4e2c2c;
 }
   
 .nav-tabs-bordered .nav-link:hover,
@@ -294,19 +292,20 @@ h6 {
   
 .nav-tabs-bordered .nav-link.active {
   background-color: #fff;
-  color: #4154f1;
+  color: #f14141;
   border-bottom: 2px solid #4154f1;
-}
+} */
 
 /*--------------------------------------------------------------
 # HEADER
 --------------------------------------------------------------*/
 .logo span {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 500;
-  color: #ffffff;
+  color: #fff;
   font-family: "inter", sans-serif;
   margin-left: 15px;
+  margin-top: 1px;
 }
   
 .header {
@@ -316,19 +315,17 @@ h6 {
   background-color: #007bff;
   padding-left: 20px;
   position: fixed;
-  margin-top: -2px;
-  /* background-image: url("../img/bg_navbar.png");  */
 }
   
 .header .toggle-sidebar-btn {
   font-size: 30px;
   cursor: pointer;
-  color: #ffffff;
+  color: #fff;
   transition: color 0.3s ease;
 }
   
 .header .toggle-sidebar-btn:hover {
-  color: #f2ff00; 
+  color: #fff700; 
 }
   
 .header .toggle-sidebar-btn:active {
@@ -412,7 +409,7 @@ h6 {
 }
   
 .header-nav .nav-icon {
-  font-size: 25px;
+  font-size: 27px;
   color: #ffffff;
   margin-right: 20px;
   margin-top: 5px;
@@ -421,8 +418,9 @@ h6 {
   
 .header-nav .nav-profile {
   color: #ffffff;
-  font-size: 30px;
-  margin-right: 10px;
+  font-size: 33px;
+  margin-right: 8px;
+  margin-top: -0.5px;
 }
   
 .header-nav .badge-number {
@@ -495,7 +493,7 @@ h6 {
   font-weight: 600;
   margin-bottom: 0;
   margin-top: -5px;
-  color: #007bff;
+  color: #007bff;;
 }
   
 .header-nav .profile .dropdown-item {
@@ -543,7 +541,7 @@ h6 {
   padding: 20px 10px 10px 10px; 
   margin-bottom: 10px;
 }
-  
+
 .nav-name {
   text-align: center; 
   border-bottom: 3px solid #007bff;
@@ -563,7 +561,7 @@ h6 {
   left: 0;
   bottom: 0;
   width: 250px;
-  z-index: 998;
+  z-index: 999;
   transition: all 0.3s;
   /* padding: 20px 10px 10px 10px;  */
   overflow-y: auto;
@@ -617,8 +615,8 @@ h6 {
 }
   
 .sidebar-nav .nav-item {
-  padding: 10px 10px 0 10px; 
-  margin-bottom: -5px;
+  padding: 10px 8px 8px 8px; 
+  margin-bottom: -11px;
 }
   
 .sidebar-nav .nav-link {
@@ -672,6 +670,7 @@ h6 {
   padding: 5px 0 0 0;
   margin: 0;
   list-style: none;
+  margin-bottom: -7px;
 }
   
 .sidebar-nav .nav-content a {
@@ -685,7 +684,8 @@ h6 {
   padding: 12px 0 12px 40px;
   margin-left: 10px;
   transition: 0.3s;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  margin-top: 2px;
 }
   
 .sidebar-nav .nav-content a i {
@@ -708,9 +708,8 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Dashboard
+# Pages Dashboard
 --------------------------------------------------------------*/
-/* Filter dropdown */
 .dashboard .filter {
   position: absolute;
   right: 0px;
@@ -833,10 +832,10 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Ajuan
+# Pages Ajuan
 --------------------------------------------------------------*/
-.lihat-jadwal .card-body {
-  background-color: #b42d2d;
+.ajuan .card-body {
+  background-color: #fff;
   padding: 30px 30px 25px 30px;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -850,7 +849,7 @@ h6 {
   font-size: 16px;
 }
 
-.lihat-jadwal .form-select {
+.ajuan .form-select {
   padding: 10px 15px;
   border-radius: 5px;
   border: 1.8px solid #007bff;
@@ -894,8 +893,8 @@ h6 {
   margin-top: 25px;
 }
 
-.lihat-jadwal .table th,
-.lihat-jadwal .table td {
+.ajuan .table th,
+.ajuan .table td {
   padding: 10px 15px;
   border: 2px solid #007bff;
   text-align: left;
@@ -920,8 +919,11 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Jadwal
+# Pages Jadwal
 --------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Lihat Jadwal ======= 
+------------------------------------ */
 .jadwal .card-body {
   background-color: #fff;
   padding: 25px;
@@ -1001,9 +1003,9 @@ h6 {
   font-family: "Inter", sans-serif;
 }
 
-/*--------------------------------------------------------------
-# Input Jadwal
---------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Input Jadwal ======= 
+------------------------------------ */
 .input-jadwal .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
@@ -1062,8 +1064,11 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Master Prodi
+# Pages Master
 --------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Master Prodi ======= 
+------------------------------------ */
 .master-prodi .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
@@ -1170,9 +1175,9 @@ h6 {
   margin-left: 20px;
 }
 
-/*--------------------------------------------------------------
-# Master MKP
---------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Master MKP ======= 
+------------------------------------ */
 .master-mkp .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
@@ -1271,9 +1276,9 @@ h6 {
   margin-left: 20px;
 }
 
-/*--------------------------------------------------------------
-# Master Waktu
---------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Master Waktu ======= 
+------------------------------------ */
 .master-waktu .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
@@ -1362,9 +1367,9 @@ h6 {
   margin-left: 20px;
 }
 
-/*--------------------------------------------------------------
-# Master Kelas
---------------------------------------------------------------*/
+/* ------------------------------------ 
+======= Section Master Kelas ======= 
+------------------------------------ */
 .master-kelas .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
@@ -1464,16 +1469,17 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Account Settings
+# Pages Account Settings
 --------------------------------------------------------------*/
 .account-settings {
-    margin-bottom: 140px;
+  margin-bottom: 140px;
 }
 
 .account-settings .card-body {
   background-color: #fff;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
+  margin-bottom: 140px;
 }
 
 .account-settings .form-label {
@@ -1535,7 +1541,7 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Footer
+# Section Footer
 --------------------------------------------------------------*/
 .footer {
   padding: 17px 0;

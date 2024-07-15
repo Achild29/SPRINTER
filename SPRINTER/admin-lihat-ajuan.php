@@ -43,7 +43,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">
+  <link href="assets/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -347,7 +347,7 @@
                                 <thead>
                                     <tr>
                                         <th>Kode Ajuan</th>
-                                        <th>Status Ajuan</th>
+                                        <th>Status</th>
                                         <th>Prodi</th>
                                         <th>MKP</th>
                                         <th>Kelas</th>
@@ -481,7 +481,7 @@
                                 <thead>
                                     <tr>
                                         <th>Kode Ajuan</th>
-                                        <th>Status Ajuan</th>
+                                        <th>Status</th>
                                         <th>Prodi</th>
                                         <th>MKP</th>
                                         <th>Kelas</th>

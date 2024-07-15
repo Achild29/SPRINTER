@@ -11,6 +11,9 @@
 ?>
 <!-- ====== End Pengecekan untuk Session ====== -->
 
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -37,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-admin.css" rel="stylesheet">         
+  <link href="assets/css/admin.css" rel="stylesheet">         
 </head>
 
 <body>
