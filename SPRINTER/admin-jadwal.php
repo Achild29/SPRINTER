@@ -337,12 +337,10 @@
                   <?php if ($user == "darksystem") { ?>
                   <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-success">Export to XLS</a>
                   <?php } else { ?>
-                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-success">Export to XLS</a>
+                    <a href="jadwalxls.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-success">Export to Excel</a>
                   <?php
                   }
                   ?>
-                </div>
-                <div class="col">
                   <?php if ($user == "darksystem") { ?>
                   <a href="jadwalPdf.php?p=<?php echo ($_GET['pekan']) ?>&l=<?php echo ($_GET['kode_lab']) ?>" class="btn btn-danger">Export to PDF</a>
                   <?php } else {

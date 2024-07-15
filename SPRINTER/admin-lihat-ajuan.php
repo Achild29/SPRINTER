@@ -487,7 +487,7 @@
                                         <th>Kelas</th>
                                         <th>Dosen</th>
                                         <th>URL PDF</th>
-                                        <th>nama Lab</th>
+                                        <th>Lab</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

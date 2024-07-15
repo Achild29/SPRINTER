@@ -836,17 +836,9 @@ h6 {
 --------------------------------------------------------------*/
 .ajuan .card-body {
   background-color: #fff;
-  padding: 30px 30px 25px 30px;
+  padding: 25px;
   border-radius: 10px;
-  margin-bottom: 50px;
-}
-
-.lihat-jadwal .btn {
-  padding: 10px 30px;
-  border-radius: 5px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  margin-bottom: 220px;
 }
 
 .ajuan .form-select {
@@ -859,38 +851,13 @@ h6 {
   font-weight: 500;
 }
 
-.lihat-jadwal .btn-primary {
-  background-color: #007bff;
-  margin-left: -10px;
+.ajuan .mb-3:last-of-type {
+  display: flex;
+  justify-content: center;
 }
 
-.lihat-jadwal .btn-primary:hover {
-  background-color: #0065d0;
-}
-
-.lihat-jadwal .btn-success {
-  background-color: #28a745;
-  margin-right: 20px;
-}
-
-.lihat-jadwal .btn-success:hover {
-  background-color: #218838;
-}
-
-.lihat-jadwal .btn-danger {
-  background-color: #dc3545;
-}
-
-.lihat-jadwal .btn-danger:hover {
-  background-color: #b92534;
-}
-
-.lihat-jadwal .col {
-  text-align: right;
-}
-
-.lihat-jadwal .table {
-  margin-top: 25px;
+.ajuan .table {
+  margin-top: 10px;
 }
 
 .ajuan .table th,
@@ -900,7 +867,7 @@ h6 {
   text-align: left;
 }
 
-.lihat-jadwal .table thead th {
+.ajuan .table thead th {
   font-size: 16px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
@@ -908,10 +875,9 @@ h6 {
   color: #fff;
   background-color: #007bff;
   text-transform: uppercase;
-
 }
 
-.lihat-jadwal .table tbody td {
+.ajuan .table tbody td {
   font-size: 15px;
   font-weight: 500;
   color: #464646;
@@ -928,7 +894,7 @@ h6 {
   background-color: #fff;
   padding: 25px;
   border-radius: 10px;
-  margin-bottom: 150px;
+  margin-bottom: 220px;
 }
 
 .jadwal .form-select {
@@ -993,7 +959,6 @@ h6 {
   text-transform: uppercase;
   color: #fff;
   background-color: #007bff;
-  text-transform: uppercase;
 }
 
 .jadwal .table tbody td {
