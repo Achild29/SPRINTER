@@ -884,6 +884,34 @@ h6 {
   font-family: "Inter", sans-serif;
 }
 
+.ajuan .btn-accept {
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ajuan .btn-accept:hover {
+  background-color: #218838 ;
+}
+
+.ajuan .btn-reject {
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #db3747;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.ajuan .btn-reject:hover {
+  background-color: #ba2130 ;
+}
 /*--------------------------------------------------------------
 # Pages Jadwal
 --------------------------------------------------------------*/

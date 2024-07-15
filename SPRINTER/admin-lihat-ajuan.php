@@ -531,14 +531,14 @@
                                                 <td><?php echo ($row['nama_lab']) ?></td>
                                                 <td>
                                                     <?php
-                                                        if ($row['status_ajuan'] == "On Process") { ?>
+                                                        if ($row['status_ajuan'] == "On Process" ) { ?>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <a href="admin-ajuan.php?kda=<?php echo ($row['kode_ajuan'])?>" style="color: green;">accept
+                                                                    <a href="#?kda=<?php echo ($row['kode_ajuan'])?>" class="btn-accept">accept
                                                                     </a>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <a href="" style="color: red;">reject</a>
+                                                                    <a href="#" class="btn-reject">reject</a>
                                                                 </div>
                                                             </div>
                                                         <?php
