@@ -43,7 +43,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/admin.css" rel="stylesheet">
+  <link href="assets/css/style-admin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -264,73 +264,74 @@
   <!-- ======= #main ======= -->
   <main id="main" class="main">
     
-  <div class="pagetitle">
-                <div class="full-bg">
-                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        <h1>AJUAN</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Halaman Pengajuan Praktikum</li>
-                        </ol>
-                    </nav>
-                    </div>
-                </div>
-            </div>
-            <!-- End Page Title -->
-
-    <section id="admin-ajuan" class="lihat-jadwal">  
-                <!-- ======= Lihat Ajuan ======= -->
-                <div class="card">
-                    <div id="admin-jadwal" class="card-body">
-                    <?php if ($user == "darksystem") { ?>
-                        <div class="mb-3">
-                            <form action="" method="get">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <select name="kode_lab" class="form-select" id="" required onchange="this.form.submit()">
-                                            <option value="">laboratorium</option>
-                                            <?php
-                                                $query = "SELECT * FROM laboratorium ORDER BY nama_lab ASC";
-                                                $field = $connect->prepare($query);
-                                                $field->execute();
-                                                $res1 = $field->get_result();
-                                                while ($row = $res1->fetch_assoc()) {
-                                                    $showOptions = "<option ";
-                                                    if (isset($_GET['kode_lab'])) {
-                                                        if ($row['kode_lab']==$_GET['kode_lab']) {
-                                                        $showOptions .= "selected ";
-                                                        }
-                                                    }
-                                                    $showOptions .= "value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
-                                                    echo ($showOptions);
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select class="form-select" id="staus" name="status_ajuan" required onchange="this.form.submit()">
-                                            <option value="">Status Ajuan</option>
-                                            <?php
-                                                $queryStatus = "";
-                                                if (!empty($_GET['kode_lab'])) {
-                                                    $queryStatus = "
-                                                    SELECT a.status_ajuan
-                                                    FROM ajuan a
-                                                    JOIN laboratorium l on a.kode_lab = l.kode_lab
-                                                    WHERE l.kode_lab ='". $_GET['kode_lab'] ."'
-                                                    ";
-                                                } else {
-                                                    $queryStatus .= "SELECT DISTINCT status_ajuan FROM ajuan";
-                                                }
-                                                $field = $connect->prepare($queryStatus);
-                                                $field->execute();
-                                                $res1 = $field->get_result();
-                                                while ($row = $res1->fetch_assoc()) {
-                                                    $showOptions = "<option ";
-                                                    if (isset($_GET['status_ajuan'])) {
-                                                        if ($row['status_ajuan']==$_GET['status_ajuan']) {
-                                                        $showOptions .= "selected ";
-                                                        }
+    <!-- ======= Page Title ======= -->
+    <div class="pagetitle">
+      <div class="full-bg">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+          <h1>AJUAN</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active">Halaman Pengajuan Praktikum</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div><!-- End Page Title -->
+  
+    <!-- ======= Section Ajuan ======= -->
+    <section id="ajuan" class="ajuan">  
+      <div id="ajuan" class="card-body">
+        
+      <?php if ($user == "darksystem") { ?>
+        
+        <div class="mb-3">
+          <form action="" method="get">
+            <div class="row">
+              <div class="col-md-3">
+                <select name="kode_lab" class="form-select" id="" required onchange="this.form.submit()">
+                  <option value="">laboratorium</option>
+                    <?php
+                        $query = "SELECT * FROM laboratorium ORDER BY nama_lab ASC";
+                        $field = $connect->prepare($query);
+                        $field->execute();
+                        $res1 = $field->get_result();
+                        while ($row = $res1->fetch_assoc()) {
+                          $showOptions = "<option ";
+                          if (isset($_GET['kode_lab'])) {
+                            if ($row['kode_lab']==$_GET['kode_lab']) {
+                              $showOptions .= "selected ";
+                            }
+                          }
+                          $showOptions .= "value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                          echo ($showOptions);
+                        }
+                    ?>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select" id="staus" name="status_ajuan" required onchange="this.form.submit()">
+                  <option value="">Status Ajuan</option>
+                    <?php
+                        $queryStatus = "";
+                        if (!empty($_GET['kode_lab'])) {
+                          $queryStatus = "
+                              SELECT a.status_ajuan
+                              FROM ajuan a
+                              JOIN laboratorium l on a.kode_lab = l.kode_lab
+                              WHERE l.kode_lab ='". $_GET['kode_lab'] ."'
+                          ";
+                        } else {
+                          $queryStatus .= "SELECT DISTINCT status_ajuan FROM ajuan";
+                        }
+                        $field = $connect->prepare($queryStatus);
+                        $field->execute();
+                        $res1 = $field->get_result();
+                        while ($row = $res1->fetch_assoc()) {
+                          $showOptions = "<option ";
+                          if (isset($_GET['status_ajuan'])) {
+                            if ($row['status_ajuan']==$_GET['status_ajuan']) {
+                              $showOptions .= "selected ";
+                            }
                                                     }
                                                     $showOptions .= "value='" . $row['status_ajuan'] . "'>" . $row['status_ajuan'] . "</option>";
                                                     echo ($showOptions);

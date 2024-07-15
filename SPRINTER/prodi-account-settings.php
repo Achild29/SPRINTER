@@ -39,7 +39,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-prodi.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -126,7 +126,6 @@
             <li class="dropdown-footer">
               <a href="#">Show all messages</a>
             </li>
-
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
@@ -148,7 +147,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center active" href="prodi-account-settings.php">
+              <a class="dropdown-item d-flex align-items-center" href="prodi-account-settings.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -163,8 +162,8 @@
                 <span>Logout</span>
               </a>
             </li>
-
           </ul><!-- End Profile Dropdown Items -->
+
         </li><!-- ======= End Profile Nav ======= -->
 
       </ul>
@@ -174,7 +173,6 @@
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <!-- ======= Sidebar Logo ======= -->
@@ -216,12 +214,12 @@
       </li><!-- End Sidebar Jadwal -->
       
     </ul>
-
   </aside><!-- ======= End Sidebar ======= -->
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
 
+    <!-- ======= Page Title ======= -->
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -235,9 +233,10 @@
       </div>
     </div><!-- End Page Title -->
     
+    <!-- ======= Section Account Settings ======= -->
     <section id="account-settings" class="account-settings">
-      
       <div id="account-settings" class="card-body">
+
         <form action="" method="post">
           <div class="mb-3">
             <label for="currentPassword" class="form-label">Current Password</label>
@@ -264,26 +263,27 @@
             <button type="submit" class="btn btn-primary">Change Password</button>
           </div>
         </form>
-      </div>
       
-    </section>
+      </div>
+    </section><!-- ======= End Section Account Settings ======= -->
     
+    <!-- ======= Animation Icon Hide & Show JS ======= -->
     <script>
-        document.querySelectorAll('.password-wrapper i').forEach(item => {
-            item.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.classList.remove('bi-eye-slash');
-                    this.classList.add('bi-eye');
-                } else {
-                    input.type = 'password';
-                    this.classList.remove('bi-eye');
-                    this.classList.add('bi-eye-slash');
-                }
-            });
+      document.querySelectorAll('.password-wrapper i').forEach(item => {
+        item.addEventListener('click', function() {
+          const input = this.previousElementSibling;
+          if (input.type === 'password') {
+            input.type = 'text';
+            this.classList.remove('bi-eye-slash');
+            this.classList.add('bi-eye');
+          } else {
+            input.type = 'password';
+            this.classList.remove('bi-eye');
+            this.classList.add('bi-eye-slash');
+          }
         });
-    </script>
+      });
+    </script><!-- End Animation Icon Hide & Show JS -->
 
   </main><!-- ======= End #main ======= -->
 
@@ -315,6 +315,7 @@
 </body>
 
 </html>
+
 <?php
     }
 ?>

@@ -40,7 +40,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/admin.css" rel="stylesheet">
+  <link href="assets/css/style-admin.css" rel="stylesheet">
 </head>
 
 <body>

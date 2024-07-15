@@ -32,12 +32,13 @@ session_destroy();
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/sytle-login.css" rel="stylesheet">
+  <link href="assets/css/login.css" rel="stylesheet">
 </head>
 
 <body>
 
   <main><!-- ====== #main ====== -->
+
     <div class="container">
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         
@@ -84,6 +85,7 @@ session_destroy();
                 
                 </div>
               </div>
+
               <div class="credits">
                 Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
               </div>
@@ -94,6 +96,7 @@ session_destroy();
 
       </section>
     </div>
+    
   </main><!-- ====== end #main ====== -->
 
   <!-- ====== Vendor JS Files ====== -->

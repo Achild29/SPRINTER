@@ -72,7 +72,6 @@ h6 {
   color: #fff;
 }
 
-/* Breadcrumbs */
 .breadcrumb {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
@@ -142,9 +141,9 @@ h6 {
   text-decoration: underline;
 }
   
-  .dropdown-menu .dropdown-footer a:hover {
-    text-decoration: none;
-  }
+.dropdown-menu .dropdown-footer a:hover {
+  text-decoration: none;
+}
   
 .dropdown-menu .dropdown-divider {
   color: #fff;
@@ -301,11 +300,12 @@ h6 {
 # HEADER
 --------------------------------------------------------------*/
 .logo span {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 500;
-  color: #ffffff;
+  color: #fff;
   font-family: "inter", sans-serif;
   margin-left: 15px;
+  margin-top: 1px;
 }
   
 .header {
@@ -315,19 +315,17 @@ h6 {
   background-color: #007bff;
   padding-left: 20px;
   position: fixed;
-  margin-top: -2px;
-  /* background-image: url("../img/bg_navbar.png");  */
 }
   
 .header .toggle-sidebar-btn {
   font-size: 30px;
   cursor: pointer;
-  color: #ffffff;
+  color: #fff;
   transition: color 0.3s ease;
 }
   
 .header .toggle-sidebar-btn:hover {
-  color: #f2ff00; 
+  color: #fff700; 
 }
   
 .header .toggle-sidebar-btn:active {
@@ -411,7 +409,7 @@ h6 {
 }
   
 .header-nav .nav-icon {
-  font-size: 25px;
+  font-size: 27px;
   color: #ffffff;
   margin-right: 20px;
   margin-top: 5px;
@@ -420,8 +418,9 @@ h6 {
   
 .header-nav .nav-profile {
   color: #ffffff;
-  font-size: 30px;
-  margin-right: 10px;
+  font-size: 33px;
+  margin-right: 8px;
+  margin-top: -0.5px;
 }
   
 .header-nav .badge-number {
@@ -494,7 +493,7 @@ h6 {
   font-weight: 600;
   margin-bottom: 0;
   margin-top: -5px;
-  color: #007bff;
+  color: #007bff;;
 }
   
 .header-nav .profile .dropdown-item {
@@ -616,8 +615,8 @@ h6 {
 }
   
 .sidebar-nav .nav-item {
-  padding: 10px 10px 0 10px; 
-  margin-bottom: -5px;
+  padding: 10px 8px 8px 8px; 
+  margin-bottom: -11px;
 }
   
 .sidebar-nav .nav-link {
@@ -792,40 +791,6 @@ h6 {
   flex-shrink: 0;
   flex-grow: 0;
   min-width: 64px;
-}
-  
-.dashboard .activity .activity-item .activite-label::before {
-  content: "";
-  position: absolute;
-  right: -11px;
-  width: 4px;
-  top: 0;
-  bottom: 0;
-  background-color: #eceefe;
-}
-  
-.dashboard .activity .activity-item .activity-badge {
-  margin-top: 3px;
-  z-index: 1;
-  font-size: 11px;
-  line-height: 0;
-  border-radius: 50%;
-  flex-shrink: 0;
-  border: 3px solid #fff;
-  flex-grow: 0;
-}
-  
-.dashboard .activity .activity-item .activity-content {
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-  
-.dashboard .activity .activity-item:first-child .activite-label::before {
-  top: 5px;
-}
-  
-.dashboard .activity .activity-item:last-child .activity-content {
-  padding-bottom: 0;
 }
 
 /*--------------------------------------------------------------

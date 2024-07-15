@@ -39,7 +39,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- ====== Main CSS File ====== -->
-  <link href="assets/css/style-prodi.css" rel="stylesheet">
+  <link href="assets/css/prodi.css" rel="stylesheet">
 </head>
 
 <body>
@@ -126,7 +126,6 @@
             <li class="dropdown-footer">
               <a href="#">Show all messages</a>
             </li>
-
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
@@ -163,8 +162,8 @@
                 <span>Logout</span>
               </a>
             </li>
-
           </ul><!-- End Profile Dropdown Items -->
+
         </li><!-- ======= End Profile Nav ======= -->
 
       </ul>
@@ -174,7 +173,6 @@
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <!-- ======= Sidebar Logo ======= -->
@@ -216,12 +214,12 @@
       </li><!-- End Sidebar Jadwal -->
       
     </ul>
-
   </aside><!-- ======= End Sidebar ======= -->
 
   <!-- ======= #main ======= -->
   <main id="main" class="main">
 
+    <!-- ======= Page Title ======= -->
     <div class="pagetitle">
       <div class="full-bg">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -235,6 +233,7 @@
       </div>
     </div><!-- End Page Title -->
     
+    <!-- ======= Section Ajuan Baru ======= -->
     <section id="ajuan-baru" class="ajuan-baru">
       <div id="ajuan-baru" class="card-body">
         
@@ -352,7 +351,7 @@
         </form>
       
       </div>
-    </section>
+    </section><!-- ======= End Section Ajuan Baru ======= -->
     
   </main><!-- ======= End #main ======= -->
 
@@ -384,6 +383,7 @@
 </body>
 
 </html>
+
 <?php
     }
 ?>
