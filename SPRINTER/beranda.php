@@ -7,6 +7,24 @@
     } else if ($_SESSION['level'] != 'Prodi') {
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
+      $prodi = $_SESSION['prodi'];
+      $user = $_SESSION['bagian'];
+        include 'koneksi.php';
+        $sql = "SELECT nama_prodi FROM prodi WHERE kode_prodi ='$prodi'";
+        $rs = mysqli_query($connect,$sql);
+        // var_dump($nama);
+        // die;
+        $namaProdi = "";
+        if ($rs->num_rows >0) {
+          while ($row=$rs->fetch_assoc()) {
+            $namaProdi .= $row['nama_prodi'];
+          }
+        } else {
+          $namaProdi .= "Super User";
+        }
+        // var_dump($namaProdi);
+        // die;
+        $nama = $namaProdi;
       
 ?><!-- ====== End Pengecekan Session ====== -->
 
@@ -140,7 +158,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Dosen, M.Kom.</h6>
+              <h6>Hello, <?php echo $nama ?></h6>
             </li>
             <li>
               <hr class="dropdown-divider">
