@@ -277,7 +277,15 @@
                       echo "<td>" . $row['nama_mkp'] . "</td>";
                       echo "<td>" . $row['nama_lab'] . "</td>";
                       echo "<td>" . $row['dosen'] . "</td>";
-                      echo "<td>" . $row['status_ajuan'] . "</td>";
+                      if ($row['status_ajuan'] == "Accept") { ?>
+                        <td style="color: green"><?php echo $row['status_ajuan'] ?></td>
+                        <?php
+                      } elseif (str_contains($row['status_ajuan'], "Reject")) { ?>
+                        <td style="color: red;"><?php echo $row['status_ajuan'] ?></td>
+                        <?php
+                      } else {
+                        echo "<td>" . $row['status_ajuan'] . "</td>";
+                      }
                       echo "</tr>";
                     }
                   } else {
