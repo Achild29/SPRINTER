@@ -8,6 +8,22 @@
       header('location:login.php');	
     }else if ($_SESSION['level'] == 'Admin'){
       $user = $_SESSION['bagian'];
+      include 'koneksi.php';
+      $sql = "SELECT nama_lab FROM laboratorium WHERE username='$user'";
+      $rs = mysqli_query($connect,$sql);
+      // var_dump($nama);
+      // die;
+      $namaLab = "";
+      if ($rs->num_rows >0) {
+        while ($row=$rs->fetch_assoc()) {
+          $namaLab .= $row['nama_lab'];
+        }
+      } else {
+        $namaLab .= "Super User";
+      }
+      // var_dump($namaLab);
+      // die;
+      $nama = $namaLab;
 ?>
 <!-- ====== End Pengecekan untuk Session ====== -->
 
@@ -142,7 +158,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Dosen, M.Kom.</h6>
+              <h6>Hello <?php echo $user ?>!</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -188,7 +204,7 @@
       <!-- ======= Sidebar Name Information ======= -->
       <li class="nav-name">
         <a class="nav-name">
-          <h1>LAB. SISTEM INFORMASI</h1>
+          <h1>Hello <?php echo $namaLab ?> !</h1>
         </a>
       </li><!-- End Sidebar Name Information -->
 

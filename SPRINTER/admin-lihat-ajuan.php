@@ -9,7 +9,21 @@
       }else if ($_SESSION['level'] == 'Admin'){
         $user = $_SESSION['bagian'];
         include 'koneksi.php';
-        // $kode_ajuan = "";
+        $sql = "SELECT nama_lab FROM laboratorium WHERE username='$user'";
+        $rs = mysqli_query($connect,$sql);
+        // var_dump($nama);
+        // die;
+        $namaLab = "";
+        if ($rs->num_rows >0) {
+          while ($row=$rs->fetch_assoc()) {
+            $namaLab .= $row['nama_lab'];
+          }
+        } else {
+          $namaLab .= "Super User";
+        }
+        // var_dump($namaLab);
+        // die;
+        $nama = $namaLab;
 
 ?>
 <!-- ====== End Pengecekaan Untuk Session ====== -->
@@ -190,7 +204,7 @@
       <!-- ======= Sidebar Name Information ======= -->
       <li class="nav-name">
         <a class="nav-name">
-          <h1>LAB. SISTEM INFORMASI</h1>
+          <h1>Hello <?php echo $nama ?>!</h1>
         </a>
       </li><!-- End Sidebar Name Information -->
 
@@ -315,7 +329,7 @@
                         $queryStatus = "";
                         if (!empty($_GET['kode_lab'])) {
                           $queryStatus = "
-                              SELECT a.status_ajuan
+                              SELECT DISTINCT a.status_ajuan
                               FROM ajuan a
                               JOIN laboratorium l on a.kode_lab = l.kode_lab
                               WHERE l.kode_lab ='". $_GET['kode_lab'] ."'
@@ -398,7 +412,19 @@
                                             ?>
                                                 <tr>
                                                     <td><?php echo ($row['kode_ajuan']) ?></td>
-                                                    <td><?php echo ($row['status_ajuan']) ?></td>
+                                                    <?php
+                                                      if ($row['status_ajuan'] == "Accept") { ?>
+                                                        <td style="color: green;">
+                                                          <?php echo ($row['status_ajuan']) ?>
+                                                        </td>
+                                                    <?php  } elseif (str_contains($row['status_ajuan'], "Reject")) { ?>
+                                                        <td style="color: red;">
+                                                          <?php echo ($row['status_ajuan']) ?>
+                                                        </td>
+                                                    <?php } else {
+                                                      echo "<td>" . $row['status_ajuan'] . "</td>";
+                                                    }
+                                                    ?>
                                                     <td><?php echo ($row['nama_prodi']) ?></td>
                                                     <td><?php echo ($row['nama_mkp']) ?></td>
                                                     <td><?php echo ($row['kode_kelas']) ?></td>
@@ -414,13 +440,10 @@
                                                     <?php
                                                         if ($row['status_ajuan'] == "On Process") { ?>
                                                             <div class="row">
-                                                                <div class="col">
-                                                                    <a href="admin-ajuan.php?kda=<?php echo ($row['kode_ajuan'])?>" style="color: green;">accept
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <a href="" style="color: red;">reject</a>
-                                                                </div>
+                                                              <center>
+                                                                <a href="admin-input-jadwal.php?kda=<?php echo ($row['kode_ajuan'])?>"><button type="button" class="btn btn-success btn-sm">Accept</button></a>
+                                                                <a href="ajuanReject.php?k=<?php echo ($row['kode_ajuan']) ?>"><button type="button" class="btn btn-danger btn-sm">Reject</button></a>
+                                                              </center>
                                                             </div>
                                                         <?php
                                                         } else {
@@ -451,7 +474,7 @@
                                             <option value="">Status Ajuan</option>
                                             <?php
                                             $queryStatus = "
-                                            SELECT a.status_ajuan
+                                            SELECT DISTINCT a.status_ajuan
                                             FROM ajuan a 
                                             JOIN laboratorium l ON a.kode_lab = l.kode_lab
                                             WHERE l.username = '". $user ."'
@@ -517,7 +540,19 @@
                                         <!-- isi dari table -->
                                             <tr>
                                                 <td><?php echo ($row['kode_ajuan']) ?></td>
-                                                <td><?php echo ($row['status_ajuan']) ?></td>
+                                                <?php
+                                                      if ($row['status_ajuan'] == "Accept") { ?>
+                                                        <td style="color: green;">
+                                                          <?php echo ($row['status_ajuan']) ?>
+                                                        </td>
+                                                    <?php  } elseif (str_contains($row['status_ajuan'], "Reject")) { ?>
+                                                        <td style="color: red;">
+                                                          <?php echo ($row['status_ajuan']) ?>
+                                                        </td>
+                                                    <?php } else {
+                                                      echo "<td>" . $row['status_ajuan'] . "</td>";
+                                                    }
+                                                    ?>
                                                 <td><?php echo ($row['nama_prodi']) ?></td>
                                                 <td><?php echo ($row['nama_mkp']) ?></td>
                                                 <td><?php echo ($row['kode_kelas']) ?></td>
@@ -533,13 +568,10 @@
                                                     <?php
                                                         if ($row['status_ajuan'] == "On Process" ) { ?>
                                                             <div class="row">
-                                                                <div class="col">
-                                                                    <a href="#?kda=<?php echo ($row['kode_ajuan'])?>" class="btn-accept">accept
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <a href="#" class="btn-reject">reject</a>
-                                                                </div>
+                                                              <center>
+                                                                <a href="admin-input-jadwal.php?kda=<?php echo ($row['kode_ajuan'])?>"><button type="button" class="btn btn-success btn-sm">Accept</button></a>
+                                                                <a href="ajuanReject.php?k=<?php echo ($row['kode_ajuan']) ?>"><button type="button" class="btn btn-danger btn-sm">Reject</button></a>
+                                                              </center>
                                                             </div>
                                                         <?php
                                                         } else {

@@ -9,6 +9,21 @@
     }else if ($_SESSION['level'] == 'Admin'){
       $user = $_SESSION['bagian'];
       include 'koneksi.php';
+      $sql = "SELECT nama_lab FROM laboratorium WHERE username='$user'";
+      $rs = mysqli_query($connect,$sql);
+      // var_dump($nama);
+      // die;
+      $namaLab = "";
+      if ($rs->num_rows >0) {
+        while ($row=$rs->fetch_assoc()) {
+          $namaLab .= $row['nama_lab'];
+        }
+      } else {
+        $namaLab .= "Super User";
+      }
+      // var_dump($namaLab);
+      // die;
+      $nama = $namaLab;
 ?>
 <!-- ====== End Pengecekaan Untuk Session ====== -->
 
@@ -190,7 +205,7 @@
       <!-- ======= Sidebar Name Information ======= -->
       <li class="nav-name">
         <a class="nav-name">
-          <h1>LAB. SISTEM INFORMASI</h1>
+          <h1>Hello <?php echo $nama ?>!</h1>
         </a>
       </li><!-- End Sidebar Name Information -->
 
@@ -389,12 +404,13 @@
 
                 // Buat query SQL dengan filter pekan
                 $query = "
-                  SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, l.nama_lab, kode_kelas, dosen, pekan
-                  FROM jadwal j
-                  JOIN waktu w ON j.kode_waktu = w.kode_waktu
-                  JOIN mkp m ON j.kode_mkp = m.kode_mkp
-                  JOIN laboratorium l ON j.kode_lab = l.kode_lab
-                  JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
+                FROM jadwal j
+                JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                JOIN prodi p ON a.kode_prodi = p.kode_prodi
+                JOIN mkp m ON a.kode_mkp = m.kode_mkp
+                JOIN laboratorium l ON a.kode_lab = l.kode_lab
                 ";
 
                 $where = [];
@@ -402,7 +418,7 @@
                 $types = '';
 
                 if ($lab !== '') {
-                  $where[] = 'j.kode_lab = ?';
+                  $where[] = 'a.kode_lab = ?';
                   $params[] = $lab;
                   $types .= 's';
                 }
@@ -452,12 +468,13 @@
               } else {
                 $pekan = isset($_GET['pekan'])?$_GET['pekan']:'';
                 $sql = "
-                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, j.kode_kelas, j.dosen, l.nama_lab, j.pekan
+                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
                 FROM jadwal j
                 JOIN waktu w ON j.kode_waktu = w.kode_waktu
-                JOIN mkp m ON j.kode_mkp = m.kode_mkp
-                JOIN prodi p ON m.kode_prodi = p.kode_prodi
-                JOIN laboratorium l ON j.kode_lab = l.kode_lab
+                JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                JOIN prodi p ON a.kode_prodi = p.kode_prodi
+                JOIN mkp m ON a.kode_mkp = m.kode_mkp
+                JOIN laboratorium l ON a.kode_lab = l.kode_lab
                 ";
                 $sql .= " WHERE l.username ='" . $user ."'";
                 if ($pekan !== '') {
