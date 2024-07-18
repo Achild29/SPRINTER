@@ -246,12 +246,12 @@
                   <?php 
                       include 'koneksi.php';
                       // Query untuk mengambil daftar laboratorium dari tabel jadwal
-                      $queryLab = "SELECT DISTINCT kode_lab FROM jadwal ORDER BY kode_lab";
+                      $queryLab = "SELECT DISTINCT kode_lab, nama_lab FROM laboratorium ORDER BY kode_lab";
                       $resultLab = $connect->query($queryLab);
                       if ($resultLab->num_rows > 0) {
                         while ($rowLab = $resultLab->fetch_assoc()) {
                           $selected = isset($_GET['kode_lab']) && $_GET['kode_lab'] == $rowLab['kode_lab'] ? 'selected' : '';
-                          echo "<option value='" . $rowLab['kode_lab'] . "' $selected>" . $rowLab['kode_lab'] . "</option>";
+                          echo "<option value='" . $rowLab['kode_lab'] . "' $selected>" . $rowLab['nama_lab'] . "</option>";
                         }
                       }
                   ?>
@@ -293,6 +293,7 @@
                 <th>Laboratorium</th>
                 <th>Kelas</th>
                 <th>Dosen</th>
+                <th>pekan</th>
               </tr>
             </thead>
             <tbody>
@@ -303,12 +304,13 @@
 
                   // Buat query SQL dengan filter pekan
                   $query = "
-                    SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, l.nama_lab, kode_kelas, dosen
-                    FROM jadwal j
-                    JOIN waktu w ON j.kode_waktu = w.kode_waktu
-                    JOIN mkp m ON j.kode_mkp = m.kode_mkp
-                    JOIN laboratorium l ON j.kode_lab = l.kode_lab
-                    JOIN prodi p ON m.kode_prodi = p.kode_prodi
+                  SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
+                  FROM jadwal j
+                  JOIN waktu w ON j.kode_waktu = w.kode_waktu
+                  JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                  JOIN prodi p ON a.kode_prodi = p.kode_prodi
+                  JOIN mkp m ON a.kode_mkp = m.kode_mkp
+                  JOIN laboratorium l ON a.kode_lab = l.kode_lab
                   ";
                   
                   $where = [];
@@ -316,7 +318,7 @@
                   $types = '';
 
                   if ($lab !== '') {
-                    $where[] = 'j.kode_lab = ?';
+                    $where[] = 'a.kode_lab = ?';
                     $params[] = $lab;
                     $types .= 's';
                   }
@@ -351,9 +353,10 @@
                       echo "<td>" . $row['jam_selesai'] . "</td>";
                       echo "<td>" . $row['nama_prodi'] . "</td>";
                       echo "<td>" . $row['nama_mkp'] . "</td>";
-                      echo "<td>" . $row['nama_lab'] . "</td>";
                       echo "<td>" . $row['kode_kelas'] . "</td>";
                       echo "<td>" . $row['dosen'] . "</td>";
+                      echo "<td>" . $row['nama_lab'] . "</td>";
+                      echo "<td>" . $row['pekan'] . "</td>";
                       echo "</tr>";
                     }
                   } else {
