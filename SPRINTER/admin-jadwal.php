@@ -158,7 +158,7 @@
           <!-- Profile Dropdown Items -->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Name Dosen, M.Kom.</h6>
+              <h6>Hello <?php echo $user ?>!</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -170,6 +170,16 @@
                 <span>Account Settings</span>
               </a>
             </li>
+            <?php if ($namaLab == "Super User") { ?>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="administrator-setting.php">
+                  <i class="bi bi-gear"></i>
+                  <span>Administrator Settings</span>
+                </a>
+              </li>
+              <?php
+            }
+            ?>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -397,7 +407,7 @@
             </thead>
             <tbody>
             <?php
-              if ($user == "darksystem") {
+              if ($namaLab == "Super User") {
                 // Ambil nilai pekan dan kode_lab dari query string
                 $lab = isset($_GET['kode_lab']) ? $_GET['kode_lab'] : '';
                 $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
@@ -524,7 +534,7 @@
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
     <div class="credits">
-      Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
+      Designed by <a href="https://youtu.be/id_a1VpIOJA?si=rkboW6XR-dYj_pgR" target="_blank">Anak Sistem Informasi</a>
     </div>
   </footer><!-- ======= End Footer ======= -->
 

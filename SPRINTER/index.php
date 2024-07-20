@@ -8,6 +8,22 @@
             header('location:login.php');	
         }else if ($_SESSION['level'] == 'Admin'){
           $user = $_SESSION['bagian'];
+          include 'koneksi.php';
+          $sql = "SELECT nama_lab FROM laboratorium WHERE username='$user'";
+          $rs = mysqli_query($connect,$sql);
+          // var_dump($nama);
+          // die;
+          $namaLab = "";
+          if ($rs->num_rows >0) {
+            while ($row=$rs->fetch_assoc()) {
+              $namaLab .= $row['nama_lab'];
+            }
+          } else {
+            $namaLab .= "Super User";
+          }
+          // var_dump($namaLab);
+          // die;
+          $nama = $namaLab;
     ?>
     <!-- ====== End Pengecekaan Untuk Session ====== -->
 
@@ -154,6 +170,16 @@
                 <span>Account Settings</span>
               </a>
             </li>
+            <?php if ($namaLab == "Super User") { ?>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="administrator-setting.php">
+                  <i class="bi bi-gear"></i>
+                  <span>Administrator Settings</span>
+                </a>
+              </li>
+              <?php
+            }
+            ?>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -187,7 +213,7 @@
       <!-- ======= Sidebar Name Information ======= -->
       <li class="nav-name">
         <a class="nav-name">
-          <h1>LAB. SISTEM INFORMASI</h1>
+          <h1>Hello <?php echo $namaLab ?>!</h1>
         </a>
       </li><!-- End Sidebar Name Information -->
 
@@ -312,7 +338,7 @@
       &copy; Copyright <strong><span>2024</span></strong>
     </div>
     <div class="credits">
-      Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
+      Designed by <a href="https://youtu.be/id_a1VpIOJA?si=rkboW6XR-dYj_pgR" target="_blank">Anak Sistem Informasi</a>
     </div>
   </footer><!-- ======= End Footer ======= -->
 
