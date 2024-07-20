@@ -865,6 +865,7 @@ h6 {
   padding: 10px 15px;
   border: 2px solid #007bff;
   text-align: left;
+  
 }
 
 .ajuan .table thead th {
@@ -875,6 +876,7 @@ h6 {
   color: #fff;
   background-color: #007bff;
   text-transform: uppercase;
+ 
 }
 
 .ajuan .table tbody td {
@@ -1131,7 +1133,7 @@ h6 {
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .master-prodi .page-item.active .page-link {
