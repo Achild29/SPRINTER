@@ -170,6 +170,16 @@
                 <span>Account Settings</span>
               </a>
             </li>
+            <?php if ($namaLab == "Super User") { ?>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="administrator-setting.php">
+                  <i class="bi bi-gear"></i>
+                  <span>Administrator Settings</span>
+                </a>
+              </li>
+              <?php
+            }
+            ?>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -356,14 +366,10 @@
   </main><!-- ======= End #main ======= -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>2024</span></strong>
-    </div>
-    <div class="credits">
-      Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
-    </div>
-  </footer><!-- ======= End Footer ======= -->
+  <?php
+    Funfooter();
+    ?>
+  <!-- ======= End Footer ======= -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
