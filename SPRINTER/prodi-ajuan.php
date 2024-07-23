@@ -8,7 +8,6 @@
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
       $prodi = $_SESSION['prodi'];
-      $user = $_SESSION['bagian'];
         include 'koneksi.php';
         $sql = "SELECT nama_prodi FROM prodi WHERE kode_prodi ='$prodi'";
         $rs = mysqli_query($connect,$sql);
@@ -19,11 +18,7 @@
           while ($row=$rs->fetch_assoc()) {
             $namaProdi .= $row['nama_prodi'];
           }
-        } else {
-          $namaProdi .= "Super User";
         }
-        // var_dump($namaProdi);
-        // die;
         $nama = $namaProdi;
 ?><!-- ====== End Pengecekan Session ====== -->
 
@@ -272,7 +267,6 @@
             </thead>
             <tbody>
               <?php
-                  include 'koneksi.php';
                   $query = "
                     SELECT a.kode_ajuan, p.kode_prodi, k.kode_kelas, m.nama_mkp, l.nama_lab, dosen, status_ajuan 
                     FROM ajuan a

@@ -262,7 +262,6 @@
                 <select class="form-select" aria-label="Kode PRODI" name="kode_mkp" required onchange="this.form.submit()">
                   <option>Pilih Mata Kuliah Praktikum</option>
                     <?php
-                        include 'koneksi.php';
                         $query = "SELECT * FROM mkp WHERE kode_prodi = '$prodi'";
                         $field = $connect->prepare($query);
                         $field->execute();

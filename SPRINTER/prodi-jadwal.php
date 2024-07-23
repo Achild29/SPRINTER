@@ -8,7 +8,6 @@
       header('location:login.php');
     } else if ($_SESSION['level']=='Prodi') {
       $prodi = $_SESSION['prodi'];
-      $user = $_SESSION['bagian'];
         include 'koneksi.php';
         $sql = "SELECT nama_prodi FROM prodi WHERE kode_prodi ='$prodi'";
         $rs = mysqli_query($connect,$sql);
@@ -19,11 +18,7 @@
           while ($row=$rs->fetch_assoc()) {
             $namaProdi .= $row['nama_prodi'];
           }
-        } else {
-          $namaProdi .= "Super User";
         }
-        // var_dump($namaProdi);
-        // die;
         $nama = $namaProdi;
 ?><!-- ====== End Pengecekan Session ====== -->
 
@@ -261,7 +256,6 @@
                 <select class="form-select" id="pekan" name="kode_lab" required onchange="this.form.submit()">
                   <option value="">Laboratorium</option>
                   <?php 
-                      include 'koneksi.php';
                       // Query untuk mengambil daftar laboratorium dari tabel jadwal
                       $queryLab = "SELECT DISTINCT kode_lab, nama_lab FROM laboratorium ORDER BY kode_lab";
                       $resultLab = $connect->query($queryLab);
