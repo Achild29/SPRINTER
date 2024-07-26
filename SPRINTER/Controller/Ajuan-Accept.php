@@ -11,6 +11,7 @@
     $kode_prodi = "";
     $kode_mkp= "";
     $kode_lab = "";
+    $msg = "";
     
     $ql ="SELECT kode_prodi, kode_mkp, kode_lab FROM ajuan WHERE kode_ajuan ='$kda'";
     $stmt = $connect->prepare($ql);
@@ -24,39 +25,56 @@
         }
     }
     $kode_jadwal = substr($kode_waktu,0,6).substr($kode_prodi,3,2).substr($kode_mkp,5).substr($kelas,7,2).$pekan;
-    // var_dump($kode_prodi);
-    // var_dump($kode_mkp);
-    // var_dump($kode_lab);
-    // var_dump($kode_jadwal);
     $cekAjuan = "SELECT COUNT(j.kode_ajuan) FROM jadwal j WHERE j.kode_ajuan='$kda'";
-    // $stmtCount = $connect->prepare($cekAjuan);
-    // $stmtCount->execute();
-    // $cekCount = $stmtCount->get_result();
-    // var_dump($cekCount);
-    // var_dump($cekCount->num_rows);
     $count = "";
     $cekCount = mysqli_query($connect,$cekAjuan);
     while ($a=mysqli_fetch_array($cekCount)) {
         $count .= $a['COUNT(j.kode_ajuan)'];
-        // var_dump($a);
     }
-    // var_dump($count);
-    // var_dump($count);
-    // var_dump($count < 2);
-    // var_dump($_POST);   
-    // die;
+    
     if ($count < 6) { //kode ini tolong jangan ubah
-        $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, kode_waktu, pekan) VALUES ('$kode_jadwal', '$kda', '$kode_waktu', '$pekan')";
-        $simpanJadwal = mysqli_query($connect,$sqlJadwal) or die ("Gagal Tambah : ".mysqli_error($connect));
-        header("location: ../admin-input-jadwal.php?kda=$kda#Ajuan-Accept");
+        try {
+            $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, kode_waktu, pekan) VALUES ('$kode_jadwal', '$kda', '$kode_waktu', '$pekan')";
+            $simpanJadwal = mysqli_query($connect,$sqlJadwal) or die ("Gagal Tambah : ".mysqli_error($connect));
+            header("location: ../admin-input-jadwal.php?kda=$kda#Ajuan-Accept");
+        } catch (Exception $e) {
+            $msg .= "error: " . $e->getMessage();
+            erroOutput($msg);
+        }
     } else {
-        $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, kode_waktu, pekan) VALUES ('$kode_jadwal', '$kda', '$kode_waktu', '$pekan')";
-        $sqlUpdate = "UPDATE ajuan set status_ajuan ='Accept' where kode_ajuan ='$kda'";
-        $simpanJadwal = mysqli_query($connect,$sqlJadwal) or die ("Gagal Tambah : ".mysqli_error($connect));
-        $simpanUpdate = mysqli_query($connect,$sqlUpdate) or die ("Gagal Tambah : ".mysqli_error($connect));
-        header("location: ../admin-jadwal.php");
+        try {
+            $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, kode_waktu, pekan) VALUES ('$kode_jadwal', '$kda', '$kode_waktu', '$pekan')";
+            $sqlUpdate = "UPDATE ajuan set status_ajuan ='Accept' where kode_ajuan ='$kda'";
+            $simpanJadwal = mysqli_query($connect,$sqlJadwal) or die ("Gagal Tambah : ".mysqli_error($connect));
+            $simpanUpdate = mysqli_query($connect,$sqlUpdate) or die ("Gagal Tambah : ".mysqli_error($connect));
+            header("location: ../admin-jadwal.php");
+        } catch (Exception $e) {
+            $msg .= "error: " . $e->getMessage();
+            erroOutput($msg);
+        }
     }
 
-    // var_dump($simpanJadwal);
-    // var_dump($simpanUpdate);
+    $stmt->close();
+    $connect->close();
+
+    function erroOutput($msg) {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ERROR!</title>
+        </head>
+        <body back>
+            <input type="hidden" id="msg" value="<?php echo $msg; ?>">
+            <script>
+                const msgOut = document.getElementById("msg").value;
+                alert('Gagal Edit ,' + msgOut);
+                window.location = 'javascript:history.go(-1)';
+            </script>
+        </body>
+        </html>
+        <?php
+    }
 ?>

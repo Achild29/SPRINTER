@@ -32,6 +32,7 @@
         }
     }
 
+    $connect->close();
 
     function erroOutput($msg) {
         ?>

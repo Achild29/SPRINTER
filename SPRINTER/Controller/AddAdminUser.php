@@ -5,8 +5,6 @@
     
     $nmLab=$_POST['namaLab'];
     $kode_lab="Lab-".substr($nmLab,0,5);
-    // var_dump($kode_lab);
-    // die;
     try {
         $sql = "INSERT INTO admin (username, password) VALUES ('$user', '$pass')";
         $stmt = $connect->prepare($sql);
@@ -19,9 +17,6 @@
         }
     } catch (Exception $e) {
         $msg = "msg :" . $e->getMessage();
-        // echo $msg;
-        // var_dump($result);
-        // var_dump($stmt);
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -43,3 +38,5 @@
         </body>
         </html><?php
     }
+    $stmt->close();
+    $connect->close();

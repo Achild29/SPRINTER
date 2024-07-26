@@ -4,14 +4,13 @@
     $newPass = $_POST['newPassword'];
     $reNewPass = $_POST['renewPassword'];
     $level = $_POST['level'];
+    $msg = "";
 
     if ($level == "Admin") {
         $user = $_POST['user'];
         $passDb = "";
         $sql = "SELECT password FROM admin";
         $sql .= " WHERE username='".$user."'";
-        // var_dump($sql);
-        // die;
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -20,8 +19,6 @@
                 $passDb .= $row['password'];
             }
         }
-        // var_dump($_POST);
-        // die;
         if ($passDb !== $oldPass) {
             echo "<script language='javascript'> alert('password lama anda tidak cocok!');
                     window.location = 'javascript:history.go(-1)'</script>";
@@ -30,17 +27,67 @@
                     window.location = 'javascript:history.go(-1)'</script>";
         } else {
             $updateSql = "UPDATE admin SET password ='$newPass' where username ='$user'";
-            $msg = "
-            Password anda telah berhasil di ganti menjadi: $newPass CATAT BAIK-BAIK
-            SILAHKAN LOGIN kembali menggunakan password baru
-            jika lupa silahkan hubungi KOORDINATOR LAB
-            ";
-            $simpanUpdate = mysqli_query($connect,$updateSql) or die ("Gagal Tambah : ".mysqli_error($connect));
-            echo "<script language='javascript'> alert('".$msg."'); </script>";
-            header("location: ../logout.php");
+            try {
+                $simpanUpdate = mysqli_query($connect,$updateSql) or die ("Gagal Tambah : ".mysqli_error($connect));
+                if ($simpanUpdate) {
+                    $msg .= "
+                    Password anda telah berhasil di ganti menjadi: $newPass CATAT BAIK-BAIK
+                    SILAHKAN LOGIN kembali menggunakan password baru
+                    jika lupa silahkan hubungi KOORDINATOR LAB
+                    ";
+                    sucessOutput($msg);
+                }
+            } catch (Exception $e) {
+                $msg .= "error: " . $e->getMessage();
+                erorOutput($msg);
+            }
         }
-        // var_dump($passDb);
     } else {
         // untuk Prodi di sini yah
+    }
+
+    $stmt->close();
+    $connect->close();
+
+    function sucessOutput($msg) {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Berhasil Ganti PASSWORD</title>
+        </head>
+        <body back>
+            <input type="hidden" id="msg" value="<?php echo $msg; ?>">
+            <script>
+                const msgOut = document.getElementById("msg").value;
+                alert('SUKSES ,' + msgOut);
+                window.location = '../logout.php';
+            </script>
+        </body>
+        </html>
+        <?php
+    }
+
+    function erorOutput($msg) {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>EROR</title>
+        </head>
+        <body back>
+            <input type="hidden" id="msg" value="<?php echo $msg; ?>">
+            <script>
+                const msgOut = document.getElementById("msg").value;
+                alert('EROR ,' + msgOut);
+                window.location = 'javascript:history.go(-1)';
+            </script>
+        </body>
+        </html>
+        <?php
     }
 ?>

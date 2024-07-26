@@ -11,6 +11,7 @@
     $dosen = $_POST['dosen'];
     $kode_lab = $_POST['kode_lab'];
     $rps = upload();
+    $msg="";
     if (!$rps) {
         return false;
     }
@@ -49,5 +50,58 @@
     $status_ajuan = "On Process";
 
     $sql = "INSERT INTO ajuan (kode_ajuan, kode_prodi, kode_kelas, kode_mkp, dosen, kode_lab, url_rps, status_ajuan) VALUES ('$kode_ajuan','$kode_prodi','$kode_kelas','$kode_mkp','$dosen','$kode_lab', '$rps','$status_ajuan')";
-    $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
-    header("location: ../prodi-ajuan.php");
+    // header("location: ../prodi-ajuan.php");
+    try {
+        $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
+        if ($simpan) {
+            $msg .= "BERHASIL";
+            suksesOutput($msg);
+        }
+    } catch (Exception $e) {
+        $msg .= "error: " . $e->getMessage();
+        erorOutput($msg);
+    }
+
+    $connect->close();
+
+    function suksesOutput($msg) {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>BERHASIL</title>
+        </head>
+        <body back>
+            <input type="hidden" id="msg" value="<?php echo $msg; ?>">
+            <script>
+                const msgOut = document.getElementById("msg").value;
+                alert('SUKSES ,' + msgOut);
+                window.location = '../prodi-ajuan.php';
+            </script>
+        </body>
+        </html>
+        <?php
+    }
+
+    function erorOutput($msg) {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>EROR</title>
+        </head>
+        <body back>
+            <input type="hidden" id="msg" value="<?php echo $msg; ?>">
+            <script>
+                const msgOut = document.getElementById("msg").value;
+                alert('EROR ,' + msgOut);
+                window.location = 'javascript:history.go(-1)';
+            </script>
+        </body>
+        </html>
+        <?php
+    }
