@@ -255,7 +255,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
       <section id="account-settings" class="account-settings">
         <div id="account-settings" class="card-body">
 
-          <form action="" method="post">
+          <form action="Controller/changePassword.php" method="post">
             <div class="mb-3">
               <label for="currentPassword" class="form-label">Current Password</label>
               <div class="password-wrapper">
@@ -278,6 +278,11 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
               </div>
             </div>
             <div class="mb-3">
+              <input type="hidden" name="user"
+                <?php
+                echo "value='" . $prodi . "'";
+                ?>>
+              <input type="hidden" name="level" value="Prodi">
               <button type="submit" class="btn btn-primary">Change Password</button>
             </div>
           </form>
@@ -311,7 +316,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         &copy; Copyright <strong><span>2024</span></strong>
       </div>
       <div class="credits">
-        Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
+        Designed by <a href="#" target="_blank">Anak Sistem Informasi</a>
       </div>
     </footer><!-- ======= End Footer ======= -->
 

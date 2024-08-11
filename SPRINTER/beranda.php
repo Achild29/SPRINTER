@@ -284,7 +284,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         &copy; Copyright <strong><span>2024</span></strong>
       </div>
       <div class="credits">
-        Designed by <a href="https://instagram.com/creatix.an" target="_blank">Anak Sistem Informasi</a>
+        Designed by <a href="#" target="_blank">Anak Sistem Informasi</a>
       </div>
     </footer><!-- ======= End Footer ======= -->
 
