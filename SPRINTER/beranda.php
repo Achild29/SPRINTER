@@ -203,7 +203,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Name Information ======= -->
         <li class="nav-name">
           <a class="nav-name">
-            <h1>Selamat Datang | <?= $nama ?> !</h1>
+            <h1><?= $nama ?></h1>
           </a>
         </li><!-- End Sidebar Name Information -->
 
@@ -256,18 +256,18 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <div class="card" style="background-image: url('../img/bg_unpam2.jpg');">
           <h5 class="card-header">Selamat di Sistem Penjadwalan laboratorium Kampus UNPAM Serang</h5>
           <div class="card-body">
-            <div style="margin-bottom: 30.5%;" class="mt-3">
+            <div style="margin-bottom: 2.5%;" class="mt-3">
               <center>
 
-                <h4>Berikut Langkah langkah cara membuat ajuan lab</h4>
+                <h4>Berikut Langkah-langkah membuat ajuan lab</h4>
               </center>
               <ol>
-                <li>Klik Ajuan pada sebelah kiri</li>
+                <li>Klik Ajuan pada menu di sebelah kiri</li>
                 <li>Buat pengajuan baru</li>
-                <li>Lalu inputkan Data Mata Kuliah yang akan diajukan</li>
-                <li>Pilih kode kelas nya juga</li>
-                <li>Sesuaikan nama dosen dengan kelasnya</li>
-                <li>Pilih laboratoriumnya lalu</li>
+                <li>Input Data Mata Kuliah yang akan diajukan</li>
+                <li>Pilih kode kelas</li>
+                <li>Input nama dosen pengampu sesuai dengan kelas</li>
+                <li>Pilih laboratorium</li>
                 <li>Upload file rps nya dan klik submit</li>
               </ol>
             </div>
