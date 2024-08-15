@@ -2,7 +2,6 @@
     // var_dump($_POST);
     // die;
     include '../koneksi.php';
-    $kode_waktu = $_POST['kode_waktu'];
     $pekan = $_POST['pekan'];
     $kelas = $_POST['kelas'];
     // $dosen = $_POST['dosen'];
@@ -11,9 +10,10 @@
     $kode_prodi = "";
     $kode_mkp= "";
     $kode_lab = "";
+    $kode_waktu = "";
     $msg = "";
     
-    $ql ="SELECT kode_prodi, kode_mkp, kode_lab FROM ajuan WHERE kode_ajuan ='$kda'";
+    $ql ="SELECT kode_prodi, kode_mkp, kode_lab, kode_waktu FROM ajuan WHERE kode_ajuan ='$kda'";
     $stmt = $connect->prepare($ql);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -22,6 +22,7 @@
             $kode_prodi .= $row['kode_prodi'];
             $kode_mkp .= $row['kode_mkp'];
             $kode_lab .= $row['kode_lab'];
+            $kode_waktu .= $row['kode_waktu'];
         }
     }
     $kode_jadwal = substr($kode_waktu,0,6).substr($kode_prodi,3,2).substr($kode_mkp,5).substr($kelas,7,2).$pekan;
@@ -34,7 +35,7 @@
     
     if ($count < 6) { //kode ini tolong jangan ubah
         try {
-            $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, kode_waktu, pekan) VALUES ('$kode_jadwal', '$kda', '$kode_waktu', '$pekan')";
+            $sqlJadwal = "INSERT INTO jadwal (kode_jadwal, kode_ajuan, pekan) VALUES ('$kode_jadwal', '$kda', '$pekan')";
             $simpanJadwal = mysqli_query($connect,$sqlJadwal) or die ("Gagal Tambah : ".mysqli_error($connect));
             header("location: ../admin-input-jadwal.php?kda=$kda#Ajuan-Accept");
         } catch (Exception $e) {

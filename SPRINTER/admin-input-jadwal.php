@@ -336,11 +336,12 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                     <?php
                     // $status = isset($_GET['status_ajuan'])?$_GET['status_ajuan']:'';
                     $sql = "
-                  SELECT a.kode_ajuan, a.status_ajuan, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, a.url_rps, l.nama_lab
+                  SELECT a.kode_ajuan, a.status_ajuan, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, a.url_rps, l.nama_lab, w.reguler, w.hari, w.jam_mulai
                   FROM ajuan a
                   JOIN mkp m ON a.kode_mkp = m.kode_mkp
                   JOIN prodi p ON a.kode_prodi = p.kode_prodi
                   JOIN laboratorium l ON a.kode_lab = l.kode_lab
+                  JOIN waktu w ON a.kode_waktu = w.kode_waktu
                   WHERE a.kode_ajuan ='" . $kda . "'
                   ";
                     $stmt = $connect->prepare($sql);
@@ -393,6 +394,12 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                             echo ($row['nama_lab']);
                             ?>
                           </td>
+                          <td>
+                            <?php
+                            $waktu .= $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'];
+                            echo ($row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai']);
+                            ?>
+                          </td>
                         </tr>
                         <!-- end of isi dari table -->
                     <?php
@@ -419,42 +426,31 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 <div class="row mt-3 mb-3">
                   <div class="col">
                     <label for="" class="form-label">Prodi</label>
-                    <input class="form-control" type="text" value="<?php echo ($prodi) ?>" readonly>
+                    <input class="form-control" type="text" value="<?php echo ($prodi) ?>" readonly required disabled>
                   </div>
                   <div class="col">
                     <label for="" class="form-label">Mata Kuliah Praktikum</label>
-                    <input class="form-control" type="text" value="<?php echo ($mkp) ?>" readonly>
+                    <input class="form-control" type="text" value="<?php echo ($mkp) ?>" readonly required disabled>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col">
                     <label for="" class="form-label">Kelas</label>
-                    <input class="form-control" type="text" value="<?php echo ($kelas) ?>" name="kelas" readonly>
+                    <input class="form-control" type="text" value="<?php echo ($kelas) ?>" name="kelas" readonly required disabled> 
                   </div>
                   <div class="col">
                     <label for="" class="form-label">Dosen</label>
-                    <input class="form-control" type="text" value="<?php echo ($dosen) ?>" readonly>
+                    <input class="form-control" type="text" value="<?php echo ($dosen) ?>" readonly required disabled>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col">
-                    <label for="" class="form-label">Waktu</label>
-                    <select name="kode_waktu" id="kode_waktu" class="form-select" required>
-                      <option selected value="">Pilih Waktu</option>
-                      <?php
-                      $query = "SELECT * FROM waktu ORDER BY reguler ASC";
-                      $field = $connect->prepare($query);
-                      $field->execute();
-                      $res1 = $field->get_result();
-                      while ($row = $res1->fetch_assoc()) {
-                        echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'] . "</option>";
-                      }
-                      ?>
-                    </select>
+                    <label for="" class="form-label">laboratorium</label>
+                    <input class="form-control" type="text" value="<?php echo ($lab) ?>" readonly required disabled>
                   </div>
                   <div class="col">
-                    <label for="" class="form-label">laboratorium</label>
-                    <input class="form-control" type="text" value="<?php echo ($lab) ?>" readonly>
+                    <label for="" class="form-label">Waktu</label>
+                    <input class="form-control" type="text" value="<?php echo ($waktu) ?>" readonly required disabled>
                   </div>
                 </div>
                 <div class="row mb-3">

@@ -344,6 +344,21 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                   </Select>
                 </div>
                 <div class="col">
+                    <label for="" class="form-label">Waktu</label>
+                    <select name="kode_waktu" id="kode_waktu" class="form-select" required>
+                      <option selected value="">Pilih Waktu</option>
+                      <?php
+                      $query = "SELECT * FROM waktu ORDER BY reguler ASC";
+                      $field = $connect->prepare($query);
+                      $field->execute();
+                      $res1 = $field->get_result();
+                      while ($row = $res1->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'] . "</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                <div class="col">
                   <label for="rps" class="form-label">Upload RPS</label>
                   <input class="form-control" type="file" id="rps" name="rps">
                   <input type="hidden" name="mkp" <?php

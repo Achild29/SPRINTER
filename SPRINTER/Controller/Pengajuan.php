@@ -10,6 +10,7 @@
     $kode_mkp = $_POST['mkp'];
     $dosen = $_POST['dosen'];
     $kode_lab = $_POST['kode_lab'];
+    $kode_waktu = $_POST['kode_waktu'];
     $rps = upload();
     $msg="";
     if (!$rps) {
@@ -49,7 +50,7 @@
     $kode_ajuan = $kode_kelas . "/" . $kode_mkp;
     $status_ajuan = "On Process";
 
-    $sql = "INSERT INTO ajuan (kode_ajuan, kode_prodi, kode_kelas, kode_mkp, dosen, kode_lab, url_rps, status_ajuan) VALUES ('$kode_ajuan','$kode_prodi','$kode_kelas','$kode_mkp','$dosen','$kode_lab', '$rps','$status_ajuan')";
+    $sql = "INSERT INTO ajuan (kode_ajuan, kode_prodi, kode_kelas, kode_mkp, dosen, kode_lab, kode_waktu, url_rps, status_ajuan) VALUES ('$kode_ajuan','$kode_prodi','$kode_kelas','$kode_mkp','$dosen','$kode_lab','$kode_waktu', '$rps','$status_ajuan')";
     // header("location: ../prodi-ajuan.php");
     try {
         $simpan = mysqli_query($connect,$sql) or die ("Gagal Tambah : ".mysqli_error($connect));
