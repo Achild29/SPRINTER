@@ -339,7 +339,8 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                     <option selected>Pilih Reguler</option>
                     <option value="A">Reguler A</option>
                     <option value="B">Reguler B</option>
-                    <option value="C">Reguler C</option>
+                    <option value="CK">Reguler CK</option>
+                    <option value="CS">Reguler CS</option>
                   </select>
                 </div>
               </div>
