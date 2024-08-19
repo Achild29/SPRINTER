@@ -316,6 +316,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                       <th>Dosen</th>
                       <th>URL PDF</th>
                       <th>nama Lab</th>
+                      <th>waktu</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -382,8 +383,8 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                           </td>
                           <td>
                             <?php
-                            $waktu .= $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'];
-                            echo ($row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai']);
+                            $waktu .= "Reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'];
+                            echo ("Reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai']);
                             ?>
                           </td>
                         </tr>
@@ -422,7 +423,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 <div class="row mb-3">
                   <div class="col">
                     <label for="" class="form-label">Kelas</label>
-                    <input class="form-control" type="text" value="<?php echo ($kelas) ?>" name="kelas" readonly required disabled> 
+                    <input class="form-control" type="text" value="<?php echo ($kelas) ?>" name="kelas" readonly required disabled>
                   </div>
                   <div class="col">
                     <label for="" class="form-label">Dosen</label>
@@ -510,8 +511,8 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                     $lihatAccepted = "
                   SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
                   FROM jadwal j
-                  JOIN waktu w ON j.kode_waktu = w.kode_waktu
                   JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                  JOIN waktu w ON a.kode_waktu = w.kode_waktu
                   JOIN prodi p ON a.kode_prodi = p.kode_prodi
                   JOIN mkp m ON a.kode_mkp = m.kode_mkp
                   JOIN laboratorium l ON a.kode_lab = l.kode_lab

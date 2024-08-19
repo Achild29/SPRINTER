@@ -9,11 +9,11 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
 } else if ($_SESSION['level'] == 'Prodi') {
   $prodi = $_SESSION['prodi'];
   $user = $_SESSION['bagian'];
+  // var_dump($prodi);
+  // die;
   include 'koneksi.php';
   $sql = "SELECT nama_prodi FROM prodi WHERE kode_prodi ='$prodi'";
   $rs = mysqli_query($connect, $sql);
-  // var_dump($nama);
-  // die;
   $namaProdi = "";
   if ($rs->num_rows > 0) {
     while ($row = $rs->fetch_assoc()) {
@@ -285,56 +285,71 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 </div>
               </div>
             </div>
-          </form>
 
-          <form action="Controller/Pengajuan.php" method="post" enctype="multipart/form-data">
+
+
             <div class="mb-3">
               <div class="row">
                 <div class="col">
                   <label for="kelas" class="form-label">Kelas</label>
-                  <select name="kelas" id="kode_kelas" class="form-select">
-                    <option value="">Pilih Kelas</option>
+                  <select class="form-select" aria-label="" name="kode_kelas" required onchange="this.form.submit()">
+                    <option>Pilih Kelas</option>
                     <?php
-                    $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi'";
+                    $query = "SELECT * FROM kelas WHERE kode_prodi = '$prodi' ORDER BY Reguler, kode_kelas";
                     $field = $connect->prepare($query);
                     $field->execute();
                     $res2 = $field->get_result();
                     while ($row = $res2->fetch_assoc()) {
-                      echo "<option value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                      $showOptions = "<option ";
+                      if (isset($_GET['kode_kelas'])) {
+                        if ($row['kode_kelas'] == $_GET['kode_kelas']) {
+                          $showOptions .= "selected ";
+                        }
+                      }
+                      $showOptions .= "value='" . $row['kode_kelas'] . "'>" . $row['kode_kelas'] . "</option>";
+                      echo ($showOptions);
                     }
                     ?>
                   </select>
                 </div>
                 <div class="col">
-                  <label for="dosen" class="form-label">Dosen Pengampu</label>
-                  <input type="text" class="form-control" name="dosen"></input>
+                  <label for="reg" class="form-label">Reg</label>
+                  <select id="reg" class="form-select" required disabled>
+                    <?php
+                    if (isset($_GET['kode_kelas'])) {
+                      $kode_kelas = $_GET['kode_kelas'];
+                      $query = "SELECT Reguler FROM kelas WHERE kode_kelas = ?";
+                      $field = $connect->prepare($query);
+                      $field->bind_param("s", $kode_kelas);
+                      $field->execute();
+                      $res2 = $field->get_result();
+                      while ($row = $res2->fetch_assoc()) {
+                        $reg = $row['Reguler'];
+                        echo "<option>" . $row['Reguler'] . "</option>";
+                      }
+                    }
+                    ?>
+                  </select>
                 </div>
               </div>
             </div>
-
+          </form>
+          <form action="Controller/Pengajuan.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
               <div class="row">
                 <div class="col">
-                  <label for="kode_lab" class="form-label">Labrotarium</label>
-                  <Select name="kode_lab" id="kode PRODI" class="form-select">
-                    <option value="">Pilih Labrotarium</option>
-                    <?php
-                    $query = "SELECT * FROM laboratorium";
-                    $field = $connect->prepare($query);
-                    $field->execute();
-                    $res2 = $field->get_result();
-                    while ($row = $res2->fetch_assoc()) {
-                      echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
-                    }
-                    ?>
-                  </Select>
+                  <label for="  dosen" class="form-label">Dosen Pengampu</label>
+                  <input type="text" class="form-control" name="dosen"></input>
+
+
                 </div>
                 <div class="col">
-                    <label for="" class="form-label">Waktu</label>
+                  <label for="" class="form-label">Waktu</label>
+                  <?php if ($reg == 'A') { ?>
                     <select name="kode_waktu" id="kode_waktu" class="form-select" required>
                       <option selected value="">Pilih Waktu</option>
                       <?php
-                      $query = "SELECT * FROM waktu ORDER BY reguler ASC";
+                      $query = "SELECT * FROM waktu WHERE reguler='A' ORDER BY reguler ASC";
                       $field = $connect->prepare($query);
                       $field->execute();
                       $res1 = $field->get_result();
@@ -343,22 +358,76 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                       }
                       ?>
                     </select>
+                  <?php } elseif ($reg == 'B') { ?>
+                    <select name="kode_waktu" id="kode_waktu" class="form-select" required>
+                      <option selected value="">Pilih Waktu</option>
+                      <?php
+                      $query = "SELECT * FROM waktu WHERE reguler='B' ORDER BY reguler ASC";
+                      $field = $connect->prepare($query);
+                      $field->execute();
+                      $res1 = $field->get_result();
+                      while ($row = $res1->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'] . "</option>";
+                      }
+                      ?>
+                    </select>
+
+                  <?php } else { ?>
+                    <select name="kode_waktu" id="kode_waktu" class="form-select" required>
+                      <option selected value="">Pilih Waktu</option>
+                      <?php
+                      $query = "SELECT * FROM waktu WHERE reguler='C' ORDER BY reguler ASC";
+                      $field = $connect->prepare($query);
+                      $field->execute();
+                      $res1 = $field->get_result();
+                      while ($row = $res1->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_waktu'] . "'> reg " . $row['reguler'] . " " . $row['hari'] . " " . $row['jam_mulai'] . "</option>";
+                      }
+                      ?>
+                    </select>
+
+                  <?php }
+                  ?>
+                </div>
+              </div>
+              <div class="mb-3 mt-3">
+                <div class="row">
+                  <div class="col">
+                    <label for="kode_lab" class="form-label">Labrotarium</label>
+                    <Select name="kode_lab" id="kode PRODI" class="form-select">
+                      <option value="">Pilih Labrotarium</option>
+
+                      <?php
+                      $query = "SELECT * FROM laboratorium";
+                      $field = $connect->prepare($query);
+                      $field->execute();
+                      $res2 = $field->get_result();
+                      while ($row = $res2->fetch_assoc()) {
+                        echo "<option value='" . $row['kode_lab'] . "'>" . $row['nama_lab'] . "</option>";
+                      }
+                      ?>
+                    </Select>
                   </div>
-                <div class="col">
-                  <label for="rps" class="form-label">Upload RPS</label>
-                  <input class="form-control" type="file" id="rps" name="rps">
-                  <input type="hidden" name="mkp" <?php
-                                                  $kode_mkp = $_GET['kode_mkp'];
-                                                  echo "value='" . $kode_mkp . "'";
-                                                  ?>>
-                  <input type="hidden" name="prodi" <?php
-                                                    // $prodi = $_GET['kode_mkp'];
-                                                    echo "value='" . $prodi . "'";
+                  <div class="col">
+                    <label for="rps" class="form-label">Upload RPS</label>
+                    <input class="form-control" type="file" id="rps" name="rps">
+                    <input type="hidden" name="mkp" <?php
+                                                    $kode_mkp = $_GET['kode_mkp'];
+                                                    echo "value='" . $kode_mkp . "'";
                                                     ?>>
+                    <input type="hidden" name="kelas" <?php
+                                                      $kode_kls = $_GET['kode_kelas'];
+                                                      echo "value='" . $kode_kls . "'";
+                                                      ?>>
+                    <input type="hidden" name="prodi" <?php
+                                                      // $prodi = $_GET['kode_mkp'];
+                                                      echo "value='" . $prodi . "'";
+                                                      ?>>
+                  </div>
                 </div>
-                <div class="mb-3-3">
-                  <input type="submit" value="Submit" class="btn btn-primary" Submit>
-                </div>
+              </div>
+              <div class="mb-3-3">
+                <input type="submit" value="Submit" class="btn btn-primary" Submit>
               </div>
             </div>
           </form>

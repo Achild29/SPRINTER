@@ -402,8 +402,8 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 $query = "
                 SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
                 FROM jadwal j
-                JOIN waktu w ON j.kode_waktu = w.kode_waktu
                 JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                JOIN waktu w ON a.kode_waktu = w.kode_waktu
                 JOIN prodi p ON a.kode_prodi = p.kode_prodi
                 JOIN mkp m ON a.kode_mkp = m.kode_mkp
                 JOIN laboratorium l ON a.kode_lab = l.kode_lab
@@ -466,8 +466,8 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 $sql = "
                 SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
                 FROM jadwal j
-                JOIN waktu w ON j.kode_waktu = w.kode_waktu
                 JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
+                JOIN waktu w ON a.kode_waktu = w.kode_waktu
                 JOIN prodi p ON a.kode_prodi = p.kode_prodi
                 JOIN mkp m ON a.kode_mkp = m.kode_mkp
                 JOIN laboratorium l ON a.kode_lab = l.kode_lab
