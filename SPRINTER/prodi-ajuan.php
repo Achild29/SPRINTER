@@ -39,7 +39,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
 
     <!-- ====== Google Fonts ====== -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- ====== Vendor CSS Files ====== -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- ====== Main CSS File ====== -->
-    <link href="assets/css/prodi.css" rel="stylesheet">
+    <link href="assets/css/style-prodi.css" rel="stylesheet">
   </head>
 
   <body>
@@ -183,7 +183,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Name Information ======= -->
         <li class="nav-name">
           <a class="nav-name">
-            <h1>Selamat Datang | <?= $nama ?> !</h1>
+            <h1>Selamat Datang <br> <?= $nama ?> !</h1>
           </a>
         </li><!-- End Sidebar Name Information -->
 

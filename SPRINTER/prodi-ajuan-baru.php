@@ -56,7 +56,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- ====== Main CSS File ====== -->
-    <link href="assets/css/prodi.css" rel="stylesheet">
+    <link href="assets/css/style-prodi.css" rel="stylesheet">
   </head>
 
   <body>
@@ -188,7 +188,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Name Information ======= -->
         <li class="nav-name">
           <a class="nav-name">
-            <h1>Selamat Datang | <?= $nama ?> !</h1>
+            <h1>Selamat Datang <br> <?= $nama ?> !</h1>
           </a>
         </li><!-- End Sidebar Name Information -->
 
