@@ -49,7 +49,7 @@ h6 {
 # Page Title
 --------------------------------------------------------------*/
 .full-bg {
-  background-color: #e1ac5c;
+  background-color: #007bff;
   height: 170px;
   border-radius: 0 0 20px 20px;
   box-sizing: border-box;
@@ -94,7 +94,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 999;
-  background: #e1ac5c;
+  background: #007bff;
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -109,7 +109,7 @@ h6 {
 
 .back-to-top:hover {
   background: #f2e9dd;
-  color: #e1ac5c;
+  color: #0059ffc1;
 }
 
 .back-to-top.active {
