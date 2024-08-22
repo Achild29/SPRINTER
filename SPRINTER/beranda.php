@@ -240,7 +240,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
       <!-- Master Prodi -->
       <div class="container-fluid w-75 p-5">
         <div class="card" style="background-image: url('../img/bg_unpam2.jpg');">
-          <h5 class="card-header">Selamat di Sistem Penjadwalan laboratorium Kampus UNPAM Serang</h5>
+          <h5 class="card-header">Selamat Datang di Sistem Penjadwalan laboratorium Kampus UNPAM Serang</h5>
           <div class="card-body">
             <div style="margin-bottom: 2.5%;" class="mt-3">
               <center>
