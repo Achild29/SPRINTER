@@ -98,7 +98,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-chat-left-text"></i>
-                 <span class="badge bg-success badge-number">0</span>
+              <span class="badge bg-success badge-number">0</span>
             </a>
 
             <!-- Messages Dropdown Items -->
@@ -113,12 +113,12 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 <hr class="dropdown-divider">
               </li>
 
-                
+
               <li>
                 <hr class="dropdown-divider">
               </li>
 
-                 
+
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -389,6 +389,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 <th>Dosen</th>
                 <th>laboratorium</th>
                 <th>Pekan</th>
+                <th>action</th>
               </tr>
             </thead>
             <tbody>
@@ -400,7 +401,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
 
                 // Buat query SQL dengan filter pekan
                 $query = "
-                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
+                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan, j.kode_jadwal
                 FROM jadwal j
                 JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
                 JOIN waktu w ON a.kode_waktu = w.kode_waktu
@@ -452,7 +453,15 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                     echo "<td>" . $row['kode_kelas'] . "</td>";
                     echo "<td>" . $row['dosen'] . "</td>";
                     echo "<td>" . $row['nama_lab'] . "</td>";
-                    echo "<td>" . $row['pekan'] . "</td>";
+                    echo "<td>" . $row['pekan'] . "</td>"; ?>
+                    <td>
+                      <div class="row">
+                        <center>
+                          <button type="button" class="btn btn-danger btn-hapus" data-id="<?= $row['kode_jadwal'] ?>">Hapus</button>
+                        </center>
+                      </div>
+                    </td>
+                  <?php
                     echo "</tr>";
                   }
                 } else {
@@ -464,7 +473,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
               } else {
                 $pekan = isset($_GET['pekan']) ? $_GET['pekan'] : '';
                 $sql = "
-                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan
+                SELECT w.hari, w.jam_mulai, w.jam_selesai, p.nama_prodi, m.nama_mkp, a.kode_kelas, a.dosen, l.nama_lab, j.pekan, j.kode_jadwal
                 FROM jadwal j
                 JOIN ajuan a ON j.kode_ajuan = a.kode_ajuan
                 JOIN waktu w ON a.kode_waktu = w.kode_waktu
@@ -494,7 +503,15 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                     echo "<td>" . $row['kode_kelas'] . "</td>";
                     echo "<td>" . $row['dosen'] . "</td>";
                     echo "<td>" . $row['nama_lab'] . "</td>";
-                    echo "<td>" . $row['pekan'] . "</td>";
+                    echo "<td>" . $row['pekan'] . "</td>"; ?>
+                    <td>
+                      <div class="row">
+                        <center>
+                          <button type="button" class="btn btn-danger btn-hapus" data-id="<?= $row['kode_jadwal'] ?>">Hapus</button>
+                        </center>
+                      </div>
+                    </td>
+              <?php
                     echo "</tr>";
                   }
                 } else {
@@ -513,6 +530,27 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
       </section>
 
     </main><!-- ======= End #main ======= -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalHapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Konfirmasi Penghapusan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="color: black;">
+            Apakah Anda yakin ingin menghapus data?
+            <!-- <span id="namaData"></span>? -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-danger btn-konfirmasi-hapus">Hapus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
@@ -536,8 +574,42 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- ======= Main JS File ======= -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        var data1;
+        $('.btn-hapus').click(function() {
+          data1 = $(this).data('id');
+
+          // console.log(data1);
+
+          $('#modalHapus').modal('show');
+        });
+
+        $('.btn-konfirmasi-hapus').click(function() {
+          var data2 = data1
+          // console.log(data2);
+
+          $.ajax({
+            url: 'Controller/HapusJadwal.php',
+            method: 'POST',
+            data: {
+              id: data2
+            },
+            success: function(response) {
+              $('#modalHapus').modal('hide');
+              window.location = 'Controller/HapusJadwal.php';
+            }
+          });
+        });
+      });
+    </script>
 
   </body>
 
