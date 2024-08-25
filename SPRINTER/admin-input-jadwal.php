@@ -56,7 +56,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- ====== Main CSS File ====== -->
-    <link href="assets/css/admin.css" rel="stylesheet">
+    <link href="assets/css/page-admin.css" rel="stylesheet">
   </head>
 
   <body>
@@ -200,7 +200,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Name Information ======= -->
         <li class="nav-name">
           <a class="nav-name">
-            <h1>Hello <?php echo $nama ?>!</h1>
+            <h1> <?php echo $nama ?></h1>
           </a>
         </li><!-- End Sidebar Name Information -->
 
@@ -299,7 +299,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
       if (!empty($kda)) {
       ?>
         <!-- ======= Section  ======= -->
-        <section id="input-jadwal">
+        <section class="input-jadwal" id="input-jadwal">
           <!-- start table -->
           <div class="card">
             <h5 class="card-header">DATA yang akan diinputkan ke dalam jadwal dari Ajuan</h5>

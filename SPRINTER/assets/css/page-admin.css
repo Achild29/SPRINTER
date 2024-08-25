@@ -7,7 +7,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #007bff37;
+  background: #f2e9dd;
   color: #fff;
 }
 
@@ -49,14 +49,14 @@ h6 {
 # Page Title
 --------------------------------------------------------------*/
 .full-bg {
-  background-color: #007bff;
-  height: 170px; 
-  border-radius: 0 0 20px 20px; 
+  background-color: #e1ac5c;
+  height: 170px;
+  border-radius: 0 0 20px 20px;
   box-sizing: border-box;
   margin-inline-start: -20px;
   margin-inline-end: -20px;
-  margin-bottom: -95px; 
-  margin-top: -35px;
+  margin-bottom: -95px;
+  margin-top: -30px;
   padding: 20px 0 0 25px;
 }
 
@@ -65,7 +65,7 @@ h6 {
 }
 
 .pagetitle h1 {
-  font-size: 23px;
+  font-size: 20px;
   margin-bottom: 0;
   font-weight: 500;
   font-family: "Poppins", sans-serif;
@@ -75,13 +75,13 @@ h6 {
 .breadcrumb {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
-  color: #dcdcdc;
   font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.3px;
 }
 
 .breadcrumb .active {
   color: #fff;
-  font-weight: 500;
 }
 
 /*--------------------------------------------------------------
@@ -94,7 +94,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 999;
-  background: #0059ff;
+  background: #e1ac5c;
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -108,7 +108,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #0059ffc1;
+  background: #ad803d;
   color: #fff;
 }
 
@@ -128,44 +128,44 @@ h6 {
   border: 0;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.248);
 }
-  
+
 .dropdown-menu .dropdown-header,
 .dropdown-menu .dropdown-footer {
   text-align: center;
   font-size: 15px;
   padding: 10px 30px;
 }
-  
+
 .dropdown-menu .dropdown-footer a {
   color: #464646;
   text-decoration: underline;
 }
-  
+
 .dropdown-menu .dropdown-footer a:hover {
   text-decoration: none;
 }
-  
+
 .dropdown-menu .dropdown-divider {
   color: #fff;
   margin: 0;
 }
-  
+
 .dropdown-menu .dropdown-item {
   font-size: 14px;
   padding: 10px 15px;
   transition: 0.3s;
 }
-  
+
 .dropdown-menu .dropdown-item i {
   margin-right: 10px;
   font-size: 18px;
   line-height: 0;
 }
-  
+
 .dropdown-menu .dropdown-item:hover {
   background-color: #fff;
 }
-  
+
 @media (min-width: 768px) {
   .dropdown-menu-arrow::before {
     content: "";
@@ -180,21 +180,21 @@ h6 {
     border-left: 1px solid #eaedf1;
   }
 }
-  
+
 @keyframes dropdown-animate {
   0% {
     opacity: 0;
   }
-  
+
   100% {
     opacity: 1;
   }
-  
+
   0% {
     opacity: 0;
   }
 }
-  
+
 /* Card */
 .card {
   margin-bottom: 30px;
@@ -202,7 +202,7 @@ h6 {
   background-color: #fff;
   border-radius: 10px;
 }
-  
+
 .card-title {
   padding: 20px 0 15px 0;
   font-size: 18px;
@@ -210,133 +210,133 @@ h6 {
   color: #007bff;
   font-family: "Poppins", sans-serif;
 }
-  
+
 .card-title span {
   color: #464646;
   font-size: 14px;
   font-weight: 400;
 }
-  
+
 .card-body {
   padding: 0 20px 20px 20px;
 }
-  
+
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }
-  
+
 /* Alerts */
 .alert-heading {
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
-  
+
 /* Close Button */
 .btn-close {
   background-size: 25%;
 }
-  
+
 .btn-close:focus {
   outline: 0;
   box-shadow: none;
 }
-  
+
 /* Accordion */
 .accordion-item {
   border: 1px solid #ebeef4;
 }
-  
+
 .accordion-button:focus {
   outline: 0;
   box-shadow: none;
 }
-  
+
 .accordion-button:not(.collapsed) {
   color: #012970;
   background-color: #f6f9ff;
 }
-  
+
 .accordion-flush .accordion-button {
   padding: 15px 0;
   background: none;
   border: 0;
 }
-  
+
 .accordion-flush .accordion-button:not(.collapsed) {
   box-shadow: none;
   color: #4154f1;
 }
-  
+
 .accordion-flush .accordion-body {
   padding: 0 0 15px 0;
   color: #3e4f6f;
   font-size: 15px;
 }
-  
+
 /* Bordered Tabs */
-/* .nav-tabs-bordered {
+.nav-tabs-bordered {
   border-bottom: 2px solid #ebeef4;
 }
-  
+
 .nav-tabs-bordered .nav-link {
   margin-bottom: -2px;
   border: none;
-  color: #4e2c2c;
+  color: #2c384e;
 }
-  
+
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
   color: #4154f1;
 }
-  
+
 .nav-tabs-bordered .nav-link.active {
   background-color: #fff;
-  color: #f14141;
+  color: #4154f1;
   border-bottom: 2px solid #4154f1;
-} */
+}
 
 /*--------------------------------------------------------------
 # HEADER
 --------------------------------------------------------------*/
 .logo span {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 500;
   color: #fff;
   font-family: "inter", sans-serif;
   margin-left: 15px;
   margin-top: 1px;
 }
-  
+
 .header {
   transition: all 0.5s;
   z-index: 997;
   height: 60px;
-  background-color: #007bff;
+  background-color: #e1ac5c;
   padding-left: 20px;
   position: fixed;
 }
-  
+
 .header .toggle-sidebar-btn {
-  font-size: 30px;
+  font-size: 28px;
   cursor: pointer;
   color: #fff;
   transition: color 0.3s ease;
 }
-  
+
 .header .toggle-sidebar-btn:hover {
-  color: #fff700; 
+  color: #222222;
 }
-  
+
 .header .toggle-sidebar-btn:active {
   transform: scale(0.95);
 }
-  
+
 .header .search-bar {
   min-width: 360px;
   padding: 0 20px;
 }
-  
+
 @media (max-width: 1199px) {
   .header .search-bar {
     position: fixed;
@@ -351,18 +351,18 @@ h6 {
     visibility: hidden;
     opacity: 0;
   }
-  
+
   .header .search-bar-show {
     top: 60px;
     visibility: visible;
     opacity: 1;
   }
 }
-  
+
 .header .search-form {
   width: 100%;
 }
-  
+
 .header .search-form input {
   border: 0;
   font-size: 15px;
@@ -376,21 +376,21 @@ h6 {
   margin-left: 60px;
   width: 80%;
 }
-  
+
 .header .search-form input:focus,
 .header .search-form input:hover {
   outline: none;
   box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
   border: 1px solid rgba(1, 41, 112, 0.3);
 }
-  
+
 .header .search-form button {
   border: 0;
   padding: 0;
   margin-left: -35px;
   background: none;
 }
-  
+
 .header .search-form button i {
   color: #464646;
   font-size: 17.5px;
@@ -402,71 +402,71 @@ h6 {
 .header-nav ul {
   list-style: none;
 }
-  
-.header-nav>ul {
+
+.header-nav > ul {
   margin: 0;
   padding: 0;
 }
-  
+
 .header-nav .nav-icon {
-  font-size: 27px;
-  color: #ffffff;
+  font-size: 26px;
+  color: #fff;
   margin-right: 20px;
   margin-top: 5px;
   position: relative;
 }
-  
+
 .header-nav .nav-profile {
-  color: #ffffff;
-  font-size: 33px;
+  color: #fff;
+  font-size: 32px;
   margin-right: 8px;
   margin-top: -0.5px;
 }
-  
+
 .header-nav .badge-number {
   position: absolute;
   inset: -2px -5px auto auto;
   font-weight: normal;
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   padding: 3px 6px;
-  color: #ffffff;
+  color: #fff;
 }
-  
+
 .header-nav .notifications {
   inset: 8px -15px auto auto !important;
 }
-  
+
 .header-nav .notifications .notification-item {
   display: flex;
   align-items: center;
   padding: 15px 10px;
   transition: 0.3s;
 }
-  
+
 .header-nav .messages {
   font-family: "Poppins", sans-serif;
   inset: 8px -15px auto auto !important;
 }
-  
+
 .header-nav .messages .message-item {
   padding: 15px 10px;
   transition: 0.3s;
 }
-  
+
 .header-nav .messages .message-item a {
   display: flex;
 }
-  
+
 .header-nav .messages .message-item h4 {
   font-size: 16px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
   margin-bottom: 5px;
   margin-left: 20px;
-  color: #007bff;
+  color: #464646;
 }
-  
+
 .header-nav .messages .message-item p {
   font-size: 14px;
   margin-left: 20px;
@@ -474,28 +474,28 @@ h6 {
   margin-bottom: 3px;
   line-height: 20px;
   width: 100%;
-  color: #464646;
+  color: #5e5e5e;
 }
-  
+
 .header-nav .messages .message-item:hover {
-  background-color: #007bff37;
+  background-color: #e1ac5c;
 }
-  
+
 .header-nav .profile {
   min-width: 270px;
   padding-bottom: 0;
   top: 8px !important;
 }
-  
+
 .header-nav .profile .dropdown-header h6 {
   font-size: 18px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
   margin-bottom: 0;
   margin-top: -5px;
-  color: #007bff;;
+  color: #e1ac5c;
 }
-  
+
 .header-nav .profile .dropdown-item {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
@@ -504,31 +504,31 @@ h6 {
   transition: 0.3s;
   color: #464646;
 }
-  
+
 .header-nav .profile .dropdown-item i {
   margin-right: 10px;
-  margin-left: 5px;
+  margin-left: 15px;
   font-size: 21px;
   line-height: 0;
   color: #464646;
 }
 
 .header-nav .profile .dropdown-item:hover i {
-  color: #007bff;
+  color: #fff;
 }
 
 .header-nav .profile .dropdown-item:hover {
-  background-color: #007bff37;
-  color: #007bff;
+  background-color: #e1ac5c;
+  color: #fff;
 }
-  
+
 .header-nav .profile .dropdown-item.active i {
-  color: #007bff;
+  color: #fff;
 }
-  
+
 .header-nav .profile .dropdown-item.active {
-  background-color: #007bff37; 
-  color: #007bff; 
+  background-color: #e1ac5c;
+  color: #fff;
 }
 
 /*--------------------------------------------------------------
@@ -537,22 +537,23 @@ h6 {
 .nav-logo img {
   max-width: 55%;
   height: auto;
-  margin-left: 50px; 
-  padding: 20px 10px 10px 10px; 
+  margin-left: 55px;
+  padding: 20px 10px 10px 10px;
   margin-bottom: 10px;
 }
 
 .nav-name {
-  text-align: center; 
-  border-bottom: 3px solid #007bff;
+  text-align: center;
+  border-bottom: 3px solid #e1ac5c;
 }
 
 .nav-name h1 {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px; 
-  font-weight: 700; 
-  color: #007bff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #464646;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
 .sidebar {
@@ -566,16 +567,16 @@ h6 {
   /* padding: 20px 10px 10px 10px;  */
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #007bff transparent;
-  background-color: #ffffff;
+  scrollbar-color: #e1ac5c transparent;
+  background-color: #fdfbf3;
 }
-  
+
 @media (max-width: 1199px) {
   .sidebar {
     left: -250px;
   }
 }
-  
+
 @media (min-width: 1200px) {
   #main,
   #footer,
@@ -583,96 +584,95 @@ h6 {
     margin-left: 250px;
   }
 }
-  
+
 @media (max-width: 1199px) {
   .toggle-sidebar .sidebar {
     left: 0;
   }
 }
-  
+
 @media (min-width: 1200px) {
   .toggle-sidebar #main,
   .toggle-sidebar #footer,
   .toggle-sidebar .header .toggle-sidebar-btn {
     margin-left: 0;
   }
-  
+
   .toggle-sidebar .sidebar {
     left: -250px;
   }
 }
-  
+
 .sidebar-nav {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-  
+
 .sidebar-nav li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-  
+
 .sidebar-nav .nav-item {
-  padding: 10px 8px 8px 8px; 
+  padding: 10px 8px 8px 8px;
   margin-bottom: -11px;
 }
-  
+
 .sidebar-nav .nav-link {
   display: flex;
   align-items: center;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #007bff;
+  color: #fff;
   transition: 0.3;
-  background: #007bff37;
+  background: #e1ac5c;
   padding: 15px 15px;
   border-radius: 10px;
 }
-  
+
 .sidebar-nav .nav-link i {
   font-size: 19px;
   margin-right: 15px;
   margin-left: 5px;
-  color: #007bff;
+  color: #fff;
 }
-  
+
 .sidebar-nav .nav-link.collapsed {
   color: #464646;
-  background: #fff;
+  background: #fdfbf3;
 }
-  
+
 .sidebar-nav .nav-link.collapsed i {
   color: #464646;
 }
-  
+
 .sidebar-nav .nav-link:hover {
-  color: #007bff;
-  background: #007bff37;
+  color: #fff;
+  background: #e1ac5c;
 }
-  
+
 .sidebar-nav .nav-link:hover i {
-  color: #007bff;
+  color: #fff;
 }
-  
+
 .sidebar-nav .nav-link .bi-chevron-down {
   margin-right: 0;
   transition: transform 0.2s ease-in-out;
 }
-  
+
 .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
   transform: rotate(180deg);
 }
-  
+
 .sidebar-nav .nav-content {
   padding: 5px 0 0 0;
   margin: 0;
   list-style: none;
-  margin-bottom: -7px;
 }
-  
+
 .sidebar-nav .nav-content a {
   display: flex;
   align-items: center;
@@ -684,10 +684,9 @@ h6 {
   padding: 12px 0 12px 40px;
   margin-left: 10px;
   transition: 0.3s;
-  margin-bottom: 7px;
-  margin-top: 2px;
+  margin-bottom: 5px;
 }
-  
+
 .sidebar-nav .nav-content a i {
   font-size: 9px;
   margin-right: 8px;
@@ -697,20 +696,24 @@ h6 {
   
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #007bff;
-  background: #007bff37;
+  color: #fff;
+  background: #e1ac5c;
   padding-left: 30px;
   border-radius: 10px;
 }
   
 .sidebar-nav .nav-content a.active i {
-  background-color: #007bff;
+  background-color: #e1ac5c;
 }
 
 /*--------------------------------------------------------------
 # Pages Dashboard
 --------------------------------------------------------------*/
-.dashboard .filter {
+.dashboard {
+  height: 100vh;
+}
+
+/* .dashboard .filter {
   position: absolute;
   right: 0px;
   top: 15px;
@@ -747,7 +750,6 @@ h6 {
   padding: 8px 15px;
 }
   
-/* Info Cards */
 .dashboard .info-card {
   padding-bottom: 10px;
 }
@@ -784,7 +786,6 @@ h6 {
   background: #ffecdf;
 }
   
-/* Activity */
 .dashboard .activity {
   font-size: 14px;
 }
@@ -829,13 +830,17 @@ h6 {
   
 .dashboard .activity .activity-item:last-child .activity-content {
   padding-bottom: 0;
-}
+} */
 
 /*--------------------------------------------------------------
 # Pages Ajuan
 --------------------------------------------------------------*/
+.ajuan {
+  height: 100vh;
+}
+
 .ajuan .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 220px;
@@ -844,11 +849,15 @@ h6 {
 .ajuan .form-select {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 1.8px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.ajuan .form-select:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .ajuan .mb-3:last-of-type {
@@ -863,7 +872,7 @@ h6 {
 .ajuan .table th,
 .ajuan .table td {
   padding: 10px 15px;
-  border: 2px solid #007bff;
+  border: 2px solid #e1ac5c;
   text-align: left;
   
 }
@@ -874,7 +883,7 @@ h6 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: #fff;
-  background-color: #007bff;
+  background-color: #e1ac5c;
   text-transform: uppercase;
  
 }
@@ -920,8 +929,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Lihat Jadwal ======= 
 ------------------------------------ */
+.jadwal {
+  height: 100vh;
+}
+
 .jadwal .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 220px;
@@ -930,11 +943,15 @@ h6 {
 .jadwal .form-select {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 1.8px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.jadwal .form-select:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .jadwal .mb-3:last-of-type {
@@ -978,7 +995,7 @@ h6 {
 .jadwal .table th,
 .jadwal .table td {
   padding: 10px 15px;
-  border: 2px solid #007bff;
+  border: 2px solid #e1ac5c;
   text-align: left;
 }
 
@@ -988,7 +1005,7 @@ h6 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: #fff;
-  background-color: #007bff;
+  background-color: #e1ac5c;
 }
 
 .jadwal .table tbody td {
@@ -1001,8 +1018,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Input Jadwal ======= 
 ------------------------------------ */
+.input-jadwal {
+  height: 100vh;
+}
+
 .input-jadwal .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
   margin-bottom: 140px;
@@ -1064,8 +1085,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Master Prodi ======= 
 ------------------------------------ */
+.master-prodi {
+  height: 100vh;
+}
+
 .master-prodi .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
 }
@@ -1080,11 +1105,15 @@ h6 {
 .master-prodi .form-control {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 1.8px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.master-prodi .form-control:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .master-prodi .password-wrapper {
@@ -1101,7 +1130,7 @@ h6 {
   right: 15px; 
   transform: translateY(-50%);
   cursor: pointer;
-  color: #007bff;
+  color: #e1ac5c;
   font-size: 25px;
 }
 
@@ -1112,8 +1141,8 @@ h6 {
 
 .master-prodi .btn-primary {
   width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   padding: 10px 20px;
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
@@ -1124,12 +1153,12 @@ h6 {
 }
 
 .master-prodi .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
+  background-color: #ad803d;
+  border: 2px solid #ad803d;
 }
 
 .master-prodi .card-nav {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
@@ -1139,8 +1168,8 @@ h6 {
 .master-prodi .page-item.active .page-link {
   padding: 10px 25px;
   border-radius: 5px;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   color: #fff;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
@@ -1153,8 +1182,8 @@ h6 {
   padding: 10px 25px;
   border-radius: 5px;
   background-color: #fff;
-  border: 1.8px solid #007bff;
-  color: #007bff;
+  border: 2px solid #e1ac5c;
+  color: #464646;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -1163,7 +1192,8 @@ h6 {
 }
 
 .master-prodi .page-link:hover {
-  background-color: #007bff37;
+  background-color: #e1ac5c;
+  color: #fff;
 }
 
 .master-prodi .pagination .page-item + .page-item {
@@ -1173,8 +1203,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Master MKP ======= 
 ------------------------------------ */
+.master-mkp {
+  height: 100vh;   
+}
+
 .master-mkp .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
 }
@@ -1189,7 +1223,7 @@ h6 {
 .master-mkp .form-select {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
@@ -1199,11 +1233,16 @@ h6 {
 .master-mkp .form-control {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.master-mkp .form-control:focus,
+.master-mkp .form-select:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .master-mkp .mb-3:last-of-type {
@@ -1213,8 +1252,8 @@ h6 {
 
 .master-mkp .btn-primary {
   width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   padding: 10px 20px;
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
@@ -1225,12 +1264,12 @@ h6 {
 }
 
 .master-mkp .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
+  background-color: #ad803d;
+  border: 2px solid #ad803d;
 }
 
 .master-mkp .card-nav {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
@@ -1240,8 +1279,8 @@ h6 {
 .master-mkp .page-item.active .page-link {
   padding: 10px 25px;
   border-radius: 5px;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   color: #fff;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
@@ -1254,8 +1293,8 @@ h6 {
   padding: 10px 25px;
   border-radius: 5px;
   background-color: #fff;
-  border: 1.8px solid #007bff;
-  color: #007bff;
+  border: 2px solid #e1ac5c;
+  color: #464646;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -1264,7 +1303,8 @@ h6 {
 }
 
 .master-mkp .page-link:hover {
-  background-color: #007bff37;
+  background-color: #e1ac5c;
+  color: #fff;
 }
 
 .master-mkp .pagination .page-item + .page-item {
@@ -1274,8 +1314,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Master Waktu ======= 
 ------------------------------------ */
+.master-waktu {
+  height: 100vh;
+}
+
 .master-waktu .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
 }
@@ -1290,11 +1334,15 @@ h6 {
 .master-waktu .form-select {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.master-waktu .form-select:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .master-waktu .mb-3:last-of-type {
@@ -1304,8 +1352,8 @@ h6 {
 
 .master-waktu .btn-primary {
   width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   padding: 10px 20px;
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
@@ -1316,12 +1364,12 @@ h6 {
 }
 
 .master-waktu .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
+  background-color: #ad803d;
+  border: 2px solid #ad803d;
 }
 
 .master-waktu .card-nav {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
@@ -1331,8 +1379,8 @@ h6 {
 .master-waktu .page-item.active .page-link {
   padding: 10px 25px;
   border-radius: 5px;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   color: #fff;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
@@ -1345,8 +1393,8 @@ h6 {
   padding: 10px 25px;
   border-radius: 5px;
   background-color: #fff;
-  border: 1.8px solid #007bff;
-  color: #007bff;
+  border: 2px solid #e1ac5c;
+  color: #464646;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -1355,7 +1403,8 @@ h6 {
 }
 
 .master-waktu .page-link:hover {
-  background-color: #007bff37;
+  background-color: #e1ac5c;
+  color: #fff;
 }
 
 .master-waktu .pagination .page-item + .page-item {
@@ -1365,8 +1414,12 @@ h6 {
 /* ------------------------------------ 
 ======= Section Master Kelas ======= 
 ------------------------------------ */
+.master-kelas {
+  height: 100vh;
+}
+
 .master-kelas .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
 }
@@ -1381,7 +1434,7 @@ h6 {
 .master-kelas .form-control {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
@@ -1391,11 +1444,16 @@ h6 {
 .master-kelas .form-select {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.master-kelas .form-control:focus,
+.master-kelas .form-select:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .master-kelas .mb-3:last-of-type {
@@ -1405,8 +1463,8 @@ h6 {
 
 .master-kelas .btn-primary {
   width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   padding: 10px 20px;
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
@@ -1417,12 +1475,12 @@ h6 {
 }
 
 .master-kelas .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
+  background-color: #ad803d;
+  border: 2px solid #ad803d;
 }
 
 .master-kelas .card-nav {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
@@ -1432,8 +1490,8 @@ h6 {
 .master-kelas .page-item.active .page-link {
   padding: 10px 25px;
   border-radius: 5px;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   color: #fff;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
@@ -1446,8 +1504,8 @@ h6 {
   padding: 10px 25px;
   border-radius: 5px;
   background-color: #fff;
-  border: 1.8px solid #007bff;
-  color: #007bff;
+  border: 2px solid #e1ac5c;
+  color: #464646;
   font-size: 17px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -1456,7 +1514,8 @@ h6 {
 }
 
 .master-kelas .page-link:hover {
-  background-color: #007bff37;
+  background-color: #e1ac5c;
+  color: #fff;
 }
 
 .master-kelas .pagination .page-item + .page-item {
@@ -1467,14 +1526,13 @@ h6 {
 # Pages Account Settings
 --------------------------------------------------------------*/
 .account-settings {
-  margin-bottom: 140px;
+  height: 100vh;
 }
 
 .account-settings .card-body {
-  background-color: #fff;
+  background-color: #fdfbf3;
   padding: 20px 25px 25px 25px;
   border-radius: 10px;
-  margin-bottom: 140px;
 }
 
 .account-settings .form-label {
@@ -1487,11 +1545,15 @@ h6 {
 .account-settings .form-control {
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1.8px solid #007bff;
+  border: 2px solid #e1ac5c;
   color: #464646;
   font-size: 15.5px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.account-settings .form-control:focus {
+  box-shadow: 0 0 0 0.2rem #e1ac5c68;
 }
 
 .account-settings .password-wrapper {
@@ -1508,7 +1570,7 @@ h6 {
   right: 15px; 
   transform: translateY(-50%);
   cursor: pointer;
-  color: #007bff;
+  color: #e1ac5c;
   font-size: 25px;
 }
 
@@ -1519,8 +1581,8 @@ h6 {
 
 .account-settings .btn-primary {
   width: 100%;
-  background-color: #007bff;
-  border: 1.8px solid #007bff;
+  background-color: #e1ac5c;
+  border: 2px solid #e1ac5c;
   padding: 10px 20px;
   border-radius: 5px;
   font-family: "Poppins", sans-serif;
@@ -1531,36 +1593,36 @@ h6 {
 }
 
 .account-settings .btn-primary:hover {
-  background-color: #0065d0;
-  border: 1.8px solid #0065d0;
+  background-color: #ad803d;
+  border: 2px solid #ad803d;
 }
 
 /*--------------------------------------------------------------
 # Section Footer
 --------------------------------------------------------------*/
 .footer {
-  padding: 17px 0;
+  padding: 20px 0;
   font-size: 13px;
-  background: #007bff;
+  background: #e1ac5c;
 }
-  
+
 .footer .copyright {
   text-align: center;
-  color: #ffffff;
-  font-size: 15px;
+  color: #fff;
+  font-size: 16px;
   font-family: "Poppins", sans-serif;
 }
-  
+
 .footer .credits {
   padding-top: 0;
   text-align: center;
   font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #ffffff;
+  font-size: 16px;
+  color: #fff;
 }
-  
+
 .footer .credits a {
-  color: #fff700;
-  font-size: 15px;
-  font-weight: 500;
+  color: #1c1c1c;
+  font-size: 16.5px;
+  font-weight: 600;
 }

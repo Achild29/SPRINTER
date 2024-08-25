@@ -56,7 +56,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- ====== Main CSS File ====== -->
-    <link href="assets/css/admin.css" rel="stylesheet">
+    <link href="assets/css/page-admin.css" rel="stylesheet">
   </head>
 
   <body>
@@ -199,7 +199,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Name Information ======= -->
         <li class="nav-name">
           <a class="nav-name">
-            <h1>Hello <?php echo $namaLab ?>!</h1>
+            <h1> <?php echo $namaLab ?></h1>
           </a>
         </li><!-- End Sidebar Name Information -->
 
@@ -286,6 +286,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         </div>
       </div><!-- End Page Title -->
 
+      <section class="dashboard">
       <!-- Banner -->
       <div id="carouselExampleIndicators" class="carousel">
         <!-- <div class="carousel-indicators gap-5 p-5">
@@ -315,6 +316,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         </div>
       </div>
       <!-- end of Master Prodi -->
+      </section>
 
     </main><!-- ======= End #main ======= -->
 
