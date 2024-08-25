@@ -128,8 +128,9 @@ body, html {
 .credits {
   margin-top: 20px;
   text-align: center;
-  color: #464646;
+  color: #1c1c1c;
   font-family: "Inter", sans-serif;
+  font-weight: 500;
 }
 
 .credits a {

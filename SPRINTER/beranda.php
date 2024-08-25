@@ -57,7 +57,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- ====== Main CSS File ====== -->
-    <link href="assets/css/beranda.css" rel="stylesheet">
+    <link href="assets/css/page-prodi.css" rel="stylesheet">
   </head>
 
   <body>
@@ -182,7 +182,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- ======= Sidebar Logo ======= -->
         <li class="nav-logo">
           <a class="nav-logo " href="beranda.php">
-            <img src="assets/img/Logo Unpam.png">
+            <img src="assets/img/logo-unpam.png">
           </a>
         </li><!-- End Sidebar Logo -->
 
@@ -236,7 +236,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         </div>
       </div><!-- End Page Title -->
 
-
+      <section class="dashboard">
       <!-- Master Prodi -->
       <div class="container-fluid w-75 p-5">
         <div class="card" style="background-image: url('../img/bg_unpam2.jpg');">
@@ -261,6 +261,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         </div>
       </div>
       <!-- end of Master Prodi -->
+  </section>
 
     </main><!-- ======= End main ======= -->
 
