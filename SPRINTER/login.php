@@ -50,7 +50,7 @@ session_destroy();
                 <div class="card-body">
 
                   <div class="d-flex justify-content-center py-4">
-                    <img src="assets/img/Logo Unpam.png" alt="" class="logo">
+                    <img src="assets/img/logo-unpam.png" alt="" class="logo">
                   </div>
                   <div class="pt-4 pb-2 text-center">
                     <h1 class="card-title">SPRINTER</h1>
