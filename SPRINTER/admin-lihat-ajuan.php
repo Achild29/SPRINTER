@@ -193,7 +193,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <!-- Sidebar Logo -->
         <li class="nav-logo">
           <a class="nav-logo " href="index.php">
-            <img src="assets/img/Logo Unpam.png">
+            <img src="assets/img/logo-unpam.png">
           </a>
         </li><!-- End Sidebar Logo -->
 

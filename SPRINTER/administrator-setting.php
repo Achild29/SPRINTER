@@ -54,7 +54,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
         <!-- ====== Main CSS File ====== -->
-        <link href="assets/css/admin.css" rel="stylesheet">
+        <link href="assets/css/page-admin.css" rel="stylesheet">
     </head>
 
     <body>
@@ -201,7 +201,7 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                 <!-- ======= Sidebar Logo ======= -->
                 <li class="nav-logo">
                     <a class="nav-logo " href="index.php">
-                        <img src="assets/img/Logo Unpam.png">
+                        <img src="assets/img/logo-unpam.png">
                     </a>
                 </li>
                 <!-- End Sidebar Logo -->
@@ -297,12 +297,14 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
             <!-- End Page Title -->
 
             <!-- ======= Section Account Settings ======= -->
-            <section id="account-settings" class="account-settings">
-                <div style="margin-bottom:50px;" class="card-body">
+            <section id="administrator-setting" class="administrator-setting">
+
+            <div class="card-body">
+                <div class="mb-3">
                     <div class="row">
-                        <div class="col jadwal">
+                        <div class="col">
                             <center>
-                                <h5 style="color: black;">Table Laboratorium</h5>
+                                <h5>Table Laboratorium</h5>
                             </center>
                             <table class="table">
                                 <thead>
@@ -333,9 +335,9 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col jadwal">
+                        <div class="col">
                             <center>
-                                <h5 style="color: black">Table Admin</h5>
+                                <h5>Table Admin</h5>
                             </center>
                             <table class="table">
                                 <thead>
@@ -366,7 +368,9 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                         </div>
                     </div>
                 </div>
-                <div class="row">
+            </div>
+
+            <div class="row">
                     <div class="col">
                         <center>
                             <p class="d-inline-flex gap-1">
@@ -402,10 +406,13 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                             </div>
                         </div>
                     </div>
-                    <div class="col bg-light">
-                        <div class="row mb-3 mt-3">
+
+                   
+                    <div class="col card-kanan">
+                        <div class="mb-3">
+                        <div class="row">
                             <center>
-                                <h5 style="color: black;">Edit Admin User</h5>
+                                <h5>Edit Admin User</h5>
                             </center>
                         </div>
                         <form action="" method="get">
@@ -455,22 +462,22 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                             </div>
                             <div class="col">
                                 <input type="checkbox" class="form-check-input" id="cekNmLab" name="cekNmLab">
-                                <label class="form-check-label" for="cekNmLab" style="color: black;">ceklis untuk bisa Edit</label>
+                                <label class="form-check-label" for="cekNmLab" style="color: black;">ceklis untuk bisa edit</label>
                             </div>
                             <div class="col">
                                 <label for="usernameTxt" class="form-label mt-2">Username</label>
-                                <input class="form-control" id="usernameTxt" name="username" type="text" value="<?php echo $username ?>" placeholder="<?php echo $username ?>" readonly>
+                                <input class="form-control mb-2" id="usernameTxt" name="username" type="text" value="<?php echo $username ?>" placeholder="<?php echo $username ?>" readonly>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="" class="form-label mt-2">Password</label>
+                                    <label for="" class="form-label mt-2 ">Password</label>
                                     <div class="password-wrapper">
                                         <input class="form-control" id="passwordTxt" name="password" type="password" value="<?php echo $password ?>" placeholder="<?php echo $password ?>" disabled>
                                         <i class="bi bi-eye-slash" id="togglePassword"></i>
                                     </div>
                                     <div class="col">
                                         <input type="checkbox" class="form-check-input" id="cekPassword" name="cekPassword">
-                                        <label class="form-check-label" for="cekPassword" style="color: black;">ceklis untuk bisa Edit</label>
+                                        <label class="form-check-label" for="cekPassword" style="color: black;">ceklis untuk bisa edit</label>
                                     </div>
                                 </div>
                                 <input type="hidden" name="kode_lab" value="<?php echo $_GET['kode_lab'] ?>">
@@ -478,13 +485,13 @@ if (empty($_SESSION['id']) and empty($_SESSION['nama']) and empty($_SESSION['lev
                         </form>
                     </div>
                 </div>
-                <div class="container text-center">
+                <!-- <div class="container text-center">
                     <div class="row">
                         <div class="col">
 
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </section><!-- ======= End Section Account Settings ======= -->
 
